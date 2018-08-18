@@ -1,0 +1,185 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo {
+    position: relative;
+    margin: 30px 50px 20px 20px;
+    left: 40px;
+}
+.logo img{
+    position: relative;
+    left: 31%;
+    top: -40px;
+}
+
+.slogan {
+    position: relative; 
+    display: inline-block;
+    margin: 20px 10px 0px 0px;
+    top: -20px;
+    left: 32%;
+}
+
+.slogan h4{
+    font-family: 'Edwardian Script ITC';
+    font-weight: bold;
+    font-size: 190%;
+}
+
+.slogan h2 {
+    position: relative;
+    text-align: center;
+    color: rgb(0, 110, 192);
+    font-style: italic;
+    font-size: 200%;
+    top: -10px;
+}
+
+.navegacion{
+    position: relative;
+    top: -15px;
+    height: 50px;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    box-shadow: rgb(193, 194, 196) 7px 7px 7px;
+}
+
+.navegacion ul{
+    list-style: none;
+}
+
+.menus > li{
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    padding: 0px 0px;
+    left: 18%;
+}
+
+.menus > li:hover{
+    border-bottom: solid 2px rgb(48, 156, 238);
+}
+
+.menus > li > a{
+    display: block;
+    padding: 10px 0px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    width: 85%;
+}
+
+
+.menus li a:hover{
+    color: #11408D;
+    border-radius: 10px;
+    font-family: 'arial narrow';
+}
+
+.submenu {
+    position: absolute;
+    background: rgba(0, 110, 192, 0.8);
+    border-radius: 5px;
+    margin: 2px 0px;
+    width: 230px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.submenu li a{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    text-decoration: none;
+}
+
+.menus li:hover .submenu{
+   visibility: visible;
+   opacity: 1;
+   border-radius: 10px;
+}
+
+.submenu li a:hover{
+    background: white;
+    font-family: 'arial narrow';
+}
+
+.container{
+    
+}
+
+.mensaje-exito{
+    position: relative;
+    top: 0px;
+    width: 80%;
+    height: 250px;
+    margin: 0px;
+    left: 10%;
+}
+
+.mensaje-exito h1{
+    position: relative;
+    color: rgb(0,110,192);
+    font-family: 'arial narrow';
+    top: 70px;
+    text-align: center;
+}
+
+.mensaje-exito a{
+    position: relative;
+    top: 100px;
+    left: 12%;
+    width: 300px;
+    font-size: 120%;
+    font-family: 'arial narrow';
+    text-align: center;
+    padding: 0px 50px;
+    margin: 0px 20px;
+    border-bottom: 2px solid rgb(0, 110, 192);
+}
+
+.mensaje-exito a:hover{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0,176,240);
+}
+
+.container img{
+    position: relative;
+    left: 42%;
+    top: -50px;
+    width: 200px;
+}
+
+.pie {
+    position: absolute;
+    background: #11408D;
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    padding: 10px;
+}
+
+.pie p {
+    position: relative;
+    left: 0%;
+    margin: 10px;
+    text-align: center;
+}
+
+.pie a {
+    text-decoration: none;
+    color: white;
+}
+
+.pie a:hover{
+    color: orangered;
+}

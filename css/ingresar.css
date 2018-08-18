@@ -1,0 +1,270 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.encabezado2 h4 {
+    font-size: 250%;
+    line-height: 0px;
+    margin: 2px;
+    font-weight: bold;
+    font-family: 'Edwardian Script ITC';
+}
+h2{
+    width: 600px;  
+}
+
+.encabezado2 {
+    position: relative;
+    top: -60px ;
+    left: 4%;
+    text-align: center;
+    width: 95%;
+}
+
+.filoen {
+    position: relative;
+    left: 450px;
+    font-size: 50px;
+    font-style: italic; 
+    padding: 10px 5px;
+    color:rgb(0, 110, 192);
+}
+
+.encabezado {
+    position: relative;
+    top: 35px;
+    left:30%;
+    width: 100px;
+}
+
+.ingreso {
+    position: absolute;
+    left: 75%;
+    top: 30px;
+    width: 350px;
+}
+
+.ingreso li {
+    position: relative;
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 8px;
+    border-radius: 10PX;
+}
+
+.ingreso li a {
+    text-decoration: none;
+    font-family: 'arial narrow';
+    color: #255DB9;
+    font-size: 140%;
+}
+
+.fondo1::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 110, 192, 0.85);
+}
+
+.fondo1 {
+    position: relative;
+    top: -30px;
+    margin: 0px 5px;
+    width: 99%;
+    height: 250px;
+    color: white;
+    background-image: url('../imagenes/diosa.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.fondo2 img {
+    position: relative;
+    width: 15%;
+    height: 240px;
+    left: 60%;
+    top: 20px;
+}
+
+.fondo1 h1 {
+    position: absolute;
+    top: 40px;
+    margin: 20px;
+    left: 32%;
+    font-size: 340%;
+    font-family: 'arial narrow';
+    font-weight: bold;
+}
+
+.movimiento{
+    position: absolute;
+    width: 90%;
+    height: 37px;
+    font-size: 180%;
+    line-height: 35px;
+    top: 130px;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'arial narrow';
+}
+
+.movimiento ul{
+    list-style: none;
+    animation: cambiar 10s infinite;
+}
+
+.movimiento ul, p{
+    margin: 0px;
+}
+
+@keyframes cambiar {
+    0%{ margin-top: 0;}
+    20%{ margin-top: 0;}
+
+    25%{ margin-top: -50px;}
+    50%{ margin-top: -50px;}
+
+    55%{ margin-top: -100px;}
+    80%{ margin-top: -100px;}
+
+    85%{ margin-top: -50px;}
+    95%{ margin-top: -50px;}
+
+    100%{ margin-top: 0px;}  
+}
+
+.navegacion{
+    position: relative;
+    top: -32px;
+    height: 50px;
+    width: 99%;
+    margin: 0px 0px 0px 5px;
+    box-shadow: rgb(193, 194, 196) 7px 7px 7px;
+}
+
+.navegacion ul{
+    list-style: none;
+}
+
+.menus > li{
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    padding: 0px 0px;
+    left: 18%;
+}
+
+.menus > li:hover{
+    border-bottom: solid 2px rgb(48, 156, 238);
+}
+
+.menus > li > a{
+    display: block;
+    padding: 10px 0px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    width: 85%;
+}
+
+
+.menus li a:hover{
+    color: #11408D;
+    border-radius: 10px;
+    font-family: 'arial narrow';
+}
+
+.submenu {
+    position: absolute;
+    background: rgba(0, 110, 192, 0.8);
+    border-radius: 5px;
+    margin: 2px 0px;
+    width: 230px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.submenu li a{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    text-decoration: none;
+}
+
+.menus li:hover .submenu{
+   visibility: visible;
+   opacity: 1;
+   border-radius: 10px;
+}
+
+.submenu li a:hover{
+    background: white;
+    font-family: 'arial narrow';
+}
+
+.titulo {
+    position: relative;
+    top: 0px;
+    left: 9%;
+    width: 500px;
+    font-size: 250%;
+    font-family: 'arial narrow';
+    color: rgb(0, 110, 192);
+}
+
+.linea {
+    position: relative;
+    top: -15px;
+    width: 83%;
+    left: 8%;
+    border: solid 1px rgb(0, 110, 192);  
+}
+
+
+button{
+    position: relative;
+    left: 20.5%;
+    width: 100%;
+}
+
+.container img{
+    position: relative;
+    left: 50%;
+    margin-bottom: 20px;
+}
+
+
+.pie {
+    position: absolute;
+    background: #11408D;
+    width: 99%;
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+}
+
+.pie p {
+    position: relative;
+    left: 0%;
+    margin: 10px;
+    text-align: center;
+}
+
+.pie a {
+    text-decoration: none;
+    color: white;
+}
+
+.pie a:hover{
+    color: orangered;
+}

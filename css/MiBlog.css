@@ -1,0 +1,374 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo {
+    position: relative;
+    margin: 30px 50px 20px 0px;
+    left: 0%;
+    width: 90%;
+}
+
+.logo img{
+    position: relative;
+    top: -10px;
+    left: 5%;
+}
+
+.slogan {
+    position: relative; 
+    display: inline-block;
+    margin: 20px 10px 0px 0px;
+    top: -20px;
+    left: 6%;
+}
+
+.slogan h4{
+    position: relative;
+    font-family: 'Edwardian Script ITC';
+    font-size: 130%;
+    top: 20px;
+}
+
+.slogan h2 {
+    position: relative;
+    left: 30%;
+    margin: 20px 0px 0px 0px;
+    color: rgb(0, 110, 192);
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 140%;
+}
+
+.boton li {
+    list-style-type: none;
+    margin: 0px 5px;
+}
+
+.salir{
+    position: relative;
+    left: 65px;
+}
+
+.navegacion2 .menu2{
+    list-style: none;
+    position: absolute;
+    display: flex;
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+    left: 78.5%;
+    top: 70px;
+}
+
+.menu2 > li{
+    padding: 0px 5px;
+}
+
+.submenu2 {
+    position: absolute;
+    margin: 0px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+    width: 60%;
+}
+
+.submenu2 li{
+    background: rgba(0, 110, 192, 0.5);
+    width: 100%;
+}
+
+.submenu2 li a{
+    display: block;
+    padding: 7px 15px;
+    color: white;
+    font-family: 'calibri';
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.menu2 li:hover .submenu2{
+   visibility: visible;
+   opacity: 1;
+   right: 80px;
+}
+
+.submenu2 li a:hover{
+    position: relative;
+    font-family: 'calibri';
+    left: 5%;
+    color: lightseagreen;
+    font-weight: bold;
+}
+
+.navegacion{
+    position: relative;
+    top: 0px;
+    width: 99%;
+    margin: 0px 0px;
+}
+
+.navegacion ul{
+    list-style: none;
+}
+
+.menus > li{
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    padding: 0px 5px;
+    left: 2%;
+}
+
+.menus > li > a{
+    display: block;
+    padding: 10px 5px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+}
+
+.menus li a:hover{
+    color: #11408D;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.submenu {
+    position: absolute;
+    background: rgba(0, 110, 192, 0.8);
+    border-radius: 5px;
+    margin: 0.5px 0px;
+    width: 150px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.submenu li a{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-family: 'calibri';
+    font-size: 100%;
+    text-decoration: none;
+}
+
+.menus li:hover .submenu{
+   visibility: visible;
+   opacity: 1;
+   border-radius: 10px;
+}
+
+.submenu li a:hover{
+    background: white;
+    font-family: 'calibri';
+}
+
+.portata{
+    position: relative;
+    background-image: url('../imagenes/33.jpg');
+    background-size: 100% 100%;
+    width: 97%;
+    height: 200px;
+    margin: 5px 15px; 
+}
+
+.portata h2{
+    position: relative;
+    font-family: 'Edwardian Script ITC';
+    color: white;
+    padding: 10px 15px;
+    font-size: 200%;
+    left: 60%;
+    top: 130px;
+    width: 20%;
+}
+
+.navigazione{
+    position: relative;
+    left: 20%;
+    width: 50.5%;
+    margin: 0px 10px;
+    background: rgba(0, 110, 192, 0.8);
+}
+
+.piccolino > li{
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    left: 2%;
+}
+    
+.piccolino > li > a{
+    display: block;
+    padding: 10px 0px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 100%;
+}
+    
+.piccolino li a:hover{
+    color: aqua;
+    font-weight: bold;
+    font-family: 'arial narrow';
+    text-decoration: overline;
+}
+
+.migliore{
+    position: relative;
+    margin: 15px 10px;
+    left: 20%;
+    width: 51%;
+}
+
+.migliore img{
+    width: 99%;
+}
+
+.migliore h2{
+    font-family: 'arial narrow';
+    font-size: 160%;
+    margin: 5px 0px 10px 0px;
+    color: rgb(0, 110, 192);
+}
+
+.migliore p{
+    color: gray;
+    font-family: 'arial narrow';
+    font-size: 105%;
+    height: 210px;
+    overflow: hidden;
+}
+
+.redi{
+    position: relative;
+    margin: 15px 0px;
+    padding: 10px 0px;
+    width: 80%;
+    left: 19%;
+    border-top: 1px solid rgb(0, 110, 192);
+    border-bottom: 1px solid rgb(0, 110, 192);
+}
+
+.redi li{
+    position: relative;
+    list-style: none;
+    width: 100px;
+    padding: 0px 15px 0px 0px;
+    display: inline-block;
+    left: 40%;
+}
+
+.redi li img{
+    width: 30px;
+    height: 30px;
+}
+
+.redi li a{
+    text-decoration: none;
+}
+
+.linea {
+    position: relative;
+    margin: 10px 0px;
+    width: 51%;
+    left: 20%;
+    border: solid 0.5px lightgray;  
+}
+
+.notizie{
+    position: relative;
+    margin: 15px 10px;
+    left: 20%;
+    width: 51%;
+}
+
+#blog h2{
+    position: relative;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    margin: 15px 0px 10px 0px;
+    left: 21%;
+    width: 200px;
+    color: rgb(0, 110, 192);
+}
+
+#blog .notizie {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.spacio-notizie{
+    position: relative;
+    width: 30%;
+    height: 200px;
+    margin: 15px 10px;
+}
+
+.texto{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.texto h3{
+    text-align: center;
+    color: white;
+    padding: 20px 0px;
+    font-family: 'arial narrow';
+}
+
+.texto a{
+    text-decoration: none;
+}
+
+.texto:hover{
+    height: 90px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: ease 1s;
+    
+}
+
+.notizie .spacio-notizie img{
+    width: 100%;
+    height: 100%;
+}
+
+.pie {
+    position: absolute;
+    background: #11408D;
+    width: 99%;
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+}
+
+.pie p {
+   position: relative;
+   left: 0%;
+   margin: 10px;
+   text-align: center;
+}
+
+.pie a {
+   text-decoration: none;
+   color: white;
+}
+
+.pie a:hover{
+    color: orangered;
+}
+

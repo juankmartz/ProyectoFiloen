@@ -1,0 +1,196 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo {
+    position: relative;
+    margin: 20px 0px 20px 0px;
+    width: 30%;
+}
+.logo img{
+    position: relative;
+    left: 10%;
+    top: -40px;
+}
+
+.slogan {
+    position: relative; 
+    display: inline-block;
+    margin: 20px 10px 0px 0px;
+    top: -10px;
+    left: 12%;
+}
+
+.slogan h4{
+    font-family: 'Edwardian Script ITC';
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.slogan h2 {
+    position: relative;
+    text-align: center;
+    color: rgb(0, 110, 192);
+    font-style: italic;
+    font-size: 170%;
+    top: -10px;
+}
+
+.salir{
+    position: relative;
+    left: 65px;
+}
+
+.boton li {
+    list-style-type: none;
+    margin: 0px 5px;
+}
+
+.portata{
+    position: relative;
+    top: -5px;
+    background-image: url('../imagenes/33.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 200px;
+}
+
+.portata h2{
+    position: relative;
+    font-family: 'Edwardian Script ITC';
+    color: white;
+    padding: 10px 15px;
+    font-size: 200%;
+    left: 60%;
+    top: 130px;
+    width: 20%;
+}
+
+.navegacion2 .menu2{
+    list-style: none;
+    position: absolute;
+    display: flex;
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+    left: 79%;
+    top: 35px;
+}
+
+.menu2 > li{
+    padding: 0px 5px;
+}
+
+.submenu2 {
+    position: absolute;
+    margin: 0px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+    width: 60%;      
+}
+
+.submenu2 li{
+    background: rgba(0, 110, 192, 0.5);
+    width: 100%;
+}
+
+.submenu2 li a{
+    display: block;
+    padding: 7px 15px;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.menu2 li:hover .submenu2{
+   visibility: visible;
+   opacity: 1;
+   right: 80px;
+}
+
+.submenu2 li a:hover{
+    position: relative;
+    font-family: 'arial narrow';
+    left: 5%;
+    color: lightseagreen;
+    font-weight: bold;
+}
+
+.navegacion{
+    position: relative;
+    top: -10px;
+    width: 100%;
+    height: 50px;
+    margin: 0px 0px 0px 0px;
+    box-shadow: rgb(193, 194, 196) 7px 7px 7px;
+}
+
+.navegacion ul{
+    list-style: none;
+}
+
+.menus > li{
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    padding: 0px 0px;
+    left: 7%;
+}
+
+.menus > li:hover{
+    border-bottom: solid 2px rgb(48, 156, 238);
+}
+
+.menus > li > a{
+    display: block;
+    padding: 10px 0px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    width: 85%;
+}
+
+.menus li a:hover{
+    color: #11408D;
+    border-radius: 10px;
+    font-family: 'arial narrow';
+}
+
+.submenu {
+    position: absolute;
+    background: rgba(0, 110, 192, 0.8);
+    border-radius: 5px;
+    margin: 2px 0px;
+    width: 230px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.submenu li a{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    text-decoration: none;
+}
+
+.menus li:hover .submenu{
+   visibility: visible;
+   opacity: 1;
+   border-radius: 10px;
+}
+
+.submenu li a:hover{
+    background: white;
+    font-family: 'arial narrow';
+}

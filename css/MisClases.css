@@ -1,0 +1,332 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo {
+    position: relative;
+    margin: 30px 50px 20px 20px;
+    width: 97%;
+}
+
+.logo img{
+    position: relative;
+    left: 10%;
+}
+
+.slogan {
+    position: relative; 
+    display: inline-block;
+    margin: 20px 10px 0px 0px;
+    top: -20px;
+    left: 12%;
+}
+
+.slogan h4{
+    font-family: 'Edwardian Script ITC';
+    font-size: 190%;
+}
+
+.slogan h2 {
+    position: relative;
+    text-align: center;
+    color: rgb(0, 110, 192);
+    font-style: italic;
+    font-size: 200%;
+}
+
+.fondo1::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 110, 192, 0.85);
+}
+
+.fondo1 {
+    position: relative;
+    top: -10px;
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    background-size: 100% 100%;
+    color: white;
+    background-image: url('../imagenes/38.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.fondo1 h1 {
+    position: absolute;
+    top: 30px;
+    left: 5%;
+    font-size: 200%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+}
+
+.salir{
+    position: relative;
+    left: 65px;
+}
+
+.boton li {
+    list-style-type: none;
+    margin: 0px 5px;
+}
+
+.navegacion2 .menu2{
+    list-style: none;
+    position: absolute;
+    display: flex;
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+    left: 79%;
+    top: 35px;
+}
+
+.menu2 > li{
+    padding: 0px 5px;
+}
+
+.submenu2 {
+    position: absolute;
+    margin: 0px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+    width: 60%;      
+}
+
+.submenu2 li{
+    background: rgba(0, 110, 192, 0.5);
+    width: 100%;
+}
+
+.submenu2 li a{
+    display: block;
+    padding: 7px 15px;
+    color: white;
+    font-family: 'calibri';
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.menu2 li:hover .submenu2{
+   visibility: visible;
+   opacity: 1;
+   right: 80px;
+}
+
+.submenu2 li a:hover{
+    position: relative;
+    font-family: 'calibri';
+    left: 5%;
+    color: lightseagreen;
+    font-weight: bold;
+}
+
+.navegacion{
+    position: relative;
+    top: 0px;
+    width: 99%;
+    margin: 0px 0px;
+}
+
+.navegacion ul{
+    list-style: none;
+}
+
+.menus > li{
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    padding: 0px 5px;
+    left: 2%;
+}
+
+.menus > li > a{
+    display: block;
+    padding: 10px 5px;
+    text-decoration: none;
+    text-align: center;
+    color: gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+}
+
+.menus li a:hover{
+    color: #11408D;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.submenu {
+    position: absolute;
+    background: rgba(0, 110, 192, 0.8);
+    border-radius: 5px;
+    margin: 0.5px 0px;
+    width: 150px;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.submenu li a{
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-family: 'calibri';
+    font-size: 100%;
+    text-decoration: none;
+}
+
+.menus li:hover .submenu{
+   visibility: visible;
+   opacity: 1;
+   border-radius: 10px;
+}
+
+.submenu li a:hover{
+    background: white;
+    font-family: 'calibri';
+}
+
+.prueba {
+    position: relative;
+    display: flex;
+}
+
+.informacion {
+    position: relative;
+    font-family: 'arial narrow';
+    font-style: italic;
+    color: white;
+    font-size: 100%;
+    margin: 10px 0px 15px 0px;
+    padding: 2px 10px 2px 0px;
+    width: 220px;
+    text-align: center;
+    left: 50px;
+    top: 20px;
+    background: rgb(0, 110, 192);
+    border: solid 1px #255DB9;
+    border-radius: 3px;
+}
+
+.menuAplicaciones {
+    position: relative;
+    width: 20%;
+    margin: 0px 0px 25px 25px;
+    padding: 10px;
+}
+
+.menuAplicaciones li {
+    position: relative;
+    list-style-type:none;
+    margin: 10px 30px;
+}
+
+.menuAplicaciones li a {
+    position: relative;
+    text-decoration: none;
+    font-family: 'calibri';
+    font-size: 130%;
+    color: #255DB9;
+}
+
+.menuAplicaciones li:hover{
+    position: relative;
+    left: 15px;
+    transition: all .4s ease;
+}
+
+.menuAplicaciones li a:hover{
+    color: orangered;
+    font-weight: bold;
+}
+
+.menuAplicaciones li a img{
+    width: 30px;
+    height: 30px;
+}
+
+.lezione{
+    width: 70%;
+}
+
+.clases{
+    position: relative;
+    top: 0;
+    background: rgb(241, 240, 240);
+    height: auto;
+    border: 1px solid gray;
+}
+
+.clases h2{
+    position: relative;
+    top: -20px;
+    background: rgb(0, 110, 192);
+    border: 2px solid #11408D;
+    font-family: 'arial narrow';
+    color: white;
+    padding: 5px 20px;
+}
+
+.clases h3{
+    text-align: center;
+    color: gray;
+    margin: 0px 0px 20px 0px;
+}
+
+.clases a{
+    position: relative;
+    background: rgb(0, 110, 192);
+    display: block;
+    width: 150px;
+    color: white;
+    font-family: 'arial narrow';
+    font-size: 110%;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 5px;
+    border-radius: 10px;
+    left: 40%;
+}
+
+.clases a:hover{
+    font-weight: bold;
+    background: #11408D;
+}
+
+
+.pie {
+    position: absolute;
+    background: #11408D;
+    width: 99%;
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+}
+
+.pie p {
+   position: relative;
+   left: 0%;
+   margin: 10px;
+   text-align: center;
+}
+
+.pie a {
+   text-decoration: none;
+   color: white;
+}
+
+.pie a:hover{
+    color: orangered;
+}
