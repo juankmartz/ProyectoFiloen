@@ -15,10 +15,11 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>   
-    <script src="http://code.jquery.com/jquery-latest.js"></script> 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="js/jquery-latest.js"></script> 
+    <!--<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
+    
+    <script src="js/jquery.min.js"></script>
     <script src="js/jquery.flexslider.js"></script>
 
     <script type="text/javascript" charset="utf-8">
