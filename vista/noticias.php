@@ -1,284 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Noticias</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-    <link rel="stylesheet" href="css/eventoss.css">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/estilos.css">
+<?PHP
+include '../controlador/conBD.php';
 
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>   
-    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+$conn = conBD::conectar();
+$sentenciaSQL = "SELECT * FROM `noticia` ";
+$existenRegistro = mysqli_query($conn, $sentenciaSQL);
+?>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/fontello.css" >
+        <link rel="stylesheet" href="css/estilos.css" >
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <style>
+            .cuerpo-noticia > .row > img{
+                max-height: 200px;
+            }
+            .img-noticia{
+                max-width: calc( 99% + 1px );
+            }
+            @media only screen and (max-width: 950px) {
+                .text-max-170{
+                    max-height: 170px;
+                    overflow: hidden;
+                }
+            }
 
-</head>
-<body>
+        </style>
+    </head>
+    <body>
+        <h3 class="titulo">Últimas Noticias</h3>
+        <hr class="linea">
+	<?php
+	// noticias destacadas
+	$sql = "SELECT `noticia`.`idnoticia`,
+    `noticia`.`titulo`,
+    `noticia`.`subtitulo`,
+    `noticia`.`contenido`,
+    `noticia`.`imagen`,
+    `noticia`.`tipo_multimedia`,
+    `noticia`.`fecha`,
+    `noticia`.`idusuario`,
+    `noticia`.`enlace`,
+    `noticia`.`estado`,
+    `noticia`.`fecha_modifico`
+FROM `noticia` WHERE estado = 'DESTACADA'";
+	$resultado = mysqli_query($conn, $sql);
+	while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+	    ?>
+    	<div class="row">
+    	    <div class="col-xs-10 col-xs-offset-1 col-md-5">
+    		<a href="#">
+    		    <img  class="media-object img-noticia" src="Imagenes/28.png" width="300px" alt="...">
+    		</a>
+    	    </div>
+    	    <div class="col-xs-10 col-xs-offset-1 col-md-7">
+    		<h4 class="media-heading"><?php echo $fila["titulo"]; ?></h4>
+    		<p class="text-max-170"><?php echo $fila["contenido"]; ?><p><a href="#" class="btn btn-primary btn">Leer más</a></p>
+    	    </div>
 
-<div class="logo">
-    <img src="imagenes/logo1.png" alt="Filosofia y enseñanza de la filosofia" width="80px">
-    <div class="slogan">
-        <h4>Filosfofía y Enseñanza de la Filosofía</h4>
-        <h2>FiloEn</h2>
-    </div>
-</div>
+    	</div>
+	    <?php
+	}
+	?>
+        <div class="content-fluid">
+            <div class="row">
+		<?php
+// noticias normales
+		$sql1 = "SELECT `noticia`.`idnoticia`,
+    `noticia`.`titulo`,
+    `noticia`.`subtitulo`,
+    `noticia`.`contenido`,
+    `noticia`.`imagen`,
+    `noticia`.`tipo_multimedia`,
+    `noticia`.`fecha`,
+    `noticia`.`idusuario`,
+    `noticia`.`enlace`,
+    `noticia`.`estado`,
+    `noticia`.`fecha_modifico`
+FROM `noticia` WHERE estado = 'ACTIVA'";
+		$resultado1 = mysqli_query($conn, $sql1);
+		while ($fila = mysqli_fetch_array($resultado1, MYSQLI_ASSOC)) {
+		    ?>
 
-<header>
-    <div class="fondo3">
-            <h1>NOTICIAS</h1>
+    		<div class="col-sm-6  col-xs-12">
+    		    <div class="cuerpo-noticia">
+    			<div class="row">
+				<?php if ($fila["tipo_multimedia"] == "VIDEO") {
+				    ?> 
+				    <video width="400" controls id="noticia_<?php echo $fila["idnoticia"] ?>" >
+					<source src="<?php echo $fila["imagen"] ?>" >
+					Your browser does not support HTML5 video.
+				    </video>
+				    <?php
+				} else
+				if ($fila["tipo_multimedia"] == "IMAGEN") {
+				    ?><img src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
+				} else
+				if ($fila["tipo_multimedia"] == "YOUTUBE") {
+				     ?><img src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
+				}
+				?>
 
-            <div class="boton">
-            <nav class="navegacion2">
-                <ul class="menu2">
-                    <li><a href="inicioEst.php"> <img src="imagenes/inicio2.png" alt="" title="Inicio" width="30px" height="30px"></a></li>
-                    <li><a href=""> <img src="imagenes/Opcionesb.png" alt="Opciones" title="Opciones" width="30px" height="30px"></a>
-                <ul class="submenu2">
-                    <li><a href=""> <span><img src="imagenes/mensajes2.png" width="20px" height="20px"></span> Mensajes</a></li>
-                    <li><a href=""> <span><img src="imagenes/solicitud.png" width="20px" height="20px"></span> Solicitudes de Amistad</a></li>
-                    <li><a href=""> <span><img src="imagenes/Sgrupo.png" width="20px" height="20px"></span> Solicitudes de Grupo</a></li>
-                    <li><a href=""> <span><img src="imagenes/anuncio.png" width="20px" height="20px"></span> Crear un Anuncio</a></li>
-                    <li><a href="tareas.php"> <span><img src="imagenes/tareas.png" width="20px" height="20px"></span> Tareas</a></li>
-                    <li><a href=""> <span><img src="imagenes/privacidad2.png" width="20px" height="20px"></span> Privacidad</a></li>
-                    <li><a href=""> <span><img src="imagenes/config.png" width="20px" height="20px"></span> Configuración</a></li>
-                    <li><a href=""> <span><img src="imagenes/problema2.png" width="20px" height="20px"></span> Reportar un Problema</a></li>
-                </ul>
-                    </li>
-                    <li><a href=""> <img src="imagenes/mensajes.png" alt="" title="Chat" width="30px" height="30px"></a></li>
-                    <li><a href=""> <img src="imagenes/notificaciones.png" alt="" title="Notificaciones" width="30px" height="30px"></a></li>
-                    <li><a href="index.php"> <img src="imagenes/salirb.png" class="salir" alt="Cerrar Sesión" title="Cerrar Sesión" width="30px" height="30px"></a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</header>                            
+    			</div>
+    			<div class="row">
+    			    <h4>Titulo de la imagen</h4>
+    			    <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
+    			    <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+    			</div>
+    		    </div>
+    		</div>
 
- <div id="header">
-    <nav class="navegacion">
-        <ul class="menus">
-            <li> <a href="inicioEst.php"><span><img src="Imagenes/home.png" alt="" width="20px"></span> Inicio</a></li>
-            <li> <a href="MuroYPerfEstud.php">Mi Perfil</a></li>
-            <li> <a href="#">Nuestra Gente <span class="icon icon-angle-down"></span></a>
-        <ul class="submenu">
-            <li> <a href="#">Perfiles</a></li>
-            <li> <a href="">Comunidad</a></li>
-            <li> <a href="Informate_comp.php">Infórmate</a></li>
-            <li> <a href="acercaFiloEn_Comp.php">Acerca de FiloEn</a></li>
-        </ul> 
-    </li>
-    <li> <a href="#">Herramientas <span class="icon icon-angle-down"></span></a>
-        <ul class="submenu">
-            <li> <a href="#">Figuras Retóricas</a></li>
-            <li> <a href="http://filosofiayensenanza.uis.edu.co:8080/bibliotecadigitalfiloen">Biblioteca</a></li>
-        </ul>
-    </li>
-    <li> <a href="">Actualidad <span class="icon icon-angle-down"></span></a>
-        <ul class="submenu">
-            <li> <a href="noticias.php">Noticias</a></li>
-            <li> <a href="eventos.php">Eventos</a></li>
-        </ul>
-    </li>
+		    <?php
+		}
+		?>
+	    </div>
+	</div>
+	<!--        <div class="row">
+		    <div class="col-xs-10 col-xs-offset-1 col-md-5">
+			<a href="#">
+			    <img  class="media-object img-noticia" src="Imagenes/28.png" width="300px" alt="...">
+			</a>
+		    </div>
+		    <div class="col-xs-10 col-xs-offset-1 col-md-7">
+			<h4 class="media-heading">Media heading</h4>
+			<p class="text-max-170">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris. Aenean lobortis iaculis arcu, ut vehicula lectus fermentum eget. Suspendisse potenti. Donec sollicitudin auctor odio, non ultricies diam maximus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel luctus magna. In hac habitasse platea dictumst.
+			    Proin quis pretium mi, et mollis velit. Vivamus nec urna eget purus scelerisque aliquam id pellentesque orci. Curabitur sed odio sit amet tellus aliquet blandit in sit amet mauris. Curabitur consequat eros sed est tempus, eget euismod arcu consequat. Integer rhoncus dui ut ornare fringilla. Integer justo dolor, tincidunt et facilisis pharetra, dapibus accumsan mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ipsum neque, cursus in purus sed, fringilla fermentum dolor.</p>
+			<p><a href="#" class="btn btn-primary btn">Leer más</a></p>
+		    </div>
+	
+		</div>
+	
+		<div class="row">
+	
+		    <div class="col-xs-10 col-xs-offset-1 col-md-5">
+			<a href="#">
+			    <img  class="media-object img-noticia" src="Imagenes/25.png" width="300px" alt="...">
+			</a>
+		    </div>
+		    <div class="col-xs-10 col-xs-offset-1 col-md-7">
+			<h4 class="media-heading">Media heading</h4>
+			<p class="text-max-170">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris. Aenean lobortis iaculis arcu, ut vehicula lectus fermentum eget. Suspendisse potenti. Donec sollicitudin auctor odio, non ultricies diam maximus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			    Pellentesque vel luctus magna. In hac habitasse platea dictumst.
+			    Proin quis pretium mi, et mollis velit. Vivamus nec urna eget purus scelerisque aliquam id pellentesque orci. Curabitur sed odio sit amet tellus aliquet blandit in sit amet mauris. Curabitur consequat eros sed est tempus, eget euismod arcu consequat. Integer rhoncus dui ut ornare fringilla. Integer justo dolor, tincidunt et facilisis pharetra, dapibus accumsan mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ipsum neque, cursus in purus sed, fringilla fermentum dolor.</p>
+	
+			<p><a href="#" class="btn btn-primary btn">Leer más</a></p>
+		    </div>
+	
+		</div>-->
 
-    <li> <a href="">Aplicaciones <span class="icon icon-angle-down"></span></a>
-        <ul class="submenu">
-            <li> <a href="foros.php">Crear Foro</a></li>
-            <li> <a href="MisGrupos.php">Crear Grupo</a></li>
-            <li> <a href="MiBlog.php">Mi Blog</a></li>
-            <li> <a href="#">Solicitudes</a></li>
-        </ul>
-    </li>
-
-    <li> <a href="">Participa <span class="icon icon-angle-down"></span></a>
-        <ul class="submenu">
-            <li> <a href="foros.php">Foros</a></li>
-            <li> <a href="#">Grupos Comunidad</a></li>
-            <li> <a href="#">Conferencias</a></li>
-        </ul>
-    </li>
-
-    <li> <a href="contactenos_Comp.php">Contáctenos</a></li>
-    </ul>
-    </nav>
-</div>
-
-<section class="main container col-md-12">
-
-<div class="row">
-  
-   <div class="col-md-9">
-            
-
-    <h3 class="titulo">Noticias FiloEn</h3>
-    <hr class="linea">
-
-
-    <article class="main"> 
-
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="Imagenes/28.png" width="300px" alt="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris.  </p>
-
-                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-
-                <div class="redi">
-                    <li><a href="#"><img src="imagenes/comentar.png" alt="" title="Comentar"></a></li>
-                    <li><a href="#"><img src="imagenes/compartir.png" alt="" title="Compartir"></a></li>
-                </div>
-            </div>
-
-        </article>
-
-      <article class="main"> 
-
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="Imagenes/25.png" width="300px" alt="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris.  </p>
-
-                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-
-                <div class="redi">
-                    <li><a href="#"><img src="imagenes/comentar.png" alt="" title="Comentar"></a></li>
-                    <li><a href="#"><img src="imagenes/compartir.png" alt="" title="Compartir"></a></li>
-                </div>
-            </div>
-
-        </article>
-
-        <article class="main"> 
-
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="Imagenes/partenon.png" width="300px" alt="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris.  </p>
-
-                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-
-                <div class="redi">
-                    <li><a href="#"><img src="imagenes/comentar.png" alt="" title="Comentar"></a></li>
-                    <li><a href="#"><img src="imagenes/compartir.png" alt="" title="Compartir"></a></li>
-                </div>
-            </div>
-
-        </article>
-
-        <article class="main"> 
-
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="Imagenes/simetrico.jpg" width="300px" height="200px" alt="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris.  </p>
-
-                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-
-                <div class="redi">
-                    <li><a href="#"><img src="imagenes/comentar.png" alt="" title="Comentar"></a></li>
-                    <li><a href="#"><img src="imagenes/compartir.png" alt="" title="Compartir"></a></li>
-                </div>
-            </div>
-
-        </article>
-
-     
-
-        <article class="main"> 
-
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="Imagenes/12.jpg" width="300px" height="200px" alt="...">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Encuentro Internacional de Filosofía: Pensar el Cuerpo</h4>
-              <p class="parrafo">El cuerpo ha llegado a ocupar, sin lugar a dudas, un lugar central no sólo en el ámbito de la filosofía, sino también en el de las ciencias sociales y humanas. La pregunta por lo que sea y pueda el cuerpo, vinculada a problemas como la verdad, el pensamiento, la conciencia, la naturaleza, los valores, el lenguaje y la cultura, no sólo se ha planteado al interior de la filosofía, sino que de hecho ha sido y es tema relevante de investigaciones actuales, especialmente las dadas en campos como la sociología, la antropología, el psicoanálisis, la educación, la comunicación y la psicología.   </p>
-
-                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-
-                <div class="redi">
-                    <li><a href="#"><img src="imagenes/comentar.png" alt="" title="Comentar"></a></li>
-                    <li><a href="#"><img src="imagenes/compartir.png" alt="" title="Compartir"></a></li>
-                </div>
-            </div> 
-        </article>
-
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="noticias.php">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-        
-
-    </div>
-    
-
-    <div class="col-md-3">
-        <div class="menuAplicaciones">
-        <h4 class="informacion">-- Más opociones de menú --</h4>
-            <nav><ul>
-                <li> <a href="InfoCuenta.php"> <img src="imagenes/personal.png" alt=""> Información Personal</a></li>
-                <li> <a href="#"> <img src="imagenes/perfiles.png" alt=""> Demás Perfiles</a></li>
-                <li> <a href="MiBlog.php"> <img src="imagenes/blog.png" alt=""> Mi Blog</a></li>
-                <li> <a href="MisGrupos.php"> <img src="imagenes/comunidad.png" alt=""> Comunidad</a></li>
-                <li> <a href="MisClases.php"> <img src="imagenes/clase.png" alt=""> Mis clases</a></li>
-                <li> <a href="Chat.php"> <img src="imagenes/chat.png" alt=""> Chat</a></li>
-                <li> <a href="eventos.php"> <img src="imagenes/eventos.png" alt=""> Eventos</a></li>
-                <li> <a href="http://filosofiayensenanza.uis.edu.co:8080/bibliotecadigitalfiloen"> <img src="imagenes/libros.png" alt=""> Libros</a></li>
-                <li> <a href="#"> <img src="imagenes/clima.png" alt=""> Clima</a></li>
-                </ul>
-                </nav>
-        </div>
-
-       
-            <h4 class="informacion">-- Videos de Interés --</h4>
-            <iframe width="100%" src="https://www.youtube.com/embed/UmjcY6-iNbk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-        
-    </div>
-
-</div>
-</section>
-
-
-
-<footer>
-<div class="pie">
-        <p>
-        <a href="inicioEst.php">Inicio</a> | 
-        <a href="contactenos_Comp.php">Contáctenos</a> |
-        <a href="#">Registro</a> |
-        <a href="#">Login</a> |                                                
-        </p>
-        <p>
-                Copyright 2018. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
-        </p>
-                                    
-    </div>
-</footer>
-
-</body>
+	<!--        <div class="content-fluid">
+		    <div class="row">
+			<div class="col-sm-6  col-xs-12">
+			    <div class="cuerpo-noticia">
+				<div class="row"><img src="Imagenes/34.jpg" alt="" ></div>
+				<div class="row">
+				    <h4>Titulo de la imagen</h4>
+				    <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
+				    <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+				</div>
+			    </div>
+			</div>
+	
+			<div class="col-sm-6  col-xs-12">
+			    <div class="cuerpo-noticia">
+				<div class="row"><img src="Imagenes/fds.jpg" alt="" ></div>
+				<div class="row">
+				    <h4>Titulo de la imagen</h4>
+				    <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
+				    <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+				</div>
+			    </div>
+			</div>
+	
+			<div class="col-sm-6  col-xs-12">
+			    <div class="cuerpo-noticia">
+				<div class="row"><img src="Imagenes/ddd.jpg" alt="" ></div>
+				<div class="row">
+				    <h4>Titulo de la imagen</h4>
+				    <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
+				    <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+				</div>
+			    </div>
+			</div>
+	
+			<div class="col-sm-6 col-xs-12">
+			    <div class="cuerpo-noticia">
+				<div class="row"><img src="Imagenes/g1.gif" alt="" ></div>
+				<div class="row">
+				    <h4>Titulo de la imagen</h4>
+				    <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
+				    <a href="#" class="btn btn-primary btn-sm">Leer más</a>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		</div>-->
+    </body>
 </html>

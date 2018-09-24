@@ -12,6 +12,7 @@ function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
         url: $(formulario).attr("action"),
         type: "post",
         dataType: "html",
+//        data: serializefiles(formulario),
         data: $(formulario).serialize(),
         cache: false,
         processData: false,
@@ -24,39 +25,96 @@ function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
 //            ocultarLoaderOndaDeCubos();
         },
         error: function (e) {
-             $("#" + idContRespuesta).append("ha ocurrido un Error en el envio del formulario "+e);
+            $("#" + idContRespuesta).append("ha ocurrido un Error en el envio del formulario " + e);
 //            ocultarLoaderOndaDeCubos();
 //            nuevaNotify('error', 'Error', 'Ha ocurrido un error en el envio del formulario; intentelo mas tarde', 9000);
         }
     });
 }
 
-
-function envioFormulario(formulario, idContRespuesta, remplazo) {
+//
+//function envioFormulario(formulario, idContRespuesta, remplazo) {
+////    mostrarLoaderOndaDeCubos('Procesando...');
+//    $.ajax({
+//        url: $(formulario).attr("action"),
+//        type: "post",
+//        dataType: "html",
+//        data: serializefiles(formulario),
+//        cache: false,
+////                contentType: false,
+//        processData: false,
+//        success: function (result) {
+//            if (remplazo) {
+//                $("#" + idContRespuesta).html(result);
+//            } else {
+//                $("#" + idContRespuesta).append(result);
+//            }
+//        },
+//        error: function () {
+//            alert("fallo en el envio del formulario");
+////            ocultarLoaderOndaDeCubos();
+////            nuevaNotify('error', 'Error', 'Ha ocurrido un error en el envio del formulario; intentelo mas tarde', 9000);
+//        }
+//    });
+//}
+function envioFormularioMultiPart(formulario, idContRespuesta, remplazo) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
+    var datos = $("#"+formulario).serializeArray(); //datos serializados
+    var idForm = $("#"+formulario).attr("id");
+    var formData = new FormData("#" + idForm);
+//    formData.append("dato", "valor");
+//var formData = new FormData(document.getElementById(idForm));
+//            formData.append("dato", "valor");
+    //agergaremos los datos serializados al objecto imagen
+    $(datos).each(function () {
+        formData.append($(this).name, $(this).val());
+//         console.log("esto es una mierda "+$(this).name);
+    });
     $.ajax({
-        url: $(formulario).attr("action"),
+        url: $("#"+formulario).attr("action"),
         type: "post",
         dataType: "html",
-        data: $(formulario).serialize(),
+        data: formData,
         cache: false,
-//                contentType: false,
+        contentType: false,
         processData: false,
         success: function (result) {
-           if(remplazo){
-                $("#"+idContRespuesta).html(result);
-            }else{
-                $("#"+idContRespuesta).append(result);
+            if (remplazo) {
+                $("#" + idContRespuesta).html(result);
+            } else {
+                $("#" + idContRespuesta).append(result);
             }
         },
         error: function () {
-             alert("fallo en el envio del formulario");
+            alert("fallo en el envio del formulario");
+//            ocultarLoaderOndaDeCubos();
+//            nuevaNotify('error', 'Error', 'Ha ocurrido un error en el envio del formulario; intentelo mas tarde', 9000);
+        }
+    });
+    return false;
+}
+function cargarPagina(uri, idContRespuesta, remplazo) {
+//    mostrarLoaderOndaDeCubos('Procesando...');
+    $.ajax({
+        url: uri,
+        type: "post",
+        dataType: "html",
+        cache: false,
+        processData: false,
+        success: function (result) {
+            if (remplazo) {
+                $("#" + idContRespuesta).html(result);
+            } else {
+                $("#" + idContRespuesta).append(result);
+            }
+        },
+        error: function () {
+            alert("fallo en el envio del formulario");
 //            ocultarLoaderOndaDeCubos();
 //            nuevaNotify('error', 'Error', 'Ha ocurrido un error en el envio del formulario; intentelo mas tarde', 9000);
         }
     });
 }
-
 
 function mostrarLoaderOndaDeCubos(texto) {
     $("#loaderArchitic").css("display", "flex");
@@ -88,6 +146,23 @@ function iniLoaderOndaDeCubos(texto) {
             '<h3 id="txtLoader">' + texto + '</h3></div>');
     $('#loaderArchitic').css('display', '-webkit-flex');
     ocultarLoaderOndaDeCubos();
+}
+
+//USAGE: $("#form").serializefiles();
+function serializefiles(formulario) {
+    var obj = $(formulario);
+    /* ADD FILE TO PARAM AJAX */
+    var formData = new FormData();
+    $.each($(obj).find("input[type='file']"), function (i, tag) {
+        $.each($(tag)[0].files, function (i, file) {
+            formData.append(tag.name, file);
+        });
+    });
+    var params = $(obj).serializeArray();
+    $.each(params, function (i, val) {
+        formData.append(val.name, val.value);
+    });
+    return formData;
 }
 
 

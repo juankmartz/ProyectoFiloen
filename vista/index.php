@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lang="esp">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,6 +124,7 @@
             <li><a href="registro.php"><span><img src="Imagenes/registro.png" alt="" width="20px"></span> Registrarse</a></li>
         </div>
         <div class="content-fluid" id="contenedorPrincipal">
+           
 <!--            <h3 class="titulo">Últimas Noticias</h3>
             <hr class="linea">
             <div class="row">

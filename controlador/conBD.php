@@ -30,6 +30,7 @@ class conBD {
     function ejecutarInsert($sentencia){
         $connect = conectar();
         mysqli_query($connect, $sentencia);
+        mysqli_close($connect);
     }
 
 }

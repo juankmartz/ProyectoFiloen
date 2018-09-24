@@ -35,7 +35,7 @@ if (isset($_SESSION['usuario'])) {
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>   
     <script src="http://code.jquery.com/jquery-latest.js"></script> 
-
+    <script src="js/funcionesGenerales.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -88,6 +88,7 @@ if (isset($_SESSION['usuario'])) {
             <ul class="submenu">
                 <li> <a href="#">Aplicaciones</a></li>
                 <li> <a href="#">Biblioteca</a></li>
+                <li> <a href="#" onclick=" cargarPagina('registroNoticia.php','contPrincipal' , true);">registro notica</a></li>
             </ul>
         </li>
         <li> <a href="contactenos.php">ContÃ¡ctenos</a></li>
@@ -99,7 +100,8 @@ if (isset($_SESSION['usuario'])) {
 <hr class="linea">
 
 <div id="resp"></div>
-
+<div id="contPrincipal">
+    
 <form id="form1" name="form1" action="../controlador/iniciosession.php" method="post" onsubmit="envioFormulario(this, 'resp', true);return false;" >
   <div class="form-group row">
       <input type="hidden" name="oper" value="incio session">
@@ -123,6 +125,7 @@ if (isset($_SESSION['usuario'])) {
   <img src="Imagenes/FiloEn.png" alt="filosofia" width="200px" >
 </div>
 </form>
+</div>
 
 
 <footer>

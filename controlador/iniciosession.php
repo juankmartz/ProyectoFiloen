@@ -19,6 +19,8 @@ if ($_POST["oper"] == "salir session") {
 class iniciosession {
 
     public function iniciarSession($user, $pass) {
+//        include ('../modelo/Usuario.php');
+        session_start();
         $connect = conBD::conectar();
         $usuario = mysqli_query($connect, "SELECT * FROM usuario WHERE usuario = '" . $user . "'  ");
         $contarUser = mysqli_num_rows($usuario);
@@ -43,13 +45,7 @@ class iniciosession {
             $contrasena = mysqli_query($connect, "SELECT * FROM usuario WHERE idusuario = '" . $row['idusuario'] . "' and ESTADO = 'ACTIVO'");
             $row = mysqli_fetch_array($contrasena);
             if ($row["contrasenna"] == $pass) {
-                ?> <script> var noty = new NotificationFx({
-                        message: '<p>Bienvenido a Filoen </p><h6><?php echo $row['nombre']?></h6>',
-                        layout: 'growl',
-                        effect: 'slide',
-                        type: 'notice' // notice, warning or error
-                                    });
-                           noty.show();</script> <?php
+               
                            $user = new Usuario($row["idusuario"], $row["nombre"], $row["codigo"], $row["correo"],
                                    $row["ciudad"], $row["direccion"], $row["identificacion"], $row["tipo_usuario"], $row["usuario"], $row["contrasenna"]);
                            
@@ -58,7 +54,16 @@ class iniciosession {
                            $_SESSION["conexionBD"] = $connect;
                            $_SESSION["iduser"] =  $row["idusuario"];
 //                           if (! $_SESSION['Usuario'] instanceof Usuario)
-                           $_SESSION["usuario"] = $user ;
+                           $_SESSION["usuario"] = serialize($user) ;
+                           $nuevoUser= $_SESSION['usuario'];
+                           $nuevoUser= unserialize($nuevoUser);
+                            ?> <script> var noty = new NotificationFx({
+                        message: '<p>Bienvenido a Filoen </p><h6><?php echo $nuevoUser->getNombre()?></h6>',
+                        layout: 'growl',
+                        effect: 'slide',
+                        type: 'notice' // notice, warning or error
+                                    });
+                           noty.show();</script> <?php
                            
                 } else {
                     ?> <script>

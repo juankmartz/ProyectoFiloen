@@ -14,6 +14,7 @@
 class Usuario {
 
     var $id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass;
+
     public function Usuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -27,10 +28,11 @@ class Usuario {
         $this->pass = $pass;
 //        return this;
     }
+
     public function UsuarioPorID($id) {
-        
+
         $conn = $_SESSION["conexionBD"];
-        $query = "SELECT * FROM usuario where idusuario = '".$id."';";
+        $query = "SELECT * FROM usuario where idusuario = '" . $id . "';";
         $result = mysqli_query($conn, $query);
         $datos_usuario = mysql_fetch_array($result);
         $this->id = $id;
@@ -44,9 +46,85 @@ class Usuario {
         $this->user = $datos_usuario["usuario"];
         $this->pass = $datos_usuario["contrasenna"];
     }
-    
-    public function getNombre(){
+
+    function getId() {
+        return $this->id;
+    }
+
+    function getCodigo() {
+        return $this->codigo;
+    }
+
+    function getCorreo() {
+        return $this->correo;
+    }
+
+    function getCiudad() {
+        return $this->ciudad;
+    }
+
+    function getDireccion() {
+        return $this->direccion;
+    }
+
+    function getIdentificacion() {
+        return $this->identificacion;
+    }
+
+    function getTipo_usuario() {
+        return $this->tipo_usuario;
+    }
+
+    function getUser() {
+        return $this->user;
+    }
+
+    function getPass() {
+        return $this->pass;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+
+    function setCorreo($correo) {
+        $this->correo = $correo;
+    }
+
+    function setCiudad($ciudad) {
+        $this->ciudad = $ciudad;
+    }
+
+    function setDireccion($direccion) {
+        $this->direccion = $direccion;
+    }
+
+    function setIdentificacion($identificacion) {
+        $this->identificacion = $identificacion;
+    }
+
+    function setTipo_usuario($tipo_usuario) {
+        $this->tipo_usuario = $tipo_usuario;
+    }
+
+    function setUser($user) {
+        $this->user = $user;
+    }
+
+    function setPass($pass) {
+        $this->pass = $pass;
+    }
+
+    public function getNombre() {
         return $this->nombre;
+    }
+
+    function setNombre($nombre) {
+        $this->nombre = $nombre;
     }
 
 }

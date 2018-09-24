@@ -14,9 +14,9 @@ include './conBD.php';
  */
 if ($_POST["oper"] == "nuevo usuario") {
 
-    $registroExitoso = registro_usuario::registroNuevoUsuario($_POST['codigo'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['ciudad'], $_POST['direccion'], $_POST['identificacion'], $_POST['tipo_usuario'], 'ACTIVO', $_POST['usuario'], $_POST['contrasena']);
+    $idNuevoRegistro = registro_usuario::registroNuevoUsuario($_POST['codigo'], $_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['ciudad'], $_POST['direccion'], $_POST['identificacion'], $_POST['tipo_usuario'], 'ACTIVO', $_POST['usuario'], $_POST['contrasena']);
 
-    if ($registroExitoso) {
+    if ($idNuevoRegistro) {
         
     }
 }
