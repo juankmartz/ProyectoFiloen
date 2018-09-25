@@ -17,6 +17,7 @@
 
         <!--<script src="pluging/bootstrap4/js/bootstrap.min.js" type="text/javascript"></script>-->
         <script src="pluging/lineControlEditor/editor.js" type="text/javascript"></script>
+	
     </head>
     <body>
 	<?php
@@ -100,7 +101,7 @@
                     </div>
                     <div class="form-group">
                         <img id="prev_imagen" width="50%" height="50%" src="" />
-                        <video width="400" controls id="rep_video" >
+                        <video width="400" class="video-noticia" controls id="rep_video" >
                             <source src="mov_bbb.mp4" id="prev_video">
                             Your browser does not support HTML5 video.
                         </video>

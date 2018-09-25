@@ -13,7 +13,7 @@
  */
 class Usuario {
 
-    var $id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass;
+    var $id = 0, $nombre = "SIN DEFINIR", $codigo= 0, $correo= "sindefinir@email.com", $ciudad="no se", $direccion="", $identificacion="", $tipo_usuario="INVITADO", $user="", $pass="";
 
     public function Usuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
         $this->id = $id;
