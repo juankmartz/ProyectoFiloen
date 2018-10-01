@@ -2,7 +2,11 @@
 <?PHP
 include '../controlador/conBD.php';
 
-
+session_start();
+$limiteNoticias = 2;
+if(isset($_SESSION["iduser"])){
+    $limiteNoticias = 10;
+}
 $conn = conBD::conectar();
 $sentenciaSQL = "SELECT * FROM `noticia` ";
 $existenRegistro = mysqli_query($conn, $sentenciaSQL);
@@ -23,13 +27,13 @@ $existenRegistro = mysqli_query($conn, $sentenciaSQL);
     `noticia`.`enlace`,
     `noticia`.`estado`,
     `noticia`.`fecha_modifico`
-FROM `noticia` WHERE estado = 'DESTACADA'";
+FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
     $resultado = mysqli_query($conn, $sql);
     while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
 	?>
         <div class="row">
     	<div class="col-xs-10 col-xs-offset-1 col-md-5">
-    	    <a href="#">
+    	    
     		<!--<img  class="media-object img-noticia" src="Imagenes/28.png" width="300px" alt="...">-->
 		    <?php if ($fila["tipo_multimedia"] == "VIDEO") {
 			?> 
@@ -46,7 +50,7 @@ FROM `noticia` WHERE estado = 'DESTACADA'";
 			?><img class="media-object img-noticia" width="300px" src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
 		    }
 		    ?>
-    	    </a>
+    	
     	</div>
     	<div class="col-xs-10 col-xs-offset-1 col-md-7">
     	    <h4 class="media-heading"><?php echo $fila["titulo"]; ?></h4>
@@ -72,7 +76,7 @@ FROM `noticia` WHERE estado = 'DESTACADA'";
     `noticia`.`enlace`,
     `noticia`.`estado`,
     `noticia`.`fecha_modifico`
-FROM `noticia` WHERE estado = 'ACTIVA'";
+FROM `noticia` WHERE estado = 'ACTIVA' limit ".$limiteNoticias;
 	    $resultado1 = mysqli_query($conn, $sql1);
 	    while ($fila = mysqli_fetch_array($resultado1, MYSQLI_ASSOC)) {
 		?>

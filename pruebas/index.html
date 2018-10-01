@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html> 
+    <head xmlns="http://www.w3.org/1999/xhtml"> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Rellene el formulario</title>
+        <link rel="stylesheet" href="assets/estilo.css" type="text/css"> 
+    </head> 
+    <body> 
+        
+        <form name='formulario' class="contact_form" id='formulario' method='post' action='assets/enviar_email.php' enctype="multipart/form-data"> 
+            <div>
+                <ul>
+                <li>  
+                    <h2>Contácto</h2>  
+                    <span class="required_notification">* Datos requeridos</span>  
+                </li>
+
+
+            <li>
+                <label for="name">Nombre:</label>
+                <input type='text' name='Nombre' id='Nombre' placeholder="Nombre" required>
+                <span class="form_hint">Formato correcto: "Nombre (s)"</span>
+            </li>
+            <li>
+                <label for="apellidos">Apellidos:</label> 
+                <input type='text' name='Apellidos' id='Apellidos' placeholder="Apellidos" required>
+                <span class="form_hint">Formato correcto: "Apellidos"</span>
+            </li>
+            <li>
+            <label for="telefono">Teléfono:</label>
+            <input type='text' name='Telefono' id='Telefono' placeholder="Teléfono">
+            <span class="form_hint">Formato correcto: "55-5555-5555 (10 digitos)"</span>
+            </li>
+            <li>
+                <label for="email">E-mail:</label>
+                <input type='text' name='E-mail' id='E-mail' placeholder="tu@correo.com" required>
+                <span class="form_hint">Formato correcto: "ejemplo@hotmail.com"</span>
+            </li> 
+            <li>  
+                    <label for="message">Mensaje:</label>  
+                    <textarea name="mensaje" cols="40" rows="6" placeholder="Ingresa un mensaje (opcional)"></textarea>
+                    <span class="form_hint">Ingresar información adicional</span> 
+                     
+                </li>
+            <li>
+                <label for="adjuntar archivo">Adjuntar archivo:</label> 
+                <input type='file' name='archivo1' id='archivo1' placeholder="carga tu boucher" required>
+            </li> 
+            <li align='center'> 
+                <button class="submit" type='submit' value='Enviar formulario'>Enviar Mensaje</button>
+                <button class="submit" type='reset' value='Reiniiar formulario'>Borrar Datos</button>
+
+            </li>
+            </ul> 
+        </form> 
+    </body> 
+</html>

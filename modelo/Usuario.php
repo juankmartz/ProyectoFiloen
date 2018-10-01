@@ -13,9 +13,9 @@
  */
 class Usuario {
 
-    var $id = 0, $nombre = "SIN DEFINIR", $codigo= 0, $correo= "sindefinir@email.com", $ciudad="no se", $direccion="", $identificacion="", $tipo_usuario="INVITADO", $user="", $pass="";
+    var $id = 0, $nombre = "SIN DEFINIR", $codigo= 0, $correo= "sindefinir@email.com", $ciudad="no se", $direccion="", $identificacion="", $tipo_usuario="INVITADO", $user="",$avatar="", $pass="", $estado="";
 
-    public function Usuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
+    function nuevoUsuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->codigo = $codigo;
@@ -26,7 +26,6 @@ class Usuario {
         $this->tipo_usuario = $tipo_usuario;
         $this->user = $user;
         $this->pass = $pass;
-//        return this;
     }
 
     public function UsuarioPorID($id) {
@@ -45,9 +44,30 @@ class Usuario {
         $this->tipo_usuario = $datos_usuario["tipo_usuario"];
         $this->user = $datos_usuario["usuario"];
         $this->pass = $datos_usuario["contrasenna"];
+        $this->estado = $datos_usuario["estado"];
     }
-
-    function getId() {
+    
+    public function guardarCambios(){
+        //`avatar` = '".$this->avatar."',
+//`estado` = '".$this->estado."'
+        $sql ="UPDATE `usuario`
+SET
+`codigo` = '".$this->codigo."',
+`nombre` = '".$this->nombre."',
+`correo` = '".$this->correo."',
+`identificacion` = '".$this->identificacion."',
+`direccion` = '".$this->direccion."',
+`ciudad` = '".$this->ciudad."',
+`tipo_usuario` = '".$this->tipo_usuario."',
+`usuario` = '".$this->user."',
+`contrasenna` = '".$this->pass."' 
+ WHERE `idusuario` = '".$this->id."';";
+//        echo $sql;
+        $conn = conBD::conectar();
+        $resp = mysqli_query($conn, $sql);
+//        echo "<br>".$resp;
+    }
+                function getId() {
         return $this->id;
     }
 

@@ -8,21 +8,33 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-
-        <link rel="stylesheet" href="css/flexsliderr.css" type="text/css">
-        <link rel="stylesheet" href="css/fontello.css" >
-        <link rel="stylesheet" href="css/estilos.css" >
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
+	<link href="pluging/bootstrap4/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
         // put your code here
         ?>
-        
+        <div class="container">
+	    <div class="row">
+		<div class="col-sm-4">
+		    <img>
+		</div>
+		<div class="col-sm-8">
+		    <div class="form-group">
+			<input type="text" value="" name="nombPersona" id="nombPersona" class="input-sm input-editable">
+			<i class="fa fa-pencil"> Editar</i>
+		    </div>
+		    <div class="form-group">
+			<input type="text" value="" name="nombPersona" id="nombPersona" class="input-sm form-control input-editable">
+			<i class="fa fa-pencil"> Editar</i>
+		    </div>
+		    <div class="form-group">
+			<span class="col-sm-6">Tipo usuario: ESTUDIANTE</span>
+			<span class="col-sm-6">Codigo: 2098811</span>
+		    </div>
+		</div>
+	    </div>
+	</div>
     </body>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>   
-    <script src="js/jquery-latest.js"></script> 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.flexslider.js"></script>
+   
 </html>

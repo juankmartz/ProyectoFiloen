@@ -31,14 +31,14 @@ if (isset($p['oper'])) {
             $tipoMulti = "IMAGEN";
         }
         try {
-
-            if ($_FILES['multimedia']["error"] > 0) {
-		echo '<br> el error es : '.$_FILES['multimedia']["error"];
+//se cambio el nombre de multimedia a archivo ...
+            if ($_FILES['archivo']["error"] > 0) {
+		echo '<br> el error es : '.$_FILES['archivo']["error"];
                 throw new RuntimeException('Invalid parameters.');
             }
 
-            // Check $_FILES['multimedia']['error'] value.
-            switch ($_FILES['multimedia']['error']) {
+            // Check $_FILES['archivo']['error'] value.
+            switch ($_FILES['archivo']['error']) {
                 case UPLOAD_ERR_OK:
                     break;
                 case UPLOAD_ERR_NO_FILE:
@@ -51,7 +51,7 @@ if (isset($p['oper'])) {
             }
 
             // You should also check filesize here. 
-            if ($_FILES['multimedia']['size'] > 8000000) {
+            if ($_FILES['archivo']['size'] > 8000000) {
                 throw new RuntimeException('Exceeded filesize limit.');
             }
 
@@ -93,13 +93,13 @@ if (isset($p['oper'])) {
                         $p['titulo'], $p['subtitulo'], $p['contenido'], '', $tipoMulti, $hoy, $idUser, $p['enlace'], $p["estado"], $hoy,$conn);
         if ($idNuevoRegistro > 0) {
             /* ahora con la funcion move_uploaded_file lo guardaremos en el destino que queramos */
-            if (!($_FILES['multimedia']["error"] > 0)) {
-		$rutaMultimedia = $rutaMultimedia. $idNuevoRegistro. "." . end(explode(".", $_FILES['multimedia']['name']));
-                move_uploaded_file($_FILES['multimedia']['tmp_name'], $rutaMultimedia );
+            if (!($_FILES['archivo']["error"] > 0)) {
+		$rutaMultimedia = $rutaMultimedia. $idNuevoRegistro. "." . end(explode(".", $_FILES['archivo']['name']));
+                move_uploaded_file($_FILES['archivo']['tmp_name'], $rutaMultimedia );
 //                echo 'File is uploaded successfully.';
                 Noticia::actualizarNoticiaMultimedia($idNuevoRegistro, $rutaMultimedia , $tipoMulti, $conn, $user->getid());
 //                Noticia::actualizarNoticiaEstado($idNuevoRegistro, $p["estado"], $conn, $user->getid());
-                header('Location: ../vista/index.php');
+//                header('Location: ../vista/index.php');
             }
         } else {
             

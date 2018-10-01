@@ -48,7 +48,8 @@
 	?>
         <!--<div class="container">-->
         <div id="ctn_notificacion"></div>
-        <form enctype="multipart/form-data" id="formMultimedia" method="post" class="container mt-3" action="../controlador/Noticias.php"  onsubmit="envioFormularioMultiPart('formMultimedia', 'ctn_notificacion', true); return false;">
+        <!--<form id="formMultimedia" method="post" class="container mt-3" action="../controlador/Noticias.php"  onsubmit="envioFormularioMultiPart('formMultimedia', 'ctn_notificacion', true); return false;">-->
+        <form id="formMultimedia" method="post" class="container mt-3" action="../controlador/Noticias.php"  onsubmit="envioFormularioMultiPart2('formMultimedia', 'ctn_notificacion', true); return false;">
             <input type="hidden" name="oper" id="oper" value="nueva noticia" >
             <input type="hidden" name="MAX_FILE_SIZE" value="9000000" />
 	    <div class="row">
