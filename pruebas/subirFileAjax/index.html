@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- IMPORTAMOS jQuery y Bootstrap. En realidad, bootstrap aquí no lo necesitamos para nada,
+        pero nos permite un poco de presencia. Por hacer bonito, vamos. -->
+
+
+        <link href="../../vista/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../../vista/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../vista/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
+
+
+        <script language='javascript'>
+            $(function () {
+                $("#envio").on('click', function (e) {
+                    envioFormularioMultiPart2('form1','respuesta',true);
+                });
+                
+                $("#envio38").on('click', function (e) {
+                    e.preventDefault();
+//                    $('#form1').submit();
+                    var paqueteDeDatos = new FormData();
+                    $('#form1').find("input").each(function () {
+                        switch ($(this).attr('type')) {
+                            case "checbox":
+                                {
+                                    if ($(this).is(":checked")) {
+                                        paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+                                    } 
+                                }
+                            case "radio":
+                                {
+                                    if ($(this).is(":checked")) {
+                                        paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+                                    }
+                                }
+                                break;
+                            case "password":
+                                {
+                                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+                                }
+                                break;
+                            case "file":
+                                {
+                                    paqueteDeDatos.append('archivo', $(this)[0].files[0]);
+                                }
+                                break;
+                            default :
+                                {
+                                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+                                }
+                                break;
+                        }
+
+                    });
+//    paqueteDeDatos.append('archivo', $('#campoFichero')[0].files[0]);
+//    paqueteDeDatos.append('nombre', $('#campoNombre').prop('value'));
+//    paqueteDeDatos.append('correo', $('#campoCorreo').prop('value'));
+                    var destino = $('#form1').attr("action"); // El script que va a recibir los campos de formulario.
+                    /* Se envia el paquete de datos por ajax. */
+                    $.ajax({
+                        url: destino,
+                        type: 'GET', // Siempre que se envíen ficheros, por POST, no por GET.
+                        contentType: false,
+                        data: paqueteDeDatos, // Al atributo data se le asigna el objeto FormData.
+                        processData: false,
+                        cache: false,
+                        success: function (resultado) { // En caso de que todo salga bien.
+                            console.log(resultado);
+                            if (true) {
+                                $("#respuesta").html(resultado);
+                            } else {
+                                $("#respuesta").append(resultado);
+                            }
+                        },
+                        error: function () { // Si hay algún error.
+                            alert("Algo ha fallado.");
+                        }
+                    });
+                });
+
+                $('#envio1').on('click', function (e) {
+                    e.preventDefault(); // Evitamos que salte el enlace.
+                    /* Creamos un nuevo objeto FormData. Este sustituye al 
+                     atributo enctype = "multipart/form-data" que, tradicionalmente, se 
+                     incluía en los formularios (y que aún se incluye, cuando son enviados 
+                     desde HTML. */
+                    var paqueteDeDatos = new FormData();
+                    /* Todos los campos deben ser añadidos al objeto FormData. Para ello 
+                     usamos el método append. Los argumentos son el nombre con el que se mandará el 
+                     dato al script que lo reciba, y el valor del dato.
+                     Presta especial atención a la forma en que agregamos el contenido 
+                     del campo de fichero, con el nombre 'archivo'. */
+                    paqueteDeDatos.append('archivo', $('#campoFichero')[0].files[0]);
+                    paqueteDeDatos.append('nombre', $('#campoNombre').prop('value'));
+                    paqueteDeDatos.append('correo', $('#campoCorreo').prop('value'));
+                    var destino = "recibir.php"; // El script que va a recibir los campos de formulario.
+                    /* Se envia el paquete de datos por ajax. */
+                    $.ajax({
+                        url: destino,
+                        type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
+                        contentType: false,
+                        data: paqueteDeDatos, // Al atributo data se le asigna el objeto FormData.
+                        processData: false,
+                        cache: false,
+                        success: function (resultado) { // En caso de que todo salga bien.
+                            console.log(resultado);
+                        },
+                        error: function () { // Si hay algún error.
+                            alert("Algo ha fallado.");
+                        }
+                    });
+                });
+            });
+        </script>
+        <script src="../../vista/js/funcionesGenerales.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="header alert alert-info">FORMULARIO CON AJAX POR jQuery</div>
+        </div>
+        <!-- El HTML son solo unos campos de formulario. Ni siquiera necesitamos,
+        para este ejemplo, incluir esos campos en el contexto de un formulario,
+        por lo que no hemos puesto las etiquetas <form></form> -->
+        <div id="respuesta"></div>
+        <!--<form action="recibir.php" method="get" onsubmit="envioFormularioMultiPart2('form1', 'respuesta', false)" id="form1">-->
+        <form action="recibir.php" method="get" id="form1">
+            <div class="container">
+                <div class="row">
+                    <label for="campoNombre">Nombre:<br />
+                        <input name="campoNombre" type="text" class="form-control" id="campoNombre" />
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="campoCorreo">Correo:<br />
+                        <input  name="campoCorreo" type="email" class="form-control" id="campoCorreo" />
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="campo1">arfdilla<br />
+                        <input  name="campoArdilla" type="radio"  class="form-control" id="campo1" value="se fue"/>
+                       
+                    </label>
+                    <label for="campo2">arfdilla<br />
+                        <input  name="campoArdilla" type="radio" class="form-control" id="campo2"  value="feliz navidad"/>
+                       
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="cosas">que cosas />
+                        <select name="cosas" id="cosas" multiple="">
+                            <option value="la mejor ma">nohemi</option>
+                            <option value="El mejor pa">juan</option>
+                            <option value="yo">juan carlos</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="campoFichero">Fichero:<br />
+                        <input type="file" class="form-control" id="campoFichero" />
+                    </label>
+                </div>
+                <br />
+                <div class="row">
+                    <a href='#' id='envio' class='btn btn-primary btn-lg'>Enviar</a>
+                    <input type="submit" value="Guardar" name="oper">
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

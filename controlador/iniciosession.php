@@ -45,8 +45,9 @@ class iniciosession {
             $contrasena = mysqli_query($connect, "SELECT * FROM usuario WHERE idusuario = '" . $row['idusuario'] . "' and ESTADO = 'ACTIVO'");
             $row = mysqli_fetch_array($contrasena);
             if ($row["contrasenna"] == $pass) {
-               
-                           $user = new Usuario($row["idusuario"], $row["nombre"], $row["codigo"], $row["correo"],
+               $user = new Usuario();
+               $user = new Usuario();
+                           $user->nuevoUsuario($row["idusuario"], $row["nombre"], $row["codigo"], $row["correo"],
                                    $row["ciudad"], $row["direccion"], $row["identificacion"], $row["tipo_usuario"], $row["usuario"], $row["contrasenna"]);
                            
 //                           $usuario = Usuario::Usuario($row["idusuario"], $row["nombre"], $row["codigo"], $row["correo"],
@@ -57,7 +58,8 @@ class iniciosession {
                            $_SESSION["usuario"] = serialize($user) ;
                            $nuevoUser= $_SESSION['usuario'];
                            $nuevoUser= unserialize($nuevoUser);
-                            ?> <script> var noty = new NotificationFx({
+                         
+                            ?> <script> cargarPagina('inicioUsuario.php','contenedorPrincipal',true); var noty = new NotificationFx({
                         message: '<p>Bienvenido a Filoen </p><h6><?php echo $nuevoUser->getNombre()?></h6>',
                         layout: 'growl',
                         effect: 'slide',

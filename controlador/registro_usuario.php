@@ -1,6 +1,6 @@
 <?php
 include './conBD.php';
-
+include '../modelo/Usuario.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +20,7 @@ if ($_POST["oper"] == "nuevo usuario") {
         
     }
 }
-if ($_POST["oper"] == "ccc") {
+if ($_POST["oper"] == "Actualizar") {
     ?> <script>alert('Esto va a ser la bomba');</script> <?php
 }
 

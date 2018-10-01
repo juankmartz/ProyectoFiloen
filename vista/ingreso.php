@@ -5,11 +5,11 @@ session_start();
 include "funciones.php";
 
 if (isset($_SESSION['usuario'])) {
-    header("Location: inicioEst.php");
+//    header("Location: inicioEst.php");
    /* ini_set('error_reporting', 0); */
 }
  ?>
-
+<!--
 <!DOCTYPE html>
 
 <html lang="esp">
@@ -27,7 +27,7 @@ if (isset($_SESSION['usuario'])) {
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     
-    <!--para las notificaciones-->
+    para las notificaciones
     
     <link href="pluging/NotificationStyles/css/ns-default.css" rel="stylesheet" type="text/css"/>
     <link href="pluging/NotificationStyles/css/ns-style-growl.css" rel="stylesheet" type="text/css"/>
@@ -47,8 +47,8 @@ if (isset($_SESSION['usuario'])) {
         <h4>Filosofia y Enseñanza de la Filosofia</h4>
         <h2 class="filoen">FiloEn</h2>
     </div> 
-                
-    <div class="ingreso">
+-->                
+<!--    <div class="ingreso">
         <li><a href="ingreso.php"><span><img src="Imagenes/iniciara.png" alt=""  width="20px" ></span> Iniciar Sesión</a></li>
         <li><a href="registro.php"><span><img src="Imagenes/registroa.png" alt="" width="20px"></span> Registrarse</a></li>
         </div>
@@ -70,8 +70,8 @@ if (isset($_SESSION['usuario'])) {
                 </div>
         </div>
         
-    </header>
-
+    </header>-->
+<!--
     <div id="header">
         <nav class="navegacion">
             <ul class="menus">
@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])) {
         </ul>
         </nav>
 </div>
-    
+    -->
 <h3 class="titulo">Ingresar</h3>
 <hr class="linea">
 
@@ -127,7 +127,7 @@ if (isset($_SESSION['usuario'])) {
 </form>
 </div>
 
-
+<!--
 <footer>
 <div class="pie">
     <p>
@@ -141,11 +141,11 @@ if (isset($_SESSION['usuario'])) {
         </p>
                         
 </div>
-</footer>
+</footer>-->
 <script src="js/funcionesGenerales.js"></script>
 <script src="pluging/NotificationStyles/js/modernizr.custom.js" type="text/javascript"></script>
 <script src="pluging/NotificationStyles/js/classie.js" type="text/javascript"></script>
 <script src="pluging/NotificationStyles/js/notificationFx.js" type="text/javascript"></script>
-
+<!--
 </body>
-</html>
+</html>-->

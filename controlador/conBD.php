@@ -13,24 +13,35 @@
  */
 class conBD {
 
+    var $host = "mysql7003.site4now.net";
+    var $dbuser = "a41246_filoen1";
+    var $dbpwd = "filoen123";
+    var $db = "db_a41246_filoen1";
+
+//    var $host = "localhost";
+//    var $dbuser = "root";
+//    var $dbpwd = "buffalo1";
+//    var $db = "dbfiloen";
+
     public function functionName($param) {
-        echo 'hola mundo' . $param;
+	echo 'hola mundo' . $param;
     }
 
     public function conectar() {
-        $host = "localhost";
-        $dbuser = "root";
-        $dbpwd = "buffalo1";
-        $db = "dbfiloen";
-        $connect = mysqli_connect($host, $dbuser, $dbpwd, $db);
+	$host = "mysql7003.site4now.net";
+	$dbuser = "a41246_filoen1";
+	$dbpwd = "filoen123";
+	$db = "db_a41246_filoen1";
+	$connect = mysqli_connect(
+		$host, $dbuser, $dbpwd, $db);
 
-        return $connect;
+	return $connect;
     }
-    
-    function ejecutarInsert($sentencia){
-        $connect = conectar();
-        mysqli_query($connect, $sentencia);
-        mysqli_close($connect);
+
+    function ejecutarInsert($sentencia) {
+	$connect = conectar();
+	mysqli_query($connect, $sentencia);
+	mysqli_close($connect);
     }
 
 }
