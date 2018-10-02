@@ -6,10 +6,10 @@
 
 
 
-function ejecutarFuncion(urlClase,oper, idContRespuesta, remplazarContenido) {
+function ejecutarFuncion(urlClase, oper, idContRespuesta, remplazarContenido) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
     inicioLoader();
-oper = oper.replace(' ','+');
+    oper = oper.replace(' ', '+');
     $.ajax({
         url: urlClase,
         type: "post",
@@ -316,4 +316,43 @@ function cargarLoader() {
 function cerrarLoader() {
     $("#loader").hide();
     $("body").css("overflow", "initial");
+}
+
+
+function previsualizarImage(inpuFile, contImagen) {
+    var file = inpuFile.files[0],
+            imageType = /image.*/;
+
+    if (!file.type.match(imageType))
+        return;
+
+    var reader = new FileReader();
+    reader.onload = function fileOnload(e) {
+        var result = e.target.result;
+        $('#' + contImagen).attr("src", result);
+        $('#' + contImagen).show();
+    };
+    reader.readAsDataURL(file);
+}
+function previsualizarImage(inpuFile, contImagen) {
+    var file = inpuFile.files[0],
+            imageType = /image.*/;
+
+    if (!file.type.match(imageType))
+        return;
+
+    var reader = new FileReader();
+    reader.onload = function fileOnload(e) {
+        var result = e.target.result;
+        $('#' + contImagen).attr("src", result);
+        $('#' + contImagen).show();
+    };
+    reader.readAsDataURL(file);
+}
+function previsualizarVideo(inputFile, contVideo) {
+    var $source = $('#' + contVideo).children('source');
+    $source[0].src = URL.createObjectURL(inputFile.files[0]);
+    $source.parent()[0].load();
+//                   document.getElementById(contVideo).pause()
+    $('#' + contVideo).show();
 }

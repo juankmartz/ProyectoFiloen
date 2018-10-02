@@ -10,19 +10,38 @@
 
         <link rel="stylesheet" href="css/flexsliderr.css" type="text/css">
         <link href="css/loaderEsferas.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/fontello.css" >
-        <link rel="stylesheet" href="css/estilos.css" >
+        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+        <!--<link rel="stylesheet" href="css/fontello.css" >-->
+        <!--<link rel="stylesheet" href="css/estilos.css" >-->
+        <link href="pluging/NotificationStyles/css/ns-default.css" rel="stylesheet" type="text/css"/>
+        <link href="pluging/NotificationStyles/css/ns-style-growl.css" rel="stylesheet" type="text/css"/>
         <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->-->
-<?php
-session_start();
-$user = NULL;
-if(isset($_SESSION["user"])){
-    
-}
+        <!--para las notifcaciones-->
+<!--        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>-->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+        <link href="pluging/bootstrap4/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-?>
+        <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+        <?php
+        session_start();
+        $user = NULL;
+        if (isset($_SESSION["user"])) {
+            
+        }
+        ?>
         <style>
+
+.row img{
+    padding: 0px 10px;
+    width: 100%;
+}
+.text-max-170{
+    width: 90%;
+    text-align: justify;
+}
 
 
 
@@ -144,8 +163,8 @@ if(isset($_SESSION["user"])){
         </div> 
 
         <div class="ingreso">
-            <li><a href="#1" onclick="cargarPagina('ingreso.php','contenedorPrincipal', true)"><span><img src="Imagenes/iniciar.png" alt=""  width="20px" ></span> Iniciar Sesión</a></li>
-            <li><a href="registro.php"><span><img src="Imagenes/registro.png" alt="" width="20px"></span> Registrarse</a></li>
+            <li><a href="#1" onclick="cargarPagina('ingreso.php', 'contenedorPrincipal', true)"><span><img src="Imagenes/iniciar.png" alt=""  width="20px" ></span> Iniciar Sesión</a></li>
+            <li><a href="#1" onclick="cargarPagina('registro.php', 'contenedorPrincipal', true)"><span><img src="Imagenes/registro.png" alt="" width="20px"></span> Registrarse</a></li>
         </div>
         <div class="content-fluid" id="contenedorPrincipal">
 
@@ -246,18 +265,27 @@ if(isset($_SESSION["user"])){
                 </p>                               
             </div>
         </footer> 
-        <script src="js/bootstrap.min.js"></script>   
-        <script src="js/jquery-latest.js"></script> 
-
-        <script src="js/jquery.min.js"></script>
+        <!--<script src="js/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+       
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="js/funcionesGenerales.js" type="text/javascript"></script>
         <script src="js/jquery.flexslider.js"></script>
+        <script src="pluging/NotificationStyles/js/modernizr.custom.js" type="text/javascript"></script>
+        <script src="pluging/NotificationStyles/js/classie.js" type="text/javascript"></script>
+        <script src="pluging/NotificationStyles/js/notificationFx.js" type="text/javascript"></script>
+        <script src="pluging/lineControlEditor/editor.js" type="text/javascript"></script>
+
         <script type="text/javascript" charset="utf-8">
-                                $(window).load(function () {
-                                    $('.flexslider').flexslider();
-                                    inicioLoader();
-                                    
-                                });
+                $(window).load(function () {
+                    $('.flexslider').flexslider();
+                    inicioLoader();
+
+                });
         </script>
     </body>
 </html>

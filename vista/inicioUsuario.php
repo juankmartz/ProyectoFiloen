@@ -3,17 +3,17 @@ include '../modelo/Usuario.php';
 session_start();
 ?>
 <?php
-        $iduser = 0;
+$iduser = 0;
 //        $usuario= NULL;
 //        session_start();
-        if (isset($_SESSION['usuario'])) {
-	    $usuario = unserialize($_SESSION['usuario']);
-        }else {
+if (isset($_SESSION['usuario'])) {
+    $usuario = unserialize($_SESSION['usuario']);
+} else {
 //            redireccionar a index
-            header('Location: vista/index.php');
-        }
+    header('Location: vista/index.php');
+}
 //        $usuario = new Usuario($idUser);
-        ?>
+?>
 <html lang="en" class="no-js">
     <head>
         <meta charset="UTF-8" />
@@ -78,6 +78,9 @@ session_start();
             #cbp-spmenu-s1 > a > i.fa {
                 font-size: 18px;
                 margin-right: 10px;
+            }
+            #cbp-spmenu-s1 > a  {
+                   background: #258ecd;
             }
             #cbp-spmenu-s1 > a:hover {
                 text-decoration: none;
@@ -190,6 +193,8 @@ session_start();
 
             .ch-img-1 { 
                 background-image: url(Imagenes/25.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
             }
 
             .ch-info {
@@ -274,7 +279,7 @@ session_start();
         </style>
     </head>
     <body >
-        
+
         <div class="cbp-spmenu-push" id="cont-push">
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
                 <a href="#2" id="btncerrarmenu" onclick="$('#showLeftPush').click()" class="float-right small">x</a><h3 class="titulo-menu">Menu </h3>
@@ -285,19 +290,22 @@ session_start();
                 <a href="#"><i class="fa fa-comment"></i><span class="text-menu-lateral"> Chat</span></a>
                 <a href="#"><i class="fa fa-calendar"></i><span class="text-menu-lateral"> Eventos</span></a>
                 <a href="#"><i class="fa fa-newspaper "></i> <span class="text-menu-lateral">Libros</span></a>
+
+                <a href="#" onclick="cargarPagina('registroNoticia.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-desktop "></i> <span class="text-menu-lateral">Noticias</span></a>
+                <a href="#1"></a>
             </nav>
-           
+
             <div class="menu-lateral menu-fix">
-    <button id="showLeftPush" >
+                <button id="showLeftPush" >
                     <i style="font-size: 24px;" class="fa fa-bars" aria-hidden="true"></i>
                 </button>
-               
+
             </div>
             <form method="post" action="../controlador/informacionPersonal.php" onsubmit="en">
-                <input type="file" name="avatar" id="avatar" style="display: none;">
+                <input type="file" name="avatar" id="avatar" style="display: none;" accept="image/x-png,image/gif,image/jpeg">
             </form>
 
-            <div class="container-flow">
+            <div class="container" id="cuerpo-principal-perfil">
                 <div id="resp"></div>
                 <form method="post" action="../controlador/informacionPersonal.php" class="" onsubmit="envioFormulario(this, 'resp', false);return false;">
                     <input type="hidden" name="oper" id="oper" value="Guardar">
@@ -306,9 +314,9 @@ session_start();
                         <div class="col-12 col-md-4">
                             <!--                            <div class="content-imagen col-4" id="avatar_perfil" style="background: url(../../Imagenes/17.5.jpg);">
                                                         </div>-->
-                            <div class="ch-item ch-img-1">
+                            <div class="ch-item ch-img-1" id="imgPerfil">
                                 <div class="ch-info ">
-                                    
+
 <!--                                    <img src="Imagenes/14.jpg" alt=""/>-->
                                     <h3 class="text-center ">Cambiar imagen</h3><br>
 <!--                                        <p class="text-center">Quieres cambiar la imagen actual? </p>-->
@@ -322,26 +330,27 @@ session_start();
 
                         </div>
                         <div class="col-12 col-sm-8  row">
-                            <div class="col-12 btn-group info-perfil-3 mt-2">
+                             
+                            <div class="col-12 btn-group info-perfil-3 ">
                                 <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getNombre(); ?>" name="txtNombre" id="txtNombre">
                                 <!--                            <a href="#1" class="btn-hover-editar" onclick="editarCampo(this)">editar</a>
                                                             <a href="#1" class="btn-hover-editar" onclick="guardarCampo(this)">guardar</a>-->
                                 <div class="input-group-append">
                                     <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtNombre', this)"><i class="fa fa-pen"></i> </button>
                                 </div>
-                            </div>
-                            <div class="col-12 btn-group info-perfil-3 mt-2">
-                                <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getIdentificacion(); ?> cc" name="txtIdentificacion" id="txtIdentificacion">
+                            </div> 
+                            <div class="col-12 btn-group info-perfil-3 ">
+                                <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getIdentificacion(); ?>" name="txtIdentificacion" id="txtIdentificacion">
                                 <div class="input-group-append">
                                     <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtIdentificacion', this)"><i class="fa fa-pen"></i> </button>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-12 col-sm-6 btn-group info-perfil-3 mt-2">
                                 <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getTipo_usuario(); ?>" name="txtTipoUser" id="txtTipoUser">
                             </div>
                             <div class="col-12 col-sm-6 btn-group info-perfil-3 mt-2">
                                 <input type="text" class="input-editable form-control" disabled="true" value="Codigo: <?php echo $usuario->getCodigo(); ?>" name="txtCodigo" id="txtCodigo">
-                            </div>
+                            </div> 
                         </div>
                     </div>
                     <div class="row ">
@@ -363,18 +372,18 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row-flow mt-3">
                         <input type="submit" class="btn btn-sm btn-primary" value="Guardar" name="oper" id="oper2">
                     </div>
                 </form>
                 <hr />
 
-                <div class="row"><h4>Informacion academica</h4></div>
                 <div class="container-fluid">
+                <div class="row-flow"><h4>Informacion academica</h4></div>
                     <blockquote >
                         <h5 >Sin registros academicos</h5>
                         <p class="text-muted">No se han registrado datos academicos, si desea puede registrar los diferentes estudios realizados en su vida academica. </p><input type="button" class="btn btn-sm btn-primary" value="registrar">
-                        <form id="forminformacionAcademica" class="mt-sm-10" action="../controlador/informacionPersonal.php" onsubmit="envioFormularioMultiPart2('forminformacionAcademica','respuesta',true); return false;" method="post">
+                        <form id="forminformacionAcademica" class="mt-sm-10" action="../controlador/informacionPersonal.php" onsubmit="envioFormularioMultiPart2('forminformacionAcademica', 'respuesta', true); return false;" method="post">
                             <input type="hidden" name="oper" value="registro info academica">
                             <h5 >Nueva informacion academica</h5>
                             <div class="row">
@@ -395,7 +404,7 @@ session_start();
                             <div class="form-group mt-3 mb-4"><input class="btn btn-sm btn-primary" type="submit"  value="Guardar"></div>
                         </form>
                     </blockquote>
-                    
+
                     <div class="row" id="cont_estudioAcademico">
 
                         <div class="row col-12 col-sm-10  offset-xs-0 offset-sm-1 mt-3 border-top">
@@ -429,6 +438,26 @@ session_start();
                     //             alert( $(boton).parent().children("input").val());
                     $("#" + idInput).attr("disabled", "true");
                     //                $(boton).parent().children("input").attr("disabled", "true");
+                }
+                $("#avatar").change(function () {
+//                    inputf = document.getElementById('avatar');
+                    previsualizarImageDiv(this, 'imgPerfil');
+                });
+
+                function previsualizarImageDiv(inpuFile, contImagen) {
+                    var file = inpuFile.files[0],
+                            imageType = /image.*/;
+
+                    if (!file.type.match(imageType))
+                        return;
+
+                    var reader = new FileReader();
+                    reader.onload = function fileOnload(e) {
+                        var result = e.target.result;
+                        $('#' + contImagen).css("background-image", "url(" + result + ")");
+                        $('#' + contImagen).show();
+                    };
+                    reader.readAsDataURL(file);
                 }
             </script>
             <script>
@@ -501,11 +530,11 @@ session_start();
                     //					classie.toggle( showRightPush, 'disabled' );
                     //				}
                 }
-                function cargarEstudiosAcademicos(){
+                function cargarEstudiosAcademicos() {
                     $("#cont_estudioAcademico").html();
-                    
+
                 }
             </script>
         </div>
-<!--    </body>
-</html>-->
+        <!--    </body>
+        </html>-->
