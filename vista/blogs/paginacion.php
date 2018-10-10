@@ -12,7 +12,7 @@
     <title>Blog FiloEn</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
     <link rel="stylesheet" href="css/blogss.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estiloss.css">
 
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">

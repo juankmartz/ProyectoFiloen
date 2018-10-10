@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
     <link rel="stylesheet" href="css/estiloblogss.css">
     <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estiloss.css">
 
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -45,11 +45,22 @@
 <div class="container">
 
 	<p>Bienvenido al formulario de entradas para el Blog de FiloEn. Este formulario es exclusivo para subir artículos al blog y no permite entradas dirigidas a otras partes del portal web. </p>
-
+  <?php   
+        if(isset($_GET['id'])){
+        $query= mysqli_query($connect, "SELECT * FROM foto WHERE id = '".$_GET['id']."'");
+        while($row= mysqli_fetch_array($query)){
+       ?> 
 <?php
-if(isset($_GET['id'])){
-    $imagen = mysqli_query($connect, "SELECT * FROM usuario WHERE id = '".$_GET['id']."'");
-    while($row= mysqli_fetch_array($imagen)){
+    if($row['avatar'] !=''){ ?>
+        <img src="" height="100" width="100" />
+    <?php } ?>
+        
+        <br/>
+        <a href="editar_foto.php;">Editar foto</a>
+        
+        <?php
+            }
+            }
         ?>
 
         <form class="form1" action="" method="POST" enctype="multipart/form-data">
@@ -81,8 +92,8 @@ if(isset($_GET['id'])){
         }
         ?>
         <?php
-    }
-}
+    
+
 
 ?>
 

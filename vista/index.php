@@ -8,12 +8,12 @@
         <link href="pluging/fontawesome-free-5.3.1-web/css/all.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
 
-        <link rel="stylesheet" href="css/flexsliderr.css" type="text/css">
+        <link rel="stylesheet" href="css/flexslider.css" type="text/css">
         <link href="css/loaderEsferas.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fontello.css" >
         <link rel="stylesheet" href="css/estilos.css" >
-        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->-->
+        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 <?php
 session_start();
 $user = NULL;
@@ -112,23 +112,26 @@ if(isset($_SESSION["user"])){
         <div id="header">
             <nav class="navegacion">
                 <ul class="menus">
-                    <li> <a href="index.php"><span><img src="Imagenes/home.png" alt="" width="20px"></span> Inicio</a></li>
-                    <li> <a href="informate.php">Infórmate</a></li>
-                    <li> <a href="#">Nuestra Gente <span class="icon icon-angle-down"></span> </a>
+                    <li> <a href="index.php"><span><img src="Imagenes/inicio.png" alt="" width="20px"></span> Inicio</a></li>
+                    <li><a href="#"><span><img src="Imagenes/persona.png" alt="" width="20px"></span>Personas <span class="icon icon-angle-down"></span> </a>
                         <ul class="submenu">
                             <li> <a href="#">Perfiles</a></li>
+                            <li> <a href="acercaFiloEn.php" >Nuestra Gente</a></li>
+                            <li> <a href="informate.php">Infórmate</a></li>
+                        </ul>       
+                    </li>
+                    <li> <a href="#"><span><img src="Imagenes/grupo_1.png" alt="" width="20px"></span> Grupos <span class="icon icon-angle-down"></span> </a>
+                        <ul class="submenu">
                             <li> <a href="ingreso.php" onclick="mostrarMensaje()" >Comunidad</a></li>
-                            <li> <a href="acercaFiloEn.php">Acerca de FiloEn</a></li>
                         </ul> 
                     </li>
-                    <li> <a >Herramientas <span class="icon icon-angle-down"></span></a>
+                    <li> <a ><span><img src="Imagenes/herramienta.png" alt="" width="20px"></span> Herramientas <span class="icon icon-angle-down"></span></a>
                         <ul class="submenu">
                             <li> <a href="#">Aplicaciones</a></li>
                             <li> <a href="#1" onclick="cargarLoader()">Biblioteca</a></li>
-                            <li> <a href="#1" onclick="cargarPagina('inicioUsuario.php', 'contenedorPrincipal', true)">ver Perfil</a></li>
                         </ul>
                     </li>
-                    <li> <a href="contactenos.php">Contáctenos</a></li>
+                    <li> <a href="contactenos.php"><span><img src="Imagenes/contactenos.png" alt="" width="20px"></span> Contáctenos</a></li>
                 </ul>
             </nav>
         </div>
@@ -140,7 +143,6 @@ if(isset($_SESSION["user"])){
         <div class="encabezado2">
             <h4>Filosofía y Enseñanza de la Filosofía</h4>
             <h2 class="filoen">FiloEn</h2>
-            <a href="http://www.uis.edu.co/"><img src="imagenes/uis.png" width="120px"></a>
         </div> 
 
         <div class="ingreso">
@@ -149,88 +151,7 @@ if(isset($_SESSION["user"])){
         </div>
         <div class="content-fluid" id="contenedorPrincipal">
 
-            <!--            <h3 class="titulo">Últimas Noticias</h3>
-                        <hr class="linea">
-                        <div class="row">
-                            <div class="col-xs-10 col-xs-offset-1 col-md-5">
-                                <a href="#">
-                                    <img  class="media-object img-noticia" src="Imagenes/28.png" width="300px" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-xs-10 col-xs-offset-1 col-md-7">
-                                <h4 class="media-heading">Media heading</h4>
-                                <p class="text-max-170">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris. Aenean lobortis iaculis arcu, ut vehicula lectus fermentum eget. Suspendisse potenti. Donec sollicitudin auctor odio, non ultricies diam maximus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel luctus magna. In hac habitasse platea dictumst.
-                                    Proin quis pretium mi, et mollis velit. Vivamus nec urna eget purus scelerisque aliquam id pellentesque orci. Curabitur sed odio sit amet tellus aliquet blandit in sit amet mauris. Curabitur consequat eros sed est tempus, eget euismod arcu consequat. Integer rhoncus dui ut ornare fringilla. Integer justo dolor, tincidunt et facilisis pharetra, dapibus accumsan mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ipsum neque, cursus in purus sed, fringilla fermentum dolor.</p>
-                                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-                            </div>
-            
-                        </div>
-            
-                        <div class="row">
-            
-                            <div class="col-xs-10 col-xs-offset-1 col-md-5">
-                                <a href="#">
-                                    <img  class="media-object img-noticia" src="Imagenes/25.png" width="300px" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-xs-10 col-xs-offset-1 col-md-7">
-                                <h4 class="media-heading">Media heading</h4>
-                                <p class="text-max-170">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium leo at volutpat mollis. Nunc at nulla sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum a blandit massa. Vestibulum ex massa, mollis nec mauris ac, lobortis porttitor nibh. Ut at metus sed felis ornare bibendum non vitae est. Proin luctus, ante pharetra ultricies auctor, metus sapien lobortis augue, sit amet eleifend dolor ante id mauris. Aenean lobortis iaculis arcu, ut vehicula lectus fermentum eget. Suspendisse potenti. Donec sollicitudin auctor odio, non ultricies diam maximus nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Pellentesque vel luctus magna. In hac habitasse platea dictumst.
-                                    Proin quis pretium mi, et mollis velit. Vivamus nec urna eget purus scelerisque aliquam id pellentesque orci. Curabitur sed odio sit amet tellus aliquet blandit in sit amet mauris. Curabitur consequat eros sed est tempus, eget euismod arcu consequat. Integer rhoncus dui ut ornare fringilla. Integer justo dolor, tincidunt et facilisis pharetra, dapibus accumsan mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ipsum neque, cursus in purus sed, fringilla fermentum dolor.</p>
-            
-                                <p><a href="#" class="btn btn-primary btn">Leer más</a></p>
-                            </div>
-            
-                        </div>
-            
-                        <div class="content-fluid">
-                            <div class="row">
-                                <div class="col-sm-6  col-xs-12">
-                                    <div class="cuerpo-noticia">
-                                        <div class="row"><img src="Imagenes/34.jpg" alt="" ></div>
-                                        <div class="row">
-                                            <h4>Titulo de la imagen</h4>
-                                            <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
-                                            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="col-sm-6  col-xs-12">
-                                    <div class="cuerpo-noticia">
-                                        <div class="row"><img src="Imagenes/fds.jpg" alt="" ></div>
-                                        <div class="row">
-                                            <h4>Titulo de la imagen</h4>
-                                            <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
-                                            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="col-sm-6  col-xs-12">
-                                    <div class="cuerpo-noticia">
-                                        <div class="row"><img src="Imagenes/ddd.jpg" alt="" ></div>
-                                        <div class="row">
-                                            <h4>Titulo de la imagen</h4>
-                                            <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
-                                            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
-                                        </div>
-                                    </div>
-                                </div>
-            
-                                <div class="col-sm-6 col-xs-12">
-                                    <div class="cuerpo-noticia">
-                                        <div class="row"><img src="Imagenes/g1.gif" alt="" ></div>
-                                        <div class="row">
-                                            <h4>Titulo de la imagen</h4>
-                                            <p>aque se ponde juan desscripoidicon de la for osf sdofnsd fisdfs flsdfljsfsdlfsdfsdfj sdfsdkf sdfsd fjsdf lsdfsdf</p>
-                                            <a href="#" class="btn btn-primary btn-sm">Leer más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
+           
         </div>
         <div id="loader"></div>
         <footer >
@@ -242,7 +163,7 @@ if(isset($_SESSION["user"])){
                     <a href="ingreso.php">Login</a> |                                                
                 </p>
                 <p>
-                    Copyright 2016. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
+                    Copyright 2018. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
                 </p>                               
             </div>
         </footer> 

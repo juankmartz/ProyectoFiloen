@@ -59,28 +59,32 @@
         
     </header>
 
-    <div id="header">
-        <nav class="navegacion">
-            <ul class="menus">
-                 <li> <a href="index.php"><span><img src="Imagenes/home.png" alt="" width="20px"></span> Inicio</a></li>
-                <li> <a href="informate.php">Infórmate</a></li>
-                <li> <a href="#">Nuestra Gente <span class="icon icon-angle-down"></span></a>
-            <ul class="submenu">
-                <li> <a href="#">Perfiles</a></li>
-                <li> <a href="ingreso.php" onclick="mostrarMensaje()">Comunidad</a></li>
-                <li> <a href="acercaFiloEn.php">Acerca de FiloEn</a></li>
-            </ul> 
-        </li>
-        <li> <a href="#">Herramientas <span class="icon icon-angle-down"></span></a>
-            <ul class="submenu">
-                <li> <a href="#">Aplicaciones</a></li>
-                <li> <a href="#">Biblioteca</a></li>
-            </ul>
-        </li>
-        <li> <a href="contactenos.php">Contáctenos</a></li>
-        </ul>
-        </nav>
-    </div>
+  <div id="header">
+            <nav class="navegacion">
+                <ul class="menus">
+                    <li> <a href="index.php"><span><img src="Imagenes/inicio.png" alt="" width="20px"></span> Inicio</a></li>
+                    <li><a href="#"><span><img src="Imagenes/persona.png" alt="" width="20px"></span>Personas <span class="icon icon-angle-down"></span> </a>
+                        <ul class="submenu">
+                            <li> <a href="#">Perfiles</a></li>
+                            <li> <a href="acercaFiloEn.php" >Nuestra Gente</a></li>
+                            <li> <a href="informate.php">Infórmate</a></li>
+                        </ul>       
+                    </li>
+                    <li> <a href="#"><span><img src="Imagenes/grupo_1.png" alt="" width="20px"></span> Grupos <span class="icon icon-angle-down"></span> </a>
+                        <ul class="submenu">
+                            <li> <a href="ingreso.php" onclick="mostrarMensaje()" >Comunidad</a></li>
+                        </ul> 
+                    </li>
+                    <li> <a ><span><img src="Imagenes/herramienta.png" alt="" width="20px"></span> Herramientas <span class="icon icon-angle-down"></span></a>
+                        <ul class="submenu">
+                            <li> <a href="#">Aplicaciones</a></li>
+                            <li> <a href="#1" onclick="cargarLoader()">Biblioteca</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="contactenos.php"><span><img src="Imagenes/contactenos.png" alt="" width="20px"></span> Contáctenos</a></li>
+                </ul>
+            </nav>
+        </div>
 <div class=" main-container">
 <div class="media">
 
