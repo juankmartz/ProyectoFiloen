@@ -47,6 +47,41 @@ class Usuario {
         $this->estado = $datos_usuario["estado"];
     }
     
+    public function buscarUsuarioByCriterio($criterio, $tipo_usuario) {
+       
+        $query = "SELECT * FROM usuario WHERE nombre LIKE '%".$criterio."%' OR estado = '".$criterio."' OR  tipo_usuario = '".$tipo_usuario."' ; ";
+        
+//        if($criterio !=""){
+//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
+//             $criterios = $criterios." nombre LIKE '%".$nombre."%' ";
+//        }
+//        if($tipo_usuario != ""){
+//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
+//             $criterios = $criterios." tipo_usuario = '".$tipo_usuario."' ";
+//        }
+//        if($estado != ""){
+//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
+//             $criterios = $criterios." estado = '".$estado."' ";
+//        }
+//        if(strlen($criterios)>0) $criterios =" WHERE ".$criterios;
+//         $query = $query.$criterios;
+//         echo $query;
+        $conn = conBD::conectar();
+        $result = mysqli_query( $conn,$query);
+        $datosPerfiles = array();
+//         echo $result;
+//        print_r($result);
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $nuevoUsuario = new Usuario();
+            $nuevoUsuario->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'],$fila['direccion'], 
+                $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
+            array_push($datosPerfiles, $nuevoUsuario);
+        }
+//        $datosPerfiles = mysqli_fetch_all($result);
+        return $datosPerfiles;
+        
+    }
+    
     public function guardarCambios(){
         //`avatar` = '".$this->avatar."',
 //`estado` = '".$this->estado."'

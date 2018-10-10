@@ -35,10 +35,11 @@ function ejecutarFuncion(urlClase, oper, idContRespuesta, remplazarContenido) {
         }
     });
 }
+
 function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
     inicioLoader();
-    console.log($(formulario).serialize());
+//    console.log($(formulario).serialize());
     $.ajax({
         url: $(formulario).attr("action"),
         type: "post",
@@ -156,8 +157,74 @@ function envioFormularioMultiPart(formulario, idContRespuesta, remplazo) {
 
 function envioFormularioMultiPart2(formulario, idContRespuesta, remplazo) {
     cargarLoader();
+    var paqueteDeDatos = zerialisForm(formulario);
+//    $('#' + formulario).find("input").each(function () {
+//        switch ($(this).attr('type')) {
+//            case "checbox":
+//            {
+//                if ($(this).is(":checked")) {
+//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+//                }
+//            }
+//            case "radio":
+//                {
+//                    if ($(this).is(":checked")) {
+//                        paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+//                    }
+//                }
+//                break;
+//            case "password":
+//                {
+//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+//                }
+//                break;
+//            case "file":
+//                {
+//                    paqueteDeDatos.append('archivo', $(this)[0].files[0]);
+//                }
+//                break;
+//            default :
+//                {
+//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
+//                }
+//                break;
+//        }
+//
+//    });
+//    $('#' + formulario).find("select").each(function () {
+//        paqueteDeDatos.append($(this).attr('name'), $(this).val());
+//    });
+//    $('#' + formulario).find("textarea").each(function () {
+//        paqueteDeDatos.append($(this).attr('name'), $(this).val());
+//    });
+    var destino = $('#' + formulario).attr("action"); // El script que va a recibir los campos de formulario.
+    /* Se envia el paquete de datos por ajax. */
+    $.ajax({
+        url: destino,
+        type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
+        contentType: false,
+        data: paqueteDeDatos, // Al atributo data se le asigna el objeto FormData.
+        processData: false,
+        cache: false,
+        success: function (resultado) { // En caso de que todo salga bien.
+            console.log(resultado);
+            if (remplazo) {
+                $('#' + idContRespuesta).html(resultado);
+                cerrarLoader();
+            } else {
+                $('#' + idContRespuesta).append(resultado);
+                cerrarLoader();
+            }
+        },
+        error: function () { // Si hay algún error.
+            alert("Algo ha fallado.");
+        }
+    });
+}
+
+function zerialisForm(idFormulario){
     var paqueteDeDatos = new FormData();
-    $('#' + formulario).find("input").each(function () {
+    $('#' + idFormulario).find("input").each(function () {
         switch ($(this).attr('type')) {
             case "checbox":
             {
@@ -190,35 +257,13 @@ function envioFormularioMultiPart2(formulario, idContRespuesta, remplazo) {
         }
 
     });
-    $('#' + formulario).find("select").each(function () {
+    $('#' + idFormulario).find("select").each(function () {
         paqueteDeDatos.append($(this).attr('name'), $(this).val());
     });
-    $('#' + formulario).find("textarea").each(function () {
+    $('#' + idFormulario).find("textarea").each(function () {
         paqueteDeDatos.append($(this).attr('name'), $(this).val());
     });
-    var destino = $('#' + formulario).attr("action"); // El script que va a recibir los campos de formulario.
-    /* Se envia el paquete de datos por ajax. */
-    $.ajax({
-        url: destino,
-        type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
-        contentType: false,
-        data: paqueteDeDatos, // Al atributo data se le asigna el objeto FormData.
-        processData: false,
-        cache: false,
-        success: function (resultado) { // En caso de que todo salga bien.
-            console.log(resultado);
-            if (remplazo) {
-                $('#' + idContRespuesta).html(resultado);
-                cerrarLoader();
-            } else {
-                $('#' + idContRespuesta).append(resultado);
-                cerrarLoader();
-            }
-        },
-        error: function () { // Si hay algún error.
-            alert("Algo ha fallado.");
-        }
-    });
+    return paqueteDeDatos;
 }
 
 function cargarPagina(uri, idContRespuesta, remplazo) {
@@ -356,3 +401,34 @@ function previsualizarVideo(inputFile, contVideo) {
 //                   document.getElementById(contVideo).pause()
     $('#' + contVideo).show();
 }
+
+function textAreaAjustable(textareas) {
+                textareas.each(function () {
+                    var textarea = $(this);
+
+                    if (!textarea.hasClass('autoHeightDone')) {
+//            textarea.addClass('autoHeightDone');
+
+                        var extraHeight = parseInt(textarea.css('padding-top')) + parseInt(textarea.css('padding-bottom')), // to set total height - padding size
+                                h = textarea[0].scrollHeight - extraHeight;
+
+                        // init height
+                        textarea.height('auto').height(h);
+
+                        textarea.bind('keyup', function (e) {
+
+                            var code = (e.keyCode ? e.keyCode : e.which);
+                            if (code == 13) {
+                                alert("se enviara el formulario");
+                                return false;
+                            }
+                            textarea.removeAttr('style'); // no funciona el height auto
+
+                            h = textarea.get(0).scrollHeight - extraHeight;
+
+                            textarea.height(h + 'px'); // set new height
+                        });
+                    }
+                });
+
+            }

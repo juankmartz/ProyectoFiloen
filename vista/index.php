@@ -10,18 +10,13 @@
 
         <link rel="stylesheet" href="css/flexsliderr.css" type="text/css">
         <link href="css/loaderEsferas.css" rel="stylesheet" type="text/css"/>
-        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
-        <!--<link rel="stylesheet" href="css/fontello.css" >-->
-        <!--<link rel="stylesheet" href="css/estilos.css" >-->
+
         <link href="pluging/NotificationStyles/css/ns-default.css" rel="stylesheet" type="text/css"/>
         <link href="pluging/NotificationStyles/css/ns-style-growl.css" rel="stylesheet" type="text/css"/>
-        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->-->
-        <!--para las notifcaciones-->
-<!--        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>-->
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+        <link href="css/barraDesplazamiento.css" rel="stylesheet" type="text/css"/>
         <link href="pluging/bootstrap4/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="css/chats.css" rel="stylesheet" type="text/css"/>
 
         <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
@@ -252,13 +247,61 @@
                         </div>-->
         </div>
         <div id="loader"></div>
+        <!--inici de chat-->
+        <div id="chat-content">
+            <div class="conversacion">
+                <div class="titulo-chat">
+                </div>
+                <div class="cuerpo-chat scroll-item scroll-blue" id="chat_7">
+                    <div class="mensaje-izq">
+                        <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                        <div class="text-mensaje">
+                            <p class="mensaje">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, </p>
+                            <span class="f-h-mensaje">24 abr 2017 | 23:45</span>
+                        </div>
+                    </div>
+                    <div class="mensaje-der">
+                        <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                        <div class="text-mensaje">
+                            <p class="mensaje">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, </p>
+                            <span class="f-h-mensaje">24 abr 2017 | 23:45</span>
+                        </div>
+                    </div>
+                    <div class="mensaje-izq">
+                        <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                        <div class="text-mensaje">
+                            <p class="mensaje">Lorem Ipsum es. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, </p>
+                            <span class="f-h-mensaje">24 abr 2017 | 23:45</span>
+                        </div>
+                    </div>
+                    <div class="mensaje-izq">
+                        <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> 
+                        </div>
+                        <div class="text-mensaje">
+                            <p class="mensaje">Lorem Ipsum es. desde el año 1500, </p>
+                            <span class="f-h-mensaje">24 abr 2017 | 23:45</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mensaje-chat ">
+                    <form action="../controlador/chats.php" method="post" onsubmit="envioFormulario(this,'chat_7',false); return false;">
+                    <!--<form action="../controlador/chats.php" method="post" >-->
+                        <input type="hidden" name="oper" value="envio mensaje">
+                        <input type="hidden" name="idRecibe" value="7">
+                        <textarea name="mensaje"  class="form-control input-chat scroll-item scroll-blue"></textarea>
+                        <a href="#1" class="btn btn-sm btn-defauld btn-chat" onclick="$(this).parent().submit();"><i class="fa fa-paper-plane"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--final del chat-->
         <footer >
             <div class="pie">
                 <p>
                     <a href="index.php">Inicio</a> | 
-                    <a href="contactenos.php">Contáctenos</a> |
-                    <a href="registro.php">Registro</a> |
-                    <a href="ingreso.php">Login</a> |                                                
+                    <a href="#contactenos.php" onclick="cargarPagina('contactenos.php','contenedorPrincipal',true);">Contáctenos</a> |
+                    <a href="#registro.php" onclick="cargarPagina('registro.php','contenedorPrincipal',true);">Registro</a> |
+                    <a href="#ingreso.php" onclick="cargarPagina('ingreso.php','contenedorPrincipal',true);">Login</a> |                                                
                 </p>
                 <p>
                     Copyright 2016. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>

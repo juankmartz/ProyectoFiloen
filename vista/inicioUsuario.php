@@ -32,7 +32,15 @@ if (isset($_SESSION['usuario'])) {
         <script src="pluging/SlidePushMenus/js/modernizr.custom.js" type="text/javascript"></script>
         <script src="pluging/SlidePushMenus/js/classie.js" type="text/javascript"></script>
         <style>
-
+            .fotoPerfiles {
+                height: 100px;
+                width: 100px;
+                /* background-size: 0%; */
+                /* background-repeat: no-repeat; */
+                border-radius: 50%;
+                background-size: cover;
+                background-size:100% auto;
+            }
             /*stylos para barra lateral interna no fixed*/
 
             .menu-lateral,#btncerrarmenu {
@@ -46,9 +54,12 @@ if (isset($_SESSION['usuario'])) {
             .cbp-spmenu {
                 background: #47a3da;
                 position: absolute!important;
+                /*float: left;*/
             }
 
-
+            div#cuerpo-principal-perfil {
+                min-height: 612px;
+            }
 
             .cbp-spmenu-push{
                 margin-left: 240px;
@@ -80,11 +91,15 @@ if (isset($_SESSION['usuario'])) {
                 margin-right: 10px;
             }
             #cbp-spmenu-s1 > a  {
-                   background: #258ecd;
+                background: #258ecd;
             }
             #cbp-spmenu-s1 > a:hover {
                 text-decoration: none;
                 color: #00ccff;
+                text-decoration: none;
+                color: #eff9fb;
+                background: #1177b5;
+                font-weight: 400;
             }
             #avatar_perfil {
                 width: 100%;
@@ -129,7 +144,7 @@ if (isset($_SESSION['usuario'])) {
             @media (max-width: 980px) {
                 .cbp-spmenu-push{
                     padding-left: 0px!important;
-                    width: calc( 100% - 59px)!important;
+                    /*width: calc( 100% - 59px)!important;*/
                     margin-left: 0px!important;
                 }
 
@@ -157,8 +172,8 @@ if (isset($_SESSION['usuario'])) {
                     z-index: 1000;
                 }
                 .cbp-spmenu-push{
-                    margin-left: 60px!important;
-                    width: calc( 100% - 59px)!important;
+                    /*margin-left: 60px!important;*/
+                    /*width: calc( 100% - 59px)!important;*/
                 }
                 blockquote{
                     margin: 0px;
@@ -281,17 +296,18 @@ if (isset($_SESSION['usuario'])) {
     <body >
 
         <div class="cbp-spmenu-push" id="cont-push">
+            <!--<a href="buscardorPerfiles.php"></a>-->
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
                 <a href="#2" id="btncerrarmenu" onclick="$('#showLeftPush').click()" class="float-right small">x</a><h3 class="titulo-menu">Menu </h3>
-                <a href="#"><i class="fa fa-user-circle"></i><span class="text-menu-lateral"> Información personal</span></a>
-                <a href="#"><i class="fa fa-users"></i><span class="text-menu-lateral"> Demás Perfiles</span></a>
-                <a href="#"><i class="fa fa-book"></i><span class="text-menu-lateral"> Mi Blog</span></a>
-                <a href="#"><i class="fa fa-university"></i> <span class="text-menu-lateral">Comunidad</span></a>
-                <a href="#"><i class="fa fa-comment"></i><span class="text-menu-lateral"> Chat</span></a>
-                <a href="#"><i class="fa fa-calendar"></i><span class="text-menu-lateral"> Eventos</span></a>
-                <a href="#"><i class="fa fa-newspaper "></i> <span class="text-menu-lateral">Libros</span></a>
+                <a href="#2" ><i class="fa fa-user-circle"></i><span class="text-menu-lateral"> Información personal</span></a>
+                <a href="#2" onclick="cargarPagina('buscardorPerfiles.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-users"></i><span class="text-menu-lateral"> Demás Perfiles</span></a>
+                <a href="#2"><i class="fa fa-book"></i><span class="text-menu-lateral"> Mi Blog</span></a>
+                <a href="#2"><i class="fa fa-university"></i> <span class="text-menu-lateral">Comunidad</span></a>
+                <a href="#2"><i class="fa fa-comment"></i><span class="text-menu-lateral"> Chat</span></a>
+                <a href="#2"><i class="fa fa-calendar"></i><span class="text-menu-lateral"> Eventos</span></a>
+                <a href="#2"><i class="fa fa-newspaper "></i> <span class="text-menu-lateral">Libros</span></a>
 
-                <a href="#" onclick="cargarPagina('registroNoticia.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-desktop "></i> <span class="text-menu-lateral">Noticias</span></a>
+                <a href="#1" onclick="cargarPagina('registroNoticia.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-desktop "></i> <span class="text-menu-lateral">Noticias</span></a>
                 <a href="#1"></a>
             </nav>
 
@@ -330,7 +346,7 @@ if (isset($_SESSION['usuario'])) {
 
                         </div>
                         <div class="col-12 col-sm-8  row">
-                             
+
                             <div class="col-12 btn-group info-perfil-3 ">
                                 <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getNombre(); ?>" name="txtNombre" id="txtNombre">
                                 <!--                            <a href="#1" class="btn-hover-editar" onclick="editarCampo(this)">editar</a>
@@ -379,7 +395,7 @@ if (isset($_SESSION['usuario'])) {
                 <hr />
 
                 <div class="container-fluid">
-                <div class="row-flow"><h4>Informacion academica</h4></div>
+                    <div class="row-flow"><h4>Informacion academica</h4></div>
                     <blockquote >
                         <h5 >Sin registros academicos</h5>
                         <p class="text-muted">No se han registrado datos academicos, si desea puede registrar los diferentes estudios realizados en su vida academica. </p><input type="button" class="btn btn-sm btn-primary" value="registrar">
