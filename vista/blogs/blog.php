@@ -12,7 +12,7 @@
     <title>Blog FiloEn</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
     <link rel="stylesheet" href="css/blogss.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estiloss.css">
 
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -25,33 +25,31 @@
 <body>
  
 <div class="row">
-    <a href="http://www.uis.edu.co/webUIS/es/academia/facultades/cienciasHumanas/escuelas/filosofia/programasAcademicos/filosofia/index.jsp?variable=37"><img src="imagenes/uis.png" class="dos" alt="Escuela de filosofía UIS"></a>
+    <a href=""><img src="imagenes/logo.jpeg" class="dos" alt="Escuela de filosofía UIS"></a>
 
-    <h1>BLOG FILOEN</h1>
+    <h1>BLOG EL PATIO FILOSÓFICO</h1>
 <header>
     
     <div class="boton">
-        <nav class="navegacion2">
-            <ul class="menu2">
-                <li><a href="inicioEst.php"> <img src="imagenes/inicio.png" alt="" title="Inicio" width="30px" height="30px"></a></li>
-                <li><a href=""> <img src="imagenes/Opciones.png" alt="Opciones" title="Opciones" width="30px" height="30px"></a>
-                    <ul class="submenu2">
-                            <li><a href=""> <span><img src="imagenes/mensajes2.png" width="20px" height="20px"></span> Mensajes</a></li>
-                            <li><a href=""> <span><img src="imagenes/solicitud.png" width="20px" height="20px"></span> Solicitudes de Amistad</a></li>
-                            <li><a href=""> <span><img src="imagenes/Sgrupo.png" width="20px" height="20px"></span> Solicitudes de Grupo</a></li>
-                            <li><a href=""> <span><img src="imagenes/anuncio.png" width="20px" height="20px"></span> Crear un Anuncio</a></li>
-                            <li><a href="tareas.php"> <span><img src="imagenes/tareas.png" width="20px" height="20px"></span> Tareas</a></li>
-                            <li><a href=""> <span><img src="imagenes/privacidad2.png" width="20px" height="20px"></span> Privacidad</a></li>
-                            <li><a href=""> <span><img src="imagenes/config.png" width="20px" height="20px"></span> Configuración</a></li>
-                            <li><a href=""> <span><img src="imagenes/problema2.png" width="20px" height="20px"></span> Reportar un Problema</a></li>
-                        </ul>
-                </li>
-                <li><a href=""> <img src="imagenes/mensajes.png" alt="" title="Chat" width="30px" height="30px"></a></li>
-                <li><a href=""> <img src="imagenes/notificaciones.png" alt="" title="Notificaciones" width="30px" height="30px"></a></li>
-                <li><a href="index.php"> <img src="imagenes/salir.png" class="salir" alt="Cerrar Sesión" title="Cerrar Sesión" width="30px" height="30px"></a></li>
-            </ul>
-        </nav>
-    </div>
+            <nav class="navegacion2">
+                <ul class="menu2">
+                    <li><a href="http://localhost/proyFiloen/vista/inicioest.php"> <img src="imagenes/inicio.png" alt="" title="Inicio" width="30px" height="30px"></a></li>
+                    <li><a href=""> <img src="imagenes/perfil.png" alt="" title="Mi perfil" width="40px" height="30px"></a></li>
+                    <li><a href=""> <img src="imagenes/notificaciones.png" alt="" title="Notificaciones" width="30px" height="30px"></a></li>
+                     <li><a href=""> <img src="imagenes/mensajes.png" alt="" title="Chat" width="30px" height="30px"></a></li>
+                    <li><a href=""> <img src="imagenes/Opciones.png" alt="Opciones" title="Opciones" width="30px" height="30px"></a>
+                <ul class="submenu2">
+                    <li><a href=""> <span><img src="imagenes/anuncio.png" width="20px" height="20px"></span> Crear un Anuncio</a></li>
+                    <li><a href="tareas.php"> <span><img src="imagenes/tareas.png" width="20px" height="20px"></span> Tareas</a></li>
+                    <li><a href=""> <span><img src="imagenes/privacidad2.png" width="20px" height="20px"></span> Privacidad</a></li>
+                    <li><a href=""> <span><img src="imagenes/config.png" width="20px" height="20px"></span> Configuración</a></li>
+                    <li><a href=""> <span><img src="imagenes/problema2.png" width="20px" height="20px"></span> Reportar un Problema</a></li>
+                </ul>
+                    </li>
+                    <li><a href="index.php"> <img src="imagenes/salir.png" class="salir" alt="Cerrar Sesión" title="Cerrar Sesión" width="30px" height="30px"></a></li>
+                </ul>
+            </nav>
+        </div>
     
 </header>   
 </div>
@@ -62,19 +60,18 @@
 
 <div class=" main row">
     <div class="iblog">     
-        <img src="imagenes/logo2.png" alt="Filosofia y enseñanza de la filosofia" class="uno" >
+        <img src="imagenes/logo.jpeg" alt="Filosofia y enseñanza de la filosofia" class="uno" >
         <div>
-            <h4>Filosfofía y Enseñanza de la Filosofía</h4>
-            <h2>FiloEn</h2>
+            
+           
         </div>
     </div>
 
     <div id="header">
     <nav class="navegacion">
         <ul class="menus">
-            <li> <a href="blog.php"><span><img src="Imagenes/home.png"></span> Inicio</a></li>
+            <li> <a href="blog.php"> Inicio</a></li>
             <li> <a href="sobremi.php">Sobre Mí</a></li>
-            <li> <a href="#">Intereses <span class="icon icon-angle-down"></span></a></li>
             <li> <a href="#">Videos <span class="icon icon-angle-down"></span></a></li>
         </ul>
     </nav>
@@ -124,7 +121,7 @@
 
         ?>
         <div>
-        <a href="noticiacompleta.php?id=<?php echo $fila['id']; ?>"><h2><?php echo $fila['Titulo']; ?></h2></a>
+            <a href="noticiacompleta.php?id=<?php echo $fila['id']; ?>"><h2 class="primo"><?php echo $fila['Titulo']; ?></h2></a>
         
         <p><?php echo $fila['Fecha']; ?></p>
      
@@ -193,11 +190,9 @@ echo "<a href= 'blog.php?pagina=$total_paginas'>".' Última '."</a>";
             <h4 class="informacion">-- Más opociones de menú --</h4>
             <nav><ul>
                 <li> <a href="agregarnoticia.php"> <img src="imagenes/publicaciones.png" alt=""> Nueva Entrada</a></li>
-                <li> <a href="">Inicio</a></li>
                 <li> <a href="#">Mi Perfil</a></li>
                 <li> <a href="">Perfiles</a></li>
                 <li> <a href="">Noticias</a></li>
-                <li> <a href="">Foros</a></li>
                 <li> <a href="">Comunidades</a></li>
                 <li> <a href="">Contáctenos</a></li>
                 </ul>
@@ -216,6 +211,8 @@ echo "<a href= 'blog.php?pagina=$total_paginas'>".' Última '."</a>";
     </div>
 </div>
 <div class="pie">
+    
+    <img src="imagenes/uis.png" height="70" width="50"/>
         <p>
         <a href="index.php">Inicio</a> | 
         <a href="contactenos.php">Contáctenos</a> |
