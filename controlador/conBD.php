@@ -11,8 +11,9 @@
  *
  * @author 
  */
-class conBD {
+date_default_timezone_set('America/Bogota');
 
+class conBD {
     var $host = "mysql7003.site4now.net";
     var $dbuser = "a41246_filoen1";
     var $dbpwd = "filoen123";
@@ -44,4 +45,11 @@ class conBD {
 	mysqli_close($connect);
     }
 
+    static function getFechaActual(){
+        $hoy = new DateTime('now');
+        $hoy = $hoy->format("Y-m-d H:i:s");
+//        $h = getdate();
+//        print_r($h);
+        return $hoy;
+    }
 }

@@ -1,14 +1,13 @@
-<?php 
-
+<?php
 session_start();
 //include "cn.php";
 include "funciones.php";
 
 if (isset($_SESSION['usuario'])) {
 //    header("Location: inicioEst.php");
-   /* ini_set('error_reporting', 0); */
+    /* ini_set('error_reporting', 0); */
 }
- ?>
+?>
 <!--
 <!DOCTYPE html>
 
@@ -95,36 +94,38 @@ if (isset($_SESSION['usuario'])) {
         </ul>
         </nav>
 </div>
-    -->
-<h3 class="titulo">Ingresar</h3>
-<hr class="linea">
-
-<div id="resp"></div>
-<div id="contPrincipal">
-    
-<form id="form1" name="form1" action="../controlador/iniciosession.php" method="post" onsubmit="envioFormulario(this, 'resp', true);return false;" >
-  <div class="form-group row">
-      <input type="hidden" name="oper" value="incio session">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de Usuario</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Nombre" name="usuario" maxlength="20" required>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="contraseña" name="contrasena" required>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="submit" name="guardar" class="btn btn-primary">Ingresar a FiloEn</button>
-    </div>
-  </div>
+-->
 <div class="container">
-  <img src="Imagenes/FiloEn.png" alt="filosofia" width="200px" >
-</div>
-</form>
+    <h3 class="titulo">Ingresar</h3>
+    <hr class="linea">
+
+    <div id="resp"></div>
+    <div id="contPrincipal">
+
+        <form id="form1" name="form1" action="../controlador/iniciosession.php" method="post" onsubmit="envioFormulario(this, 'resp', true);return false;" >
+            <div class="form-group row">
+                <input type="hidden" name="oper" value="incio session">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre de Usuario</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nombre" name="usuario" maxlength="20" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="contraseña" name="contrasena" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" name="guardar" class="btn btn-primary">Ingresar a FiloEn</button>
+                </div>
+            </div>
+            <div class="container">
+                <img src="Imagenes/FiloEn.png" alt="filosofia" width="200px" >
+            </div>
+        </form>
+    </div>
 </div>
 
 <!--
@@ -142,7 +143,12 @@ if (isset($_SESSION['usuario'])) {
                         
 </div>
 </footer>-->
-<script src="js/funcionesGenerales.js"></script>
+<script>
+    $("#inputEmail3").focus();
+</script>
+<script src="js/funcionesGenerales.js">
+
+</script>
 <script src="pluging/NotificationStyles/js/modernizr.custom.js" type="text/javascript"></script>
 <script src="pluging/NotificationStyles/js/classie.js" type="text/javascript"></script>
 <script src="pluging/NotificationStyles/js/notificationFx.js" type="text/javascript"></script>
