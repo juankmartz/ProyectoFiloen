@@ -8,14 +8,17 @@
 
 function ejecutarFuncion(urlClase, oper, idContRespuesta, remplazarContenido) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
-    inicioLoader();
-    oper = oper.replace(' ', '+');
+//    inicioLoader();
+//    oper = oper.replace(' ', '+');
+    var formData = new FormData();
+    formData.append("oper", oper);
+    console.log(formData);
     $.ajax({
         url: urlClase,
-        type: "post",
+        type: "get",
         dataType: "html",
 //        data: serializefiles(formulario),
-        data: '?oper='.oper,
+        data: '?oper='+oper,
         cache: false,
         processData: false,
         success: function (result) {
@@ -36,10 +39,24 @@ function ejecutarFuncion(urlClase, oper, idContRespuesta, remplazarContenido) {
     });
 }
 
+function ejecutarFuncionAjax(Urlaction, variables, idrespuesta, remplazo){
+//    var datos ={ "oper" : "cargarNuevoMensaje", "idchat" : "7" };
+    var datos = {"oper":"cargarNuevoMensaje", "idchat":"7"};
+
+	$.ajax({
+		url:  "../controlador/chats.php",
+		type: "POST",
+                dataType: 'json',
+		data: datos
+	}).done(function(respuesta){
+		$("#"+idrespuesta).html(respuesta);
+	});
+}
+
 function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
-    inicioLoader();
-//    console.log($(formulario).serialize());
+//    inicioLoader();
+    console.log($(formulario).serialize());
     $.ajax({
         url: $(formulario).attr("action"),
         type: "post",
@@ -49,6 +66,7 @@ function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
         cache: false,
         processData: false,
         success: function (result) {
+            console.log("Exito en el evio del formulario");
             if (remplazarContenido) {
                 $("#" + idContRespuesta).html(result);
             } else {
@@ -65,9 +83,10 @@ function envioFormulario(formulario, idContRespuesta, remplazarContenido) {
         }
     });
 }
+
 function envioFormularioDataForm(datosFormulario, urlAction, idContRespuesta, remplazarContenido) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
-    inicioLoader();
+//    inicioLoader();
     $.ajax({
         url: urlAction,
         type: 'POST', // Siempre que se envíen ficheros, por POST, no por GET.
@@ -85,6 +104,8 @@ function envioFormularioDataForm(datosFormulario, urlAction, idContRespuesta, re
         },
         error: function () { // Si hay algún error.
             alert("Algo ha fallado.");
+                            cerrarLoader();
+
         }
     });
 }
@@ -116,7 +137,7 @@ function envioFormularioDataForm(datosFormulario, urlAction, idContRespuesta, re
 //}
 function envioFormularioMultiPart(formulario, idContRespuesta, remplazo) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
-    cargarLoader();
+//    cargarLoader();
     var datos = $("#" + formulario).serializeArray(); //datos serializados
     var idForm = $("#" + formulario).attr("id");
     var formData = new FormData("#" + idForm);
@@ -156,47 +177,8 @@ function envioFormularioMultiPart(formulario, idContRespuesta, remplazo) {
 
 
 function envioFormularioMultiPart2(formulario, idContRespuesta, remplazo) {
-    cargarLoader();
+//    cargarLoader();
     var paqueteDeDatos = zerialisForm(formulario);
-//    $('#' + formulario).find("input").each(function () {
-//        switch ($(this).attr('type')) {
-//            case "checbox":
-//            {
-//                if ($(this).is(":checked")) {
-//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
-//                }
-//            }
-//            case "radio":
-//                {
-//                    if ($(this).is(":checked")) {
-//                        paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
-//                    }
-//                }
-//                break;
-//            case "password":
-//                {
-//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
-//                }
-//                break;
-//            case "file":
-//                {
-//                    paqueteDeDatos.append('archivo', $(this)[0].files[0]);
-//                }
-//                break;
-//            default :
-//                {
-//                    paqueteDeDatos.append($(this).attr('name'), $(this).prop('value'));
-//                }
-//                break;
-//        }
-//
-//    });
-//    $('#' + formulario).find("select").each(function () {
-//        paqueteDeDatos.append($(this).attr('name'), $(this).val());
-//    });
-//    $('#' + formulario).find("textarea").each(function () {
-//        paqueteDeDatos.append($(this).attr('name'), $(this).val());
-//    });
     var destino = $('#' + formulario).attr("action"); // El script que va a recibir los campos de formulario.
     /* Se envia el paquete de datos por ajax. */
     $.ajax({
@@ -218,6 +200,8 @@ function envioFormularioMultiPart2(formulario, idContRespuesta, remplazo) {
         },
         error: function () { // Si hay algún error.
             alert("Algo ha fallado.");
+                            cerrarLoader();
+
         }
     });
 }
@@ -268,7 +252,7 @@ function zerialisForm(idFormulario){
 
 function cargarPagina(uri, idContRespuesta, remplazo) {
 //    mostrarLoaderOndaDeCubos('Procesando...');
-    cargarLoader();
+//    cargarLoader();
     $.ajax({
         url: uri,
         type: "post",
@@ -432,3 +416,29 @@ function textAreaAjustable(textareas) {
                 });
 
             }
+            
+            function buscarNuevoMensaje( idRespuesta, idChat) {
+//                            setInterval(function () {
+//                                alert("buscando");
+//                                var data = new formData();
+//                                data.append("oper", "cargarNuevoMensaje");
+//                                data.append("idchat", idChat);
+//                                $.ajax({
+//                                    url: '../controlador/chats.php',
+//                                    type: "post",
+//                                    dataType: "html",
+//                                    data: data,
+//                                    cache: false,
+//                                    processData: false,
+//                                    success: function (result) {
+//                                        console.log("cargando nuevo mensaje chat");
+//                                        $("#" + idRespuesta).append(result);
+//                                    },
+//                                    error: function (e) {
+//                                       console.log("Ha ocurrido un error al cargar nuevo mensajes al chat "+idRespuesta);
+//                                   }
+//                                });
+//                                alert('fin');
+//                            }, 3000);
+                            alert("la funcion sirve"+idRespuesta+idChat);
+                        }

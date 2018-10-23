@@ -1,6 +1,8 @@
 <?php 
-	include "cn.php";
+	include "../../controlador/conBD.php";
 	include "funciones.php";
+        
+        $connect = conBD::conectar();
  ?>
 
  <!DOCTYPE html>
@@ -186,3 +188,4 @@
 
 </body>
 </html>
+<?php            mysqli_close($connect); ?>

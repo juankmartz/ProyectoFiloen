@@ -1,4 +1,4 @@
-.row{
+/*.row{
     position: relative;
     left: 10%;
     width: 80%;
@@ -9,8 +9,11 @@
 .row img{
     padding: 0px 10px;
     width: 300px;
+}*/
+.img-noticia{
+    padding: 0px 10px;
+    width: 300px;
 }
-
 .media{
     position: relative;
     left: 9%;

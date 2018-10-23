@@ -7,11 +7,11 @@
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 <!--<link href="blogs/css/bootstrap 3/bootstrap.css" rel="stylesheet" type="text/css"/>-->
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link href="blogs/css/bootstrap 3/bootstrap.css" rel="stylesheet" type="text/css"/>
+<!--<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="blogs/css/bootstrap 3/bootstrap.css" rel="stylesheet" type="text/css"/>-->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-<script src="blogs/css/bootstrap 3/bootstrap.min.js" type="text/javascript"></script>
+<!--<script src="blogs/css/bootstrap 3/bootstrap.min.js" type="text/javascript"></script>-->
 <!--    </head>
     <body>-->
 <?php
@@ -21,13 +21,13 @@ session_start();
 if ($_SESSION['usuario']) {
     $nombre = unserialize($_SESSION['usuario']);
     ?> <script>
-                    var noty = new NotificationFx({
-                        message: '<p>el usuario tiene session activa <?php echo $nombre->getNombre(); ?></p>',
-                        layout: 'growl',
-                        effect: 'slide',
-                        type: 'warning' // notice, warning or error
-                    });
-                    noty.show();
+        var noty = new NotificationFx({
+            message: '<p>el usuario tiene session activa <?php echo $nombre->getNombre(); ?></p>',
+            layout: 'growl',
+            effect: 'slide',
+            type: 'warning' // notice, warning or error
+        });
+        noty.show();
     </script> <?php
 } else {
 
@@ -54,7 +54,7 @@ if ($_SESSION['usuario']) {
                     <option value="DESTACADA">Destacada </option>
                 </select>
                 <br>
-                <i class="text-muted texto6">Las noticas destacadas se muestran en la parte superior y con un mayor tamaño.</i>
+                <i class="text-muted texto6">Las noticias destacadas se muestran en la parte superior y con un mayor tamaño.</i>
             </div>
             <div class="form-group">
                 <label>Titulo</label>
@@ -77,18 +77,24 @@ if ($_SESSION['usuario']) {
             <div class="form-group">
                 <label for="multimedia">Multimedia:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="urlMultimedia">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-sm btn-default dropdown-toggle"
-                                data-toggle="dropdown">
-                            Acción 
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="#1" onclick="ocultarVideo('multimedia');">cargar imagen <i class="fa fa-image"></i></a></li>
-                            <li><a href="#1" onclick="ocultarImagen('multimedia');" >cargar video <i class="fa fa-film"></i></a></li>
-
-                        </ul>
+                        <!--                        <button type="button" class="btn btn-sm btn-default dropdown-toggle"
+                                                        data-toggle="dropdown">
+                                                    Acción 
+                                                </button>-->
+                        <!--                        <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li><a href="#1" onclick="ocultarVideo('multimedia');">cargar imagen <i class="fa fa-image"></i></a></li>
+                                                    <li><a href="#1" onclick="ocultarImagen('multimedia');" >cargar video <i class="fa fa-film"></i></a></li>
+                        
+                                                </ul>-->
+                        <a href="#1" class="btn btn-lg btn-default form-control" onclick="ocultarVideo('multimedia');"><i class="fa fa-image"></i></a>
+                        <!--<a href="#1" class="btn btn-sm btn-defauld form-control" onclick="ocultarImagen('multimedia');" ><i class="fa fa-film"></i></a>-->
                     </div>
+                    <div class="input-group-btn">
+                        <a href="#1" class="btn btn-lg btn-defauld form-control" onclick="ocultarImagen('multimedia');" ><i class="fa fa-film"></i></a>
+                    </div>
+
                 </div>
 
                 <i class="text-muted texto6">seleccione el archivo de la imagen o video relacionado a esta noticia, tambien puede copiar el enlace si se ecuentra almacenado en algun servidor externo.</i>                         
@@ -183,7 +189,7 @@ if ($_SESSION['usuario']) {
         $("#multimedia").click();
     }
     function previsualizarImage(inpuFile, contImagen) {
-    $('#rep_video').hide();
+        $('#rep_video').hide();
         var file = inpuFile.files[0],
                 imageType = /image.*/;
 
@@ -205,6 +211,7 @@ if ($_SESSION['usuario']) {
         $source.parent()[0].load();
 //                   document.getElementById(contVideo).pause()
         $('#' + contVideo).show();
+        $("#urlMultimedia").val($(inputFile).val());
     }
 
 //                function fileOnload(e) {
@@ -222,7 +229,7 @@ if ($_SESSION['usuario']) {
 <script>
     $(document).ready(function () {
 //                $("#txtEditor").Editor();
- $("#titulo").focus();
+        $("#titulo").focus();
     }
     );
 </script>

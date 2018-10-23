@@ -1,21 +1,12 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//use conBD;
 
-/**
- * Description of Usuario
- *
- * @author desarrolloJuan
- */
 class Usuario {
 
-    var $id = 0, $nombre = "SIN DEFINIR", $codigo= 0, $correo= "sindefinir@email.com", $ciudad="no se", $direccion="", $identificacion="", $tipo_usuario="INVITADO", $user="",$avatar="", $pass="", $estado="";
+    var $id = 0, $nombre = "SIN DEFINIR", $codigo = 0, $correo = "sindefinir@email.com", $ciudad = "no se", $direccion = "", $identificacion = "", $tipo_usuario = "INVITADO", $user = "", $avatar = "", $pass = "", $estado = "";
 
-    function nuevoUsuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
+    public function nuevoUsuario($id, $nombre, $codigo, $correo, $ciudad, $direccion, $identificacion, $tipo_usuario, $user, $pass) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->codigo = $codigo;
@@ -29,80 +20,126 @@ class Usuario {
     }
 
     public function UsuarioPorID($id) {
-
-        $conn = $_SESSION["conexionBD"];
-        $query = "SELECT * FROM usuario where idusuario = '" . $id . "';";
-        $result = mysqli_query($conn, $query);
-        $datos_usuario = mysql_fetch_array($result);
-        $this->id = $id;
-        $this->nombre = $datos_usuario["nombre"];
-        $this->codigo = $datos_usuario["codigo"];
-        $this->correo = $datos_usuario["correo"];
-        $this->ciudad = $datos_usuario["ciudad"];
-        $this->direccion = $datos_usuario["direccion"];
-        $this->identificacion = $datos_usuario["idintificacion"];
-        $this->tipo_usuario = $datos_usuario["tipo_usuario"];
-        $this->user = $datos_usuario["usuario"];
-        $this->pass = $datos_usuario["contrasenna"];
-        $this->estado = $datos_usuario["estado"];
-    }
-    
-    public function buscarUsuarioByCriterio($criterio, $tipo_usuario) {
-       
-        $query = "SELECT * FROM usuario WHERE nombre LIKE '%".$criterio."%' OR estado = '".$criterio."' OR  tipo_usuario = '".$tipo_usuario."' ; ";
-        
-//        if($criterio !=""){
-//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
-//             $criterios = $criterios." nombre LIKE '%".$nombre."%' ";
-//        }
-//        if($tipo_usuario != ""){
-//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
-//             $criterios = $criterios." tipo_usuario = '".$tipo_usuario."' ";
-//        }
-//        if($estado != ""){
-//            if(strlen($criterios)>0) $criterios = $criterios." AND ";
-//             $criterios = $criterios." estado = '".$estado."' ";
-//        }
-//        if(strlen($criterios)>0) $criterios =" WHERE ".$criterios;
-//         $query = $query.$criterios;
-//         echo $query;
+        include_once '../controlador/conBD.php';
+        $query = "SELECT * FROM usuario where idusuario = " . $id . ";";
+//        echo $query;
         $conn = conBD::conectar();
-        $result = mysqli_query( $conn,$query);
+        $result = mysqli_query($conn, $query);
+        $datos_usuario = mysqli_fetch_array($result);
+
+//        $nuevoUser = $this->nuevoUsuario($datos_usuario["idusuario"], $datos_usuario["nombre"], $datos_usuario["codigo"]
+//                , $datos_usuario["correo"], $datos_usuario["ciudad"], $datos_usuario["direccion"], $datos_usuario["idintificacion"]
+//                , $datos_usuario["tipo_usuario"], $datos_usuario["usuario"], $datos_usuario["contrasenna"]);
+//        echo $datos_usuario["idusuario"]. $datos_usuario["nombre"].$datos_usuario["codigo"]
+//                . $datos_usuario["correo"]. $datos_usuario["ciudad"]. $datos_usuario["direccion"]. $datos_usuario["identificacion"]
+//                .$datos_usuario["tipo_usuario"]. $datos_usuario["usuario"]. $datos_usuario["contrasenna"];
+        $nuevo = new Usuario();
+        $nuevo->nuevoUsuario($datos_usuario["idusuario"], $datos_usuario["nombre"], $datos_usuario["codigo"]
+                , $datos_usuario["correo"], $datos_usuario["ciudad"], $datos_usuario["direccion"], $datos_usuario["identificacion"]
+                , $datos_usuario["tipo_usuario"], $datos_usuario["usuario"], $datos_usuario["contrasenna"]);
+        return $nuevo;
+    }
+
+    public function buscarUsuarioByCriterio($criterio, $tipo_usuario) {
+
+        $query = "SELECT * FROM usuario WHERE nombre LIKE '%" . $criterio . "%' OR estado = '" . $criterio . "' OR  tipo_usuario = '" . $tipo_usuario . "' ; ";
+        echo "buscar usuario por criterio funcion";
+        $conn = conBD::conectar();
+        $result = mysqli_query($conn, $query);
         $datosPerfiles = array();
 //         echo $result;
 //        print_r($result);
-        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $nuevoUsuario = new Usuario();
-            $nuevoUsuario->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'],$fila['direccion'], 
-                $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
+            $nuevoUsuario->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'], $fila['direccion'], $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
             array_push($datosPerfiles, $nuevoUsuario);
         }
 //        $datosPerfiles = mysqli_fetch_all($result);
         return $datosPerfiles;
-        
     }
-    
-    public function guardarCambios(){
-        //`avatar` = '".$this->avatar."',
-//`estado` = '".$this->estado."'
-        $sql ="UPDATE `usuario`
-SET
-`codigo` = '".$this->codigo."',
-`nombre` = '".$this->nombre."',
-`correo` = '".$this->correo."',
-`identificacion` = '".$this->identificacion."',
-`direccion` = '".$this->direccion."',
-`ciudad` = '".$this->ciudad."',
-`tipo_usuario` = '".$this->tipo_usuario."',
-`usuario` = '".$this->user."',
-`contrasenna` = '".$this->pass."' 
- WHERE `idusuario` = '".$this->id."';";
+
+    public function buscarUsuarioByiD($idUser) {
+        $query = "SELECT * FROM usuario WHERE idusuario = '" . $idUser . "'";
+
+        $conn = conBD::conectar();
+        $result = mysqli_query($conn, $query);
+//        $datosPerfiles = array();
+//         echo $result;
+//        print_r($result);
+//        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+//            $nuevoUsuario = new Usuario();
+//            $nuevoUsuario->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'], $fila['direccion'], $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
+//            array_push($datosPerfiles, $nuevoUsuario);
+//        }
+//        $datosPerfiles = mysqli_fetch_all($result);
+        $fila = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $this->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'], $fila['direccion'], $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
+
+    }
+
+    public function buscarUsuarioInvitarGrupo($criterio, $idGrupo) {
+
+        $query = "SELECT U.* FROM usuario U WHERE ( U.nombre LIKE '%" . $criterio . "%' OR U.estado = '" . $criterio . "' ) AND  U.idusuario NOT IN ( SELECT `participante_sala`.`idusuario` FROM `participante_sala` where idsala_chat = '" . $idGrupo . "')";
+
+        $conn = conBD::conectar();
+        $result = mysqli_query($conn, $query);
+        $datosPerfiles = array();
+//         echo $result;
+//        print_r($result);
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $nuevoUsuario = new Usuario();
+            $nuevoUsuario->nuevoUsuario($fila['idusuario'], $fila['nombre'], $fila['codigo'], $fila['correo'], $fila['ciudad'], $fila['direccion'], $fila['identificacion'], $fila['tipo_usuario'], $fila['usuario'], $fila['contrasenna']);
+            array_push($datosPerfiles, $nuevoUsuario);
+        }
+//        $datosPerfiles = mysqli_fetch_all($result);
+        return $datosPerfiles;
+    }
+
+    public function invitarSalaChat($idInvitado, $idSalaChat) {
+        $conn = conBD::conectar();
+        $hoy = conBD::getFechaActual();
+        $query = "INSERT INTO `participante_sala`" .
+                "(`idusuario`," .
+                "`idsala_chat`," .
+                "`fecha`," .
+                "`estado`)" .
+                "VALUES" .
+                "('" . $idInvitado . "'," .
+                "'" . $idSalaChat . "'," .
+                "'" . $hoy . "'," .
+                "'INVITADO'); ";
+//        echo $query;
+        mysqli_query($conn, $query);
+        $existoInsert = mysqli_affected_rows($conn);
+        if ($existoInsert > 0) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function guardarCambios() {
+
+        $sql = "UPDATE `usuario`" .
+                "SET" .
+                "`codigo` = '" . $this->codigo . "'," .
+                "`nombre` = '" . $this->nombre . "'," .
+                "`correo` = '" . $this->correo . "'," .
+                "`identificacion` = '" . $this->identificacion . "'," .
+                "`direccion` = '" . $this->direccion . "'," .
+                "`ciudad` = '" . $this->ciudad . "'," .
+                "`tipo_usuario` = '" . $this->tipo_usuario . "'," .
+                "`usuario` = '" . $this->user . "'," .
+                "`contrasenna` = '" . $this->pass . "' " .
+                "WHERE `idusuario` = '" . $this->id . "';";
 //        echo $sql;
         $conn = conBD::conectar();
         $resp = mysqli_query($conn, $sql);
 //        echo "<br>".$resp;
     }
-                function getId() {
+
+    function getId() {
         return $this->id;
     }
 
@@ -180,6 +217,42 @@ SET
 
     function setNombre($nombre) {
         $this->nombre = $nombre;
+    }
+
+    function registroInicioSession() {
+        $idSession = session_id();
+        $hoy = conBD::getFechaActual();
+        $conn = conBD::conectar();
+        $sql = "INSERT INTO `usuario_loging`" .
+                "(" .
+                "`idusuario`," .
+                "`fecha`," .
+                "`estado`," .
+                "`idsession`)" .
+                "VALUES" .
+                "(" .
+                "'" . $this->id . "'," .
+                "'" . $hoy . "'," .
+                "'CONECTADO'," .
+                "'" . $idSession . "');";
+        mysqli_query($conn, $sql);
+    }
+
+    function registroCierreSession() {
+//        $idSession = session_id();
+        $hoy = conBD::getFechaActual();
+        $sql = "INSERT INTO `usuario_loging`
+(
+`idusuario`,
+`fecha_salio`,
+`estado`
+)
+VALUES
+(
+'" . $this->id . "',
+'" . $hoy . "',
+'DESCONECTADO');";
+        mysqli_query($conn, $sql);
     }
 
 }

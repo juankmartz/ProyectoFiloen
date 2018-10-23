@@ -1,5 +1,5 @@
 <?php 
-	include "cn.php";
+	include "../../controlador/conBD.php";
 	include "funciones.php";
 	
  ?>
@@ -87,6 +87,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8">
 
                     <?php 
+                    $connect= conBD::conectar();
                         $query = mysqli_query($connect, "SELECT * FROM minfo");
 
                         if ($not=mysqli_fetch_array($query)) {
@@ -186,3 +187,4 @@
 
 </body>
 </html>
+<?php            mysqli_close($connect); ?>

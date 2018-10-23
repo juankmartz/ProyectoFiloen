@@ -1,7 +1,8 @@
 <?php 
-	include "cn.php";
+	include "../../controlador/conBD.php";
 	include "funciones.php";
 	
+        $connect = conBD::conectar();
  ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -232,4 +233,4 @@ echo "<a href= 'blog.php?pagina=$total_paginas'>".' Última '."</a>";
 
 </body>
 </html>
-
+<?php            mysqli_close($connect); ?>

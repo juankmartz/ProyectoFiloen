@@ -4,27 +4,24 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<!--<html>
     <head>
-        <meta charset="UTF-8">
-<!--        <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
-        <link href="pluging/bootstrap4/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <script src="pluging/bootstrap4/js/bootstrap.js" type="text/javascript"></script>
-        <script src="js/funcionesGenerales.js" type="text/javascript"></script>-->
-        <title></title>
+
     </head>
-    <body>
+    <body>-->
 	<?php
 	// put your code here
+//        parametrizar multiselect o individual, si se permite la seleccion. ver perfil 
 	?>
-	<div class="container">
+	<div class="container" style="min-width: 150%">
+            <h3>Buscar usuarios</h3>
             <!--onsubmit="envioFormulario('formBuscar', 'contresultados', true); return false;"-->
             <form onsubmit="envioFormularioMultiPart2('formBuscar', 'contresultados', true); return false;" class="row" method="post" id="formBuscar" action="../controlador/usuarios.php" >
 		<div class="col-sm-12 col-md-6">
-		    <div class="btn-group" style="width: 100%">
+		    <div class="btn-group" >
                         <input name="criterio" type="text" class="form-control" placeholder="Criterios  de busqueda" aria-label="Username" aria-describedby="basic-addon1" required>
-                        <button class="btn btn-default" onclick="$('#formBuscar').submit();"><a class="fa fa-search"></a> Buscar</button>
-                        <!--<input type="submit" value="Buscar">-->
+                        <button class="btn btn-default" onclick="$('#btnSubmitBusqueda').click();"><a class="fa fa-search"></a> Buscar</button>
+                        <input type="submit" value="Buscar" style="display: none;" id="btnSubmitBusqueda">
 		    </div>
 		</div>
                 <input type="hidden" name="oper" value="Buscar perfiles">

@@ -1,4 +1,4 @@
-*{
+/**{
     margin: 0px;
     padding: 0px;
 }
@@ -245,7 +245,7 @@
     height: 30px;
     margin: 0px;
     padding: 0px;
-}
+}*/
 
 .informacion {
     position: relative;
@@ -304,7 +304,7 @@
     width: 96%;
 }
 
-.pie {
+/*.pie {
     position: absolute;
     background: #11408D;
     width: 100%;
@@ -326,5 +326,5 @@
 
 .pie a:hover{
     color: orangered;
-}
+}*/
 
