@@ -10,41 +10,17 @@
     padding: 0px;
 }
 
-.roww .uno{
-    position: absolute;
-    width: 50px;
-    height: 40px;
-    left: 81%;
-}
-
-.roww h4{
-    position: absolute;
-    font-size: 100%;
-    font-family: 'Edwardian Script ITC';
-    left: 85%;
-}
-
-.roww h2{
-    position: absolute;
-    font-size: 130%;
-    top: 25px;
-    font-style: italic;
-    color: rgb(0,110,192);
-    left: 89%;
-}
-
 .roww .dos{
-    position: absolute;
-    width: 150px;
-    height: 50px;
-    top: 10px;
+    position: relative;
+    width: 200px;
+    left: 10%;
 }
 
 .roww h1{
     position: absolute;
     width: 100%;
     font-family: 'arial narrow';
-    font-size: 290%;
+    font-size: 250%;
     color: rgb(0,110,192);
     text-align: center;
 }
@@ -237,7 +213,6 @@
 .info a{
     position: absolute;
     padding: 5px 10px;
-    left: 86%;
     background: rgb(0,110,192);
     color: white;
     font-family: 'arial narrow';

@@ -11,6 +11,8 @@
 }
 
 .iblog .uno{
+    position: relative;
+    top: -45px;
     width: 200px;
 }
 
@@ -109,25 +111,13 @@
     height: 300px;
 }
 
-.iblog{
-    position: relative;
-    display: flex;
-    margin: 0px 5px;
-    padding: 5px;
-    border-radius: 5px;
-    width: 20%;
-    height: 55px;
-    top: -44px;
-    box-shadow: rgb(193, 194, 196) 2px 2px 2px 2px;
-}
-
 .titulo {
     position: absolute;
     top: 490px;
     left: 10%;
     font-weight: bold;
     width: 80%;
-    font-size: 230%;
+    font-size: 200%;
     font-family: 'arial narrow';
     color: rgb(0, 110, 192);
 }
@@ -138,6 +128,16 @@
     width: 80%;
     left: 8%;
     border: solid 1px rgb(0, 110, 192);  
+}
+
+.cat{
+    position: relative;
+    top: -10px;
+    font-family: 'arial narrow';
+    font-size: 120%;
+    color: lightgray;
+    left: 10%;
+    width: 20%;
 }
 
 .navegacion{
@@ -167,13 +167,11 @@
 .menus > li > a{
     padding: 0px 0px;
     text-decoration: none;
-    color: gray;
     font-family: 'arial narrow';
     font-size: 100%;
 }
 
 .menus li a:hover{
-    color: #11408D;
     font-family: 'arial narrow';
 }
 
@@ -181,6 +179,10 @@
    visibility: visible;
    opacity: 1;
    border-radius: 10px;
+}
+
+li .categoria:hover{
+    color: white;
 }
 
 .menus li img{
@@ -227,6 +229,18 @@
     font-style: italic;
     margin-bottom: 10px;
     color: gray;
+}
+
+form .cat{
+    width: 100%;
+    border-radius: 5px;
+    height: 35px;
+}
+
+form .cate{
+    font-family: 'arial narrow';
+    font-size: 130%;
+    color: rgb(0,110,192);
 }
 
 .main .primo{
@@ -346,12 +360,16 @@
     border: 0.5px solid black;
 }
 
+.footer1 .row{
+    position: absolute;
+    text-align: center;
+}
+
 .footer1 .row a img{
     position: relative;
     top: -5px;
     width: 50px;
     height: 30px;
-    left: 750%;
 }
 
 .pie {

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lista de Tareas</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logor.png">
     <link rel="stylesheet" href="css/tareass.css" type="text/css">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estilos.css">
@@ -128,25 +128,9 @@
 <script src="js/tareas.js"></script>
 </div>
 
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<footer>
-<div class="pie">
-    <p>
-    <a href="inicioEst.php">Inicio</a> | 
-    <a href="contactenos_Comp.php">Contáctenos</a> |
-    <a href="#">Registro</a> |
-    <a href="#">Login</a> |                                                
-    </p>
-    <p>
-         Copyright 2018. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
-    </p>
-                            
-</div>
-</footer>
-
-</body>
-</html>
+<?php
+require 'blogs/footer.php';
+?>

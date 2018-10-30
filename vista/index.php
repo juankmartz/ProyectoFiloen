@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Portal FiloEn</title>
+        <title>Portal El Patio Filosófico</title>
         <link href="pluging/fontawesome-free-5.3.1-web/css/all.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logor.jpg">
 
         <link rel="stylesheet" href="css/flexslider.css" type="text/css">
         <link href="css/loaderEsferas.css" rel="stylesheet" type="text/css"/>
@@ -156,12 +156,7 @@
         </div>
 
         <div class="encabezado">
-            <img src="imagenes/logo1.png" alt="FiloEn" width="60px">
-        </div>
-
-        <div class="encabezado2">
-            <h4>Filosofía y Enseñanza de la Filosofía</h4>
-            <h2 class="filoen">FiloEn</h2>
+            <img src="imagenes/logo.jpeg" alt="FiloEn" width="300px">
         </div> 
 
         <div class="ingreso">

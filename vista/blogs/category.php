@@ -9,9 +9,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Artículo Blog</title>
+    <title>Categorías</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png">
     <link rel="stylesheet" href="css/noticiacompletas.css">
+    <link rel="stylesheet" href="css/blogg.css">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estiloss.css">
 
@@ -46,73 +47,48 @@
 
     <?php
           require 'navegacion.php';
-    ?>
+    ?> 
 
 <div class="main row">
+    
 
     <div class="col-xs-12 col-sm-9 col-md-9">
-
-      <?php 
-
-	if (isset($_GET['id'])) {
-		
-		$query = mysqli_query($connect, "SELECT * FROM blog WHERE id = '".$_GET['id']."'");
-
-		while ($row=mysqli_fetch_array($query)) {
-		
-		?>
-		<div class="info">
-		<h1><?php echo $row['Titulo']; ?></h1>
-        <?php echo $row['Fecha']; ?>
-        <br/>
-        <br/>
-        <p><?php echo $row['articulo']; ?></p>
-		<br/>
-        <a href="blog.php"><?php echo "Volver a Mi Blog"; ?></a>
-        <br/> <br/>
-
         
-
-		<?php 
-			}
-		?>
-			<form id="form1" name="form1" method="post" action="">
-
-				<h4><label for="textfield">Deja tu comentario</label></h4>
-
-                                <p><textarea name="comentario" cols="90" rows="4" id="textfield" required></textarea></p>
-
-				<p><input type="submit" class="btn btn-primary" name="guardar" value="Comentar" /></p>
-			
-			</form>
-			<br/>
-			<?php 
-				if (isset($_POST['guardar'])) {
-					
-					$insert = mysqli_query($connect, "INSERT INTO comentarios (comentario, not_id) values ('".$_POST['comentario']."','".$_GET['id']."')"); 
-
-					if ($insert) { echo "El comentario se ha agregado";}
-				}
-
-				 ?>
-			<h4>Comentarios:</h4>
-			
-			</div>	
-			<?php 
-
-			$coment = mysqli_query($connect, "SELECT * FROM comentarios WHERE not_id = '".$_GET['id']."' ORDER BY id DESC");
-
-			while ($com=mysqli_fetch_array($coment)) {
-				?>
-				<hr>
-				<div class="comentarios"><p><?php echo $com['comentario']; ?></p></div>
-				<?php  
-			}
-				?>
-		<?php 
-			}
-		?>
+         <?php
+    if(isset($_GET['id'])){
         
+        $query = mysqli_query($connect, "SELECT * FROM blog WHERE id = '".$_GET['id']."'");
+        
+        while($row= mysqli_fetch_array($query))
+        {
+            
+            $usuario = mysqli_query($connect, "SELECT * FROM categorias WHERE id = '".$row['categoria']."' ");
+            $user = mysqli_fetch_array($usuario);
+           ?>
+        
+        <a href="noticiacompleta.php?id=<?php echo $row['id']; ?>"><h2 class="primo"><?php echo $row['Titulo']; ?></h2></a>
+        
+        <p><?php echo $row['Fecha']; ?></p>
+     
+        <div class="contenido">
+        <p class="letra"><?php echo $row['articulo']; ?></p>
+        </div>
+ 			
+        
+        <hr class="linea">
+        <div class="opciones">
+	        <a href="noticiacompleta.php?id=<?php echo $row['id']; ?>" class="leer" ><?php echo "Leer más..."; ?></a>  
+	        <a href="" class="gusta"><img src="imagenes/gusta.png" title="Me gusta"></a>
+	       <div class="coment"><img src="imagenes/comentarios.png" title="Comentarios"> (<?php //echo $contar; ?>)</div>
+      	</div>
+        <hr class="linea">
+         <br/> 
+         <hr>
+        
+        <?php
+        } 
+        };
+        ?>
 
     </div>
 
