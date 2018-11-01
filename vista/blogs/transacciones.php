@@ -1,6 +1,6 @@
 <?php 
-	include "cn.php";
-	include "funciones.php";
+	include "../../controlador/conBD.php";
+//	include "funciones.php";
  ?>
 
  <!DOCTYPE html>
@@ -29,7 +29,7 @@
             <?php
 
             if (isset($_POST['guardar'])) {
-		
+		$connect = conBD::conectar();
 			$query = mysqli_query($connect, "INSERT INTO blog (Titulo, articulo, Fecha) values ('".$_POST['titulo']."','".$_POST['articulo']."', NOW()) ");
 
 		if ($query) {
@@ -50,3 +50,4 @@
 
 </body>
 </html>
+<?php            mysqli_close($connect); ?>

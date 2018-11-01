@@ -12,7 +12,7 @@
     <title>Categorías</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png">
     <link rel="stylesheet" href="css/noticiacompletas.css">
-    <link rel="stylesheet" href="css/blogg.css">
+    
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estiloss.css">
 

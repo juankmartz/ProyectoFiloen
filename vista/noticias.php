@@ -14,6 +14,7 @@ $existenRegistro = mysqli_query($conn, $sentenciaSQL);
 
     <h3 class="titulo">Últimas Noticias</h3>
     <hr class="linea">
+    <div class="cont-noticiaDestacada">
     <?php
     // noticias destacadas
     $sql = "SELECT `noticia`.`idnoticia`,
@@ -44,7 +45,7 @@ FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
 			<?php
 		    } else
 		    if ($fila["tipo_multimedia"] == "IMAGEN") {
-			?><img src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
+			?><img class="img-noticia" src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
 		    } else
 		    if ($fila["tipo_multimedia"] == "YOUTUBE") {
 			?><img class="media-object img-noticia" width="300px" src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
@@ -52,10 +53,10 @@ FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
 		    ?>
     	
     	</div>
-    	<div class="col-sm-10 offset-sm-1 offset-md-0 col-md-7 pr-2 mt-md-0 mt-sm-4 ">
-    	    <h4 class="col-12 pl-0 text-info text-uppercase"><?php echo $fila["titulo"]; ?></h4>
-    	    <h6 class="clol-12 pl-0 text-info "><?php echo $fila["subtitulo"]; ?></h6>
-    	    <p class="text-max-170"><?php echo $fila["contenido"]; ?><p>
+    	<div class="col-texto-noticia col-sm-10 offset-sm-1 offset-md-0 col-md-7 ">
+    	    <h4 class="col-12 text-info text-uppercase"><?php echo $fila["titulo"]; ?></h4>
+    	    <h6 class="clol-12  text-info "><?php echo $fila["subtitulo"]; ?></h6>
+    	    <p class="text-max-170 " ><?php echo $fila["contenido"]; ?><p>
                 <?php if($fila["enlace"] != "") echo '<a href="'.$fila["enlace"].'" target="noticia" class="btn btn-primary btn">Leer más</a>'; ?>
                 <br></p>
     	</div>
@@ -64,6 +65,7 @@ FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
 	<?php
     }
     ?>
+</div>
     <div class="content-fluid">
 	<div class="row col-12 ">
 	    <?php
@@ -85,7 +87,7 @@ FROM `noticia` WHERE estado = 'ACTIVA' limit ".$limiteNoticias;
 	    while ($fila = mysqli_fetch_array($resultado1, MYSQLI_ASSOC)) {
 		
                 if($numero == 1){ 
-                    echo '<div class="col-md-5 pl-3 pr-3 mb-3 offset-1">';
+                    echo '<div class="col-md-5 pl-3 pr-3 mb-3 ">';
                     $numero = 2;
                 }
                 else{
@@ -106,15 +108,15 @@ FROM `noticia` WHERE estado = 'ACTIVA' limit ".$limiteNoticias;
 				<?php
 			    } else
 			    if ($fila["tipo_multimedia"] == "IMAGEN") {
-				?><img src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
+				?><img class="img-noticia" src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
 			    } else
 			    if ($fila["tipo_multimedia"] == "YOUTUBE") {
-				?><img src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
+                                ?><img class="img-noticia" src="<?php echo $fila["imagen"]; ?>" alt="" ><?php
 			    }
 			    ?>
 
     		    </div>
-    		    <div class="row mt-4">
+    		    <div class="row  mt-4">
                         <h4 class="text-info col-12 text-uppercase"><?php echo $fila["titulo"]; ?></h4>
                         <h6 class="text-info col-12 "><?php echo $fila["subtitulo"]; ?></h6>
 			<p class="text-noticia-normal pl-3 pr-3 text-justify col-12"><?php echo $fila["contenido"]; ?></p> <br>

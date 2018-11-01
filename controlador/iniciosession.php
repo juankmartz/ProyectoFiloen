@@ -55,17 +55,20 @@ class iniciosession {
                            $_SESSION["conexionBD"] = $connect;
                            $_SESSION["iduser"] =  $row["idusuario"];
 //                           if (! $_SESSION['Usuario'] instanceof Usuario)
+                           $user->registroInicioSession();
                            $_SESSION["usuario"] = serialize($user) ;
                            $nuevoUser= $_SESSION['usuario'];
                            $nuevoUser= unserialize($nuevoUser);
-                         
+//                         header("Location: index.php");
                             ?> <script> cargarPagina('inicioUsuario.php','contenedorPrincipal',true); var noty = new NotificationFx({
                         message: '<p>Bienvenido a Filoen </p><h6><?php echo $nuevoUser->getNombre()?></h6>',
                         layout: 'growl',
                         effect: 'slide',
                         type: 'notice' // notice, warning or error
                                     });
-                           noty.show();</script> <?php
+                           noty.show();
+                        location.href =""; cargarPagina('inicioUsuario.php','contenedorPrincipal',true);                             </script> <?php
+                           
                            
                 } else {
                     ?> <script>

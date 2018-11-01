@@ -59,7 +59,7 @@
 
 .ingreso {
     position: absolute;
-    left: 75%;
+    right: 22px;
     top: 40px;
     width: 350px;
     z-index: 99999;

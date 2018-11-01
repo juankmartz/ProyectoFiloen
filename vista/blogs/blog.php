@@ -1,6 +1,7 @@
 <?php 
-	include "cn.php";
+//	include "cn.php";
 	include "funciones.php";
+        include '../../controlador/conBD.php';
 	
  ?>
  <!DOCTYPE html>
@@ -67,7 +68,7 @@
         <article class="main"> 
 
             <?php 
-
+$connect = conBD::conectar();
             $por_pagina = 5;
 
 			if (isset($_GET['pagina'])) {
@@ -181,6 +182,7 @@ echo "<a href= 'blog.php?pagina=$total_paginas'>".' Última '."</a>";
         </div>
 
     </div>
+
 
 <?php
      require 'footer.php';

@@ -31,6 +31,7 @@ if (isset($_SESSION['usuario'])) {
         <script src="js/jquery.min.js" type="text/javascript"></script>
         <script src="pluging/SlidePushMenus/js/modernizr.custom.js" type="text/javascript"></script>
         <script src="pluging/SlidePushMenus/js/classie.js" type="text/javascript"></script>
+        <script src="js/funcionesGenerales.js" type="text/javascript"></script>
         <style>
             .fotoPerfiles {
                 height: 100px;
@@ -309,6 +310,7 @@ if (isset($_SESSION['usuario'])) {
 
                 <a href="#1" onclick="cargarPagina('registroNoticia.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-desktop "></i> <span class="text-menu-lateral">Noticias</span></a>
                 <a href="#1"></a>
+                <!--<a href="#1" onclick=" cargarPagina('MisClases.php','cuerpo-principal-perfil',true);">prueba</a>-->
             </nav>
 
             <div class="menu-lateral menu-fix">
@@ -444,7 +446,9 @@ if (isset($_SESSION['usuario'])) {
                 </div>
 
             </div>
+            
             <script>
+                
                 function editarCampo(idInput, btn) {
                     //             alert( $(boton).parent().children("input").val());
                     $("#" + idInput).removeAttr("disabled");

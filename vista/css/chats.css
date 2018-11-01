@@ -17,6 +17,7 @@ div#chat-content {
     /* max-height: 50%; */
     overflow-y: auto;
     z-index: 800;
+     transform: rotateZ(180deg);
 }
 
 .conversacion {
@@ -25,8 +26,11 @@ div#chat-content {
     margin-right: 5px;
     background: rgb(236, 245, 255);
     border: 1px solid #d6d6d6;
-    padding: 6px 5px 30px 17px;
+    /*padding: 6px 5px 30px 17px;*/
+    padding: 0px;
     border-radius: 5px 5px 0px 0px;
+     display: inline-grid;
+    transform: rotateZ(180deg);
 }
 .cuerpo-chat {
     max-height: 310px;
@@ -35,6 +39,7 @@ div#chat-content {
     padding-left: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
+    min-width: 298px;
 }
 p.mensaje {
     margin-bottom: 2px;
@@ -50,11 +55,13 @@ p.mensaje {
 
 .mensaje-izq {
     margin-top: 5px;
+    width: 98%;
     /* margin-bottom: 5px; */
 }
 .mensaje-der {
     margin-top: 13px;
     display: table;
+    width: 98%;
 }
 .mensaje-der .nomb-cuerpo-chat {
     display: none;
@@ -126,4 +133,19 @@ img.img-user-chat {
 }
 .mensaje-chat{
     margin-top: 5px;
+}
+.titulo-chat.row-flow {
+    background: #4886cc;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+a.btn-closed.col-1 {
+    color: #fff;
+    font-weight: bold;
+    float: right;
+}
+.collapse{
+    min-width: 298px;
 }
