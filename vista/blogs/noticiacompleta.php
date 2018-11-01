@@ -135,7 +135,12 @@
     </div>
 
 
+
 <?php
             require 'footer.php';
 ?>
 
+
+</body>
+</html>
+<?php            mysqli_close($connect); ?>

@@ -183,7 +183,11 @@ echo "<a href= 'blog.php?pagina=$total_paginas'>".' Última '."</a>";
 
     </div>
 
-
 <?php
      require 'footer.php';
 ?>
+
+</body>
+</html>
+    <?php            mysqli_close($connect); ?>
+

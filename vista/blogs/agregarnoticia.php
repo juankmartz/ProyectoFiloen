@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estiloss.css">
 
-
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -26,12 +25,21 @@
 
     <body>
 
-
     <div class="row">
         <img src="imagenes/logo.png"  class="uno" >
     
         <h1>BLOG EL PATIO FILOSÓFICO</h1>
     </div>
+        <div class="row">
+            <img src="imagenes/logo2.png" alt="Filosofia y enseñanza de la filosofia" class="uno" >
+            <div>
+                <h4>Filosfofía y Enseñanza de la Filosofía</h4>
+                <h2>FiloEn</h2>
+            </div>
+            <h1>BLOG FILOEN</h1>
+            <img src="imagenes/uis.png" class="dos">
+        </div>
+
 
         <header>
             <div class="fondo1">
@@ -40,6 +48,7 @@
         </header>
 
         <div class="container">
+
 
 
 	<p>Bienvenido al formulario de entradas para el Blog. Este formulario es exclusivo para subir artículos al blog y no permite entradas dirigidas a otras partes del portal web. </p>
@@ -68,10 +77,7 @@
                 </table>
             </form>
 
-
-
 </div>
 <?php
  require 'footer.php';
 ?>
-
