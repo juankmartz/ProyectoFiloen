@@ -1,0 +1,134 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-nov-2018, 9:30:53
+    Author     : desarrolloJuan
+*/
+
+ .cont-Memsaje-comunal{
+        font-size: 14px;
+        padding-left: 45px;
+        border: 1px solid red;
+        max-height: 400px;
+        height: 700px;
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+    .participante-sala{
+        display: block;
+    }
+    .nombreChat{
+        display: block;
+    }
+    span.nombreChat {
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.87);
+        font-size: 13px;
+
+    }
+    span.f-h-mensaje {
+        font-size: 10px;
+        color: #f1eded;
+        text-align: right;
+        display: block;
+    }
+    
+    h3.titulo-grupo {
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center;
+    color: #4886cc;
+    margin-top: 25px;
+}
+
+p.descripcion-grupo {
+    padding-left: 20px;
+    color: #5d5c5c;
+}
+
+.admin-grupo {
+    font-size: small;
+    color: #007bff9c;
+    padding-left: 20px;
+}
+
+.form-nueva-publicacion {
+    width: 100%;
+    
+    padding: 20px 40px;
+}
+
+textarea#publicacion {
+    height: 50px;
+    margin-bottom: 10px; 
+    width: 100%;
+    resize: none;
+    padding: 5px 10px;
+}
+
+div#cuerpo-publicacion {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 10px 27px;
+    /* border: #007bff solid 1px; */
+    border-radius: 5px;
+    /* background: #e5eef9; */
+}
+
+.publicacion {
+    border: 1px solid #9cc0e8;
+    /* border-radius: 5px; */
+    padding: 5px 15px;
+    /* background: #d9e5f3; */
+    border-left: none;
+    border-right: none;
+    margin-bottom: 2px;
+}
+
+.cuerpo-coment {
+    background: #ececec;
+    border: 1px solid #d0d0d0;
+    border-radius: 9px;
+    margin-bottom: 9px;
+    color: #868383;
+    padding: 10px 20px;
+    padding-bottom: 0px;
+}
+
+.nomb-coment {
+    font-weight: 500;
+    font-size: small;
+    color: #4886cc;
+}
+
+.fecha-coment {
+    font-size: smaller;
+    color: #869dc4;
+}
+
+textarea.nuevo-comment {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 5px 20px;
+    resize: none;
+    color: #253240;
+    background: #ced4da;
+    font-size: small;
+}
+.nuevo-comment {
+    margin-bottom: 10px;
+}
+#publicacion {
+    border-radius: 10px;
+    border-right: none;
+    border: 2px solid #8ab6e4;
+    /* border-image: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%); */
+    /* border: 20px solid transparent; */
+    /* border-bottom: none; */
+    border-color: #8ab6e4;
+}

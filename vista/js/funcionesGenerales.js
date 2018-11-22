@@ -27,12 +27,12 @@ function ejecutarFuncion(urlClase, oper, idContRespuesta, remplazarContenido) {
             } else {
                 $("#" + idContRespuesta).append(result);
             }
-            cerrarLoader();
+//            cerrarLoader();
 //            ocultarLoaderOndaDeCubos();
         },
         error: function (e) {
             $("#" + idContRespuesta).append("ha ocurrido un Error en el envio del formulario " + e);
-            cerrarLoader();
+//            cerrarLoader();
 //            ocultarLoaderOndaDeCubos();
 //            nuevaNotify('error', 'Error', 'Ha ocurrido un error en el envio del formulario; intentelo mas tarde', 9000);
         }
@@ -179,6 +179,7 @@ function envioFormularioMultiPart(formulario, idContRespuesta, remplazo) {
 function envioFormularioMultiPart2(formulario, idContRespuesta, remplazo) {
 //    cargarLoader();
     var paqueteDeDatos = zerialisForm(formulario);
+    console.log(paqueteDeDatos);
     var destino = $('#' + formulario).attr("action"); // El script que va a recibir los campos de formulario.
     /* Se envia el paquete de datos por ajax. */
     $.ajax({

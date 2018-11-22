@@ -28,6 +28,25 @@
 
 
 <body>
+    <?php
+			if (isset($_POST['send'])){
+				include("../controlador/sendemail.php");//Mando a llamar la funcion que se encarga de enviar el correo electronico
+				
+				/*Configuracion de variables para enviar el correo*/
+				$mail_username="elpatiofilosofico@gmail.com";//Correo electronico saliente ejemplo: tucorreo@gmail.com
+				$mail_userpassword="patio0987654321";//Tu contraseÃ±a de gmail
+				$mail_addAddress="elpatiofilosofico@gmail.com";//correo electronico que recibira el mensaje
+				$template="email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
+				
+				/*Inicio captura de datos enviados por $_POST para enviar el correo */
+				$mail_setFromEmail=$_POST['correo'];
+				$mail_setFromName=$_POST['nombre'];
+				$txt_message=$_POST['mensaje'];
+				$mail_subject=$_POST['asunto'];
+				
+				sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template);//Enviar el mensaje
+			}
+		?>
     <div class="logo">
         <img src="imagenes/logo1.png" alt="Filosofia y enseñanza de la filosofia" width="80px">
         <div class="slogan">
@@ -89,7 +108,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <form action="enviar.php" method="POST">
+            <form action="" method="POST" >
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Nombre*</label>
                     <div class="col-sm-10">

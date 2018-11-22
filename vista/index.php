@@ -13,24 +13,29 @@ include '../modelo/Mensajeria.php';
 
         <link rel="stylesheet" href="css/flexslider.css" type="text/css">
         <link href="css/loaderEsferas.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/fontello.css" >
-        <link rel="stylesheet" href="css/estilos.css" >
+        <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+        <!--<link rel="stylesheet" href="css/fontello.css" >-->
+        <!--<link rel="stylesheet" href="css/estilos.css" >-->
         <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 
         <link href="pluging/NotificationStyles/css/ns-default.css" rel="stylesheet" type="text/css"/>
         <link href="pluging/NotificationStyles/css/ns-style-growl.css" rel="stylesheet" type="text/css"/>
         <link href="css/barraDesplazamiento.css" rel="stylesheet" type="text/css"/>
         <link href="pluging/bootstrap4/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
         <link href="css/chats.css" rel="stylesheet" type="text/css"/>
 
         <!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
-        <?php
+        
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">         
+                    
+                    
+                    <?php
         session_start();
         $user = new Usuario();
         if (isset($_SESSION["usuario"])) {
+//            print_r($_SESSION["usuario"]) ;
             $user = unserialize($_SESSION['usuario']);
         }
         ?>
@@ -159,28 +164,38 @@ include '../modelo/Mensajeria.php';
                 if ($user->getId() > 0) {
                     ?>
                     <a href=""></a>
-                    <ul class="menus">
-                        <li> <a href="inicioEst.php"><span><img src="Imagenes/inicio.png" alt="" width="20px"></span> Inicio</a></li>
-                        <li> <a href="MuroYPerfEstud.php?id=<?php echo $_SESSION['id']; ?> "><span><img src="Imagenes/persona.png" alt="" width="20px"></span> Filósofos<span class="icon icon-angle-down"></span></a>
+                    <ul class="menus row">
+                        <!--<li> <a href="inicioEst.php"><span><img src="Imagenes/inicio.png" alt="" width="20px"></span> Inicio</a></li>-->
+                        <li class="col"> <a class="btn btn-light" href="MuroYPerfEstud.php?id=<?php echo $_SESSION['id']; ?> ">
+                                <i class="fa fa-user-alt"></i><span class="hidden-md-down">Filósofos</span><i class="icon icon-angle-down"></i></a>
                             <ul class="submenu">
-                                <li> <a href="#">Perfiles</a></li>
+                                <li> <a href="#1" onclick="cargarPagina('buscardorPerfiles.php', 'contenedorPrincipal', true);">Perfiles</a></li>
                                 <li> <a href="blogs/blog.php">Mi Blog</a></li>
                             </ul>
                         </li>
-                        <li> <a href="#"><span><img src="Imagenes/grupo_1.png" alt="" width="20px"></span> Comunidad<span class="icon icon-angle-down"></span></a>
+                        <!--<li> <a href="#"><span><img src="Imagenes/grupo_1.png" alt="" width="20px"></span> Comunidad<span class="icon icon-angle-down"></span></a>-->
+                        <li class="col"> <a href="#" class="btn btn-light"><i class="fa fa-users"></i><span class="hidden-md-down"> Comunidad</span><span class="icon icon-angle-down"></span></a>
                             <ul class="submenu">
                                 <li> <a href="#1" onclick="cargarPagina('grupos.php', 'contenedorPrincipal', true);">Grupos</a></li>
                                 <li> <a href="">Blog</a></li>
                                 <li> <a href="#1" onclick="cargarPagina('inicioUsuario.php', 'contenedorPrincipal', true)">Perfil</a></li>
+                                <li> <a href="#1" onclick="cargarPagina('buscardorPerfiles.php', 'contenedorPrincipal', true)">Demas perfil</a></li>
                                 <li> <a href="Informate_comp.php">Infórmate</a></li>
                                 <li> <a href="acercaFiloEn_Comp.php">Acerca de FiloEn</a></li>
                             </ul> 
+                           
                         </li>
-                        <li> <a href="#"><span><img src="Imagenes/not.png" alt="" width="20px"></span> Noticias</a></li>
+                        <!--<li> <a href="#"><span><img src="Imagenes/not.png" alt="" width="20px"></span> Noticias</a></li>-->
 
-                        <li> <a href=""><span><img src="Imagenes/eve.png" alt="" width="20px"></span> Eventos</a></li>
+                        <!--<li> <a href=""><span><img src="Imagenes/eve.png" alt="" width="20px"></span> Eventos</a></li>-->
+                        <li class="col"> <a href="#22" class="btn btn-light" onclick="cargarPagina('eventos.php', 'contenedorPrincipal', true)" ><i class="fa fa-trophy"></i><span class="hidden-md-down"> Eventos</span></a></li>
 
-                        <li> <a href=""><span><img src="Imagenes/herramienta.png" alt="" width="20px"></span> Herramientas <span class="icon icon-angle-down"></span></a>
+                        <!--<li> <a href=""><span><img src="Imagenes/herramienta.png" alt="" width="20px"></span> Herramientas <span class="icon icon-angle-down"></span></a>-->
+                        <li class="col">
+                            <a href="#1" class="btn btn-light"> 
+                                <i class="fa fa-cogs"></i> <span class="hidden-md-down">Herramientas</span>
+                                <span class="icon icon-angle-down"></span>
+                            </a>
                             <ul class="submenu">
                                 <li> <a href="blogs/">Agregar Noticia</a></li>
                                 <li> <a href="">Figuras Retóricas</a></li>
@@ -188,7 +203,10 @@ include '../modelo/Mensajeria.php';
                             </ul>
                         </li>
 
-                        <li> <a href="contactenos_Comp.php"><span><img src="Imagenes/contactenos.png" alt="" width="20px"></span> Contáctenos</a></li>
+                        <li class="col"> <a  class="btn btn-light" href="#1" onclick="cargarPagina('contactenos_Comp.php', 'contenedorPrincipal', true)">
+                                <i class="fa fa-envelope"></i><span class="hidden-md-down"> Contáctenos</span>
+                            </a>
+                        </li>
                     </ul>
                     <?php
                 } else {
@@ -220,15 +238,7 @@ include '../modelo/Mensajeria.php';
                 ?>
             </nav>
         </div>
-
-        <div class="encabezado">
-            <img src="imagenes/logo1.png" alt="FiloEn" width="60px">
-        </div>
-
-        <div class="encabezado2">
-            <h4>Filosofía y Enseñanza de la Filosofía</h4>
-            <h2 class="filoen">FiloEn</h2>
-        </div> 
+ 
         <div class="ingreso">
             <?php
             if ($user->getId() == 0) {
@@ -243,7 +253,7 @@ include '../modelo/Mensajeria.php';
                 <a href="#1" class="btn-menu-superior float-right" title="Chats"><i class="fa fa-comment"></i></a>
                 <a href="#1" class="btn-menu-superior float-right" title="Notificaciones"><i class="fa fa-globe"></i></a>
                 <!--<span class="badge">42</span>-->
-                <a href="#1" class="btn-menu-superior float-right" title="Mi perfil"><i class="fa fa-child"></i></a>
+                <a href="#1" class="btn-menu-superior float-right" onclick="cargarPagina('inicioUsuario.php', 'contenedorPrincipal', true)" title="Mi perfil"><i class="fa fa-child"></i></a>
                 <a href="" class="btn-menu-superior float-right " title="Inicio"><i class="fa fa-university"></i></a>
                 <!--<nav class="navegacion2">-->
                 <!--                    <ul class="menu2">
@@ -266,7 +276,7 @@ include '../modelo/Mensajeria.php';
                 <!--</nav>-->
             <?php } ?>
         </div>     
-        <div class="content-fluid" id="contenedorPrincipal"></div>
+        <div class="content-fluid" id="contenedorPrincipal" style="margin-top: 30px;"></div>
         <div id="loader"></div>
         <?php
         if ($user->getId() > 0) {
@@ -288,7 +298,7 @@ include '../modelo/Mensajeria.php';
                     <div class="titulo-chat row-flow" data-toggle="collapse" data-target="#chat_<?php echo $idRecibe; ?>">
                         <span class="nomb-chat col-11"><?php echo $userRecibe->getNombre() ?></span><a href="#1" class="btn-closed col-1"  onclick="$(this).parents('.conversacion').remove();">x</a>
                     </div>
-                    <div class="collapse show" id="chat_<?php echo $idRecibe; ?>">
+                    <div class="collapse " id="chat_<?php echo $idRecibe; ?>">
                         <div class="cuerpo-chat scroll-item scroll-blue" id="chat_cuerpo_<?php echo $idRecibe; ?>">
                             <div class="cont-cuerpo-chat" id="contCuerpoChat<?php echo $idRecibe; ?>">
                                 <?php
@@ -312,7 +322,7 @@ include '../modelo/Mensajeria.php';
                                     } else {
                                         ?>
                                         <div class="mensaje-izq">
-                                            <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                                            <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="<?php echo $userRecibe->getAvatar(); ?>"> </div>
                                             <div class="text-mensaje">
                                                 <p class="mensaje"><?php echo $fila["mensaje"] ?></p>
                                                 <span class="f-h-mensaje"><?php echo $fila["fecha"]; ?></span>
@@ -394,8 +404,8 @@ include '../modelo/Mensajeria.php';
             </div>
         </footer> 
         <!--<script src="js/jquery.min.js"></script>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 
 
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

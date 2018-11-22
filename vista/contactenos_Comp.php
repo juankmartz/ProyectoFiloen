@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,9 @@
 
 <div class="logo">
     <img src="imagenes/logo.jpeg" alt="Filosofia y enseñanza de la filosofia">
-</div>
+</div>-->
 
-<header>
+<!--<header>
     <div class="fondo2">
             <h1>CONTÁCTENOS</h1>
 
@@ -55,7 +55,7 @@
             <nav class="navegacion">
                 <ul class="menus">
                     <li> <a href="inicioEst.php"><span><img src="Imagenes/inicio.png" alt="" width="20px"></span> Inicio</a></li>
-                    <li> <a href="MuroYPerfEstud.php?id=<?php echo $_SESSION['id']; ?> "><span><img src="Imagenes/persona.png" alt="" width="20px"></span> Filósofos<span class="icon icon-angle-down"></span></a>
+                    <li> <a href="MuroYPerfEstud.php?id=< ?php echo $_SESSION['id']; ?> "><span><img src="Imagenes/persona.png" alt="" width="20px"></span> Filósofos<span class="icon icon-angle-down"></span></a>
                     <ul class="submenu">
                             <li> <a href="#">Perfiles</a></li>
                             <li> <a href="blogs/blog.php">Mi Blog</a></li>
@@ -86,7 +86,27 @@
                 </ul>
             </nav>
         </div>
+    -->
     
+     <?php
+			if (isset($_POST['send'])){
+				include("../controlador/sendemail.php");//Mando a llamar la funcion que se encarga de enviar el correo electronico
+				
+				/*Configuracion de variables para enviar el correo*/
+				$mail_username="elpatiofilosofico@gmail.com";//Correo electronico saliente ejemplo: tucorreo@gmail.com
+				$mail_userpassword="patio0987654321";//Tu contraseÃ±a de gmail
+				$mail_addAddress="elpatiofilosofico@gmail.com";//correo electronico que recibira el mensaje
+				$template="email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
+				
+				/*Inicio captura de datos enviados por $_POST para enviar el correo */
+				$mail_setFromEmail=$_POST['correo'];
+				$mail_setFromName=$_POST['nombre'];
+				$txt_message=$_POST['mensaje'];
+				$mail_subject=$_POST['asunto'];
+				
+				sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template);//Enviar el mensaje
+			}
+		?>
         <h3 class="titulo">IMPORTANTE</h3>
     <hr class="linea">
 
@@ -100,7 +120,7 @@
     <div class="row">
 
         <div class="col-md-8">
-            <form action="enviar.php" method="POST">
+            <form action="../controlador/sendemail.php" method="POST">
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Nombre*</label>
                     <div class="col-sm-10">
@@ -149,13 +169,13 @@
                 <a href="http://www.filosofiayensenanza.org/inicio/">Grupo FiloEn</a>
         </p>
 
-        <img src="imagenes/a.png">
+        <!--<img src="imagenes/a.png">-->
         </div>   
     </div>
 
 </div>  
 </div>
-
+<!--
 <footer>
 <div class="pie">
         <p>
@@ -172,4 +192,4 @@
 
 </footer>
 </body>
-</html>
+</html>-->

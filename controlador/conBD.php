@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of conBD
- *
- * @author 
- */
 date_default_timezone_set('America/Bogota');
 
 class conBD {
@@ -43,11 +38,26 @@ class conBD {
 
         return $connect;
     }
+    static public function conectarStatico() {
+//	$host = "mysql7003.site4now.net";
+//	$dbuser = "a41246_filoen1";
+//	$dbpwd = "filoen123";
+//	$db = "db_a41246_filoen1";
+        $host = "localhost";
+        $dbuser = "root";
+        $dbpwd = "buffalo1";
+        $db = "dbfiloen";
+        return mysqli_connect(
+                $host, $dbuser, $dbpwd, $db);
 
-    function ejecutarInsert($sentencia) {
-        $connect = conectar();
-        mysqli_query($connect, $sentencia);
-        mysqli_close($connect);
+//        return $connect;
+    }
+
+    static function ejecutarInsert($sentencia) {
+        $conn1 = conBD::conectarStatico();
+        $resp = mysqli_query($conn1, $sentencia);
+        mysqli_close($conn1);
+        return $resp;
     }
 
     static function getFechaActual() {

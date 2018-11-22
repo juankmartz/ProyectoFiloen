@@ -40,7 +40,9 @@ class Noticia {
             while ($fila = mysql_fetch_row($respBD)) {
                 $this->setNoticiaArray($fila);
             }
+            mysqli_close($conn);
         } else {
+            mysqli_close($conn);
             return false;
         }
     }

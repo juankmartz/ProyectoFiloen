@@ -4,12 +4,23 @@ include '../controlador/conBD.php';
 
 session_start();
 $limiteNoticias = 2;
+$idUserAdmin = 0;
 if(isset($_SESSION["iduser"])){
     $limiteNoticias = 10;
+   
 }
 $conn = conBD::conectar();
 $sentenciaSQL = "SELECT * FROM `noticia` ";
 $existenRegistro = mysqli_query($conn, $sentenciaSQL);
+ $iduserAdmin = mysqli_query($conn, "SELECT * FROM usuario where tipo_usuario = 'ADMINISTRADOR'");
+// print_r(mysqli_fetch_assoc($iduserAdmin));
+ $idAdmin = "";
+ while ($row = mysqli_fetch_assoc($iduserAdmin) ){
+     $idAdmin = $idAdmin."'".$row["idusuario"]."',";
+//     echo $row["idusuario"];
+ }
+ if(substr($idAdmin, strlen($idAdmin) - 1) == ",")$idAdmin = substr($idAdmin,0, strlen($idAdmin) - 1);
+ 
 ?>
 
     <h3 class="titulo">Últimas Noticias</h3>
@@ -28,7 +39,7 @@ $existenRegistro = mysqli_query($conn, $sentenciaSQL);
     `noticia`.`enlace`,
     `noticia`.`estado`,
     `noticia`.`fecha_modifico`
-FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
+FROM `noticia` WHERE estado = 'DESTACADA' AND idusuario IN (".$idAdmin.") order by fecha DESC  limit ".$limiteNoticias;
     $resultado = mysqli_query($conn, $sql);
     while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
 	?>
@@ -81,7 +92,7 @@ FROM `noticia` WHERE estado = 'DESTACADA' limit ".$limiteNoticias;
     `noticia`.`enlace`,
     `noticia`.`estado`,
     `noticia`.`fecha_modifico`
-FROM `noticia` WHERE estado = 'ACTIVA' limit ".$limiteNoticias;
+FROM `noticia` WHERE estado = 'ACTIVA' AND idusuario IN (".$idAdmin.") order by fecha DESC  limit ".$limiteNoticias;
 	    $resultado1 = mysqli_query($conn, $sql1);
             $numero = 1;
 	    while ($fila = mysqli_fetch_array($resultado1, MYSQLI_ASSOC)) {

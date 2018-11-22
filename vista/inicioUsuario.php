@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php
 $iduser = 0;
-//        $usuario= NULL;
+$usuario = new Usuario();
 //        session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = unserialize($_SESSION['usuario']);
@@ -189,8 +189,8 @@ if (isset($_SESSION['usuario'])) {
             .ch-item {
                 /*                width: 100%;
                                 height: 100%;*/
-                width: 200px;
-                height: 200px;
+                width: 160px;
+                height: 160px;
                 border-radius: 50%;
                 margin: auto;
                 position: relative;
@@ -208,9 +208,9 @@ if (isset($_SESSION['usuario'])) {
             }
 
             .ch-img-1 { 
-                background-image: url(Imagenes/25.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
+                background-size: cover!important;
+                background-repeat: no-repeat!important;
+                background-position: center!important;
             }
 
             .ch-info {
@@ -241,14 +241,12 @@ if (isset($_SESSION['usuario'])) {
                 text-transform: uppercase;
                 position: relative;
                 letter-spacing: 2px;
-                font-size: 22px;
-                margin: 0 30px;
-                padding: 65px 0 0 0;
-                height: 110px;
+                font-size: 13px;
+                margin: 0 10px;
+                margin-bottom: 10px;
+                padding: 57px 0 0 0;
                 font-family: 'Open Sans', Arial, sans-serif;
-                text-shadow: 
-                    0 0 1px #fff, 
-                    0 1px 2px rgba(0,0,0,0.3);
+                text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0,0,0,0.3);
             }
 
             .ch-info p {
@@ -301,12 +299,12 @@ if (isset($_SESSION['usuario'])) {
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
                 <a href="#2" id="btncerrarmenu" onclick="$('#showLeftPush').click()" class="float-right small">x</a><h3 class="titulo-menu">Menu </h3>
                 <a href="#2" ><i class="fa fa-user-circle"></i><span class="text-menu-lateral"> Información personal</span></a>
-                <a href="#2" onclick="cargarPagina('buscardorPerfiles.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-users"></i><span class="text-menu-lateral"> Demás Perfiles</span></a>
+                <!--<a href="#2" onclick="cargarPagina('buscardorPerfiles.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-users"></i><span class="text-menu-lateral"> Demás Perfiles</span></a>-->
                 <a href="#2"><i class="fa fa-book"></i><span class="text-menu-lateral"> Mi Blog</span></a>
                 <a href="#2"><i class="fa fa-university"></i> <span class="text-menu-lateral">Comunidad</span></a>
-                <a href="#2"><i class="fa fa-comment"></i><span class="text-menu-lateral"> Chat</span></a>
+                <!--<a href="#2"><i class="fa fa-comment"></i><span class="text-menu-lateral"> Chat</span></a>-->
                 <a href="#2"><i class="fa fa-calendar"></i><span class="text-menu-lateral"> Eventos</span></a>
-                <a href="#2"><i class="fa fa-newspaper "></i> <span class="text-menu-lateral">Libros</span></a>
+                <!--<a href="#2"><i class="fa fa-newspaper "></i> <span class="text-menu-lateral">Libros</span></a>-->
 
                 <a href="#1" onclick="cargarPagina('registroNoticia.php', 'cuerpo-principal-perfil', true);"><i class="fa fa-desktop "></i> <span class="text-menu-lateral">Noticias</span></a>
                 <a href="#1"></a>
@@ -319,8 +317,12 @@ if (isset($_SESSION['usuario'])) {
                 </button>
 
             </div>
-            <form method="post" action="../controlador/informacionPersonal.php" onsubmit="en">
-                <input type="file" name="avatar" id="avatar" style="display: none;" accept="image/x-png,image/gif,image/jpeg">
+            <!--<form method="post" action="../controlador/informacionPersonal.php" onsubmit="envioFormularioMultiPart2('cambioAvatar', 'resp', false);return true;" id="cambioAvatar">-->
+            <form method="post" action="../controlador/informacionPersonal.php"  id="cambioAvatar">
+                <input type="hidden" name="oper" value="actualizar avatar">
+                <input type="hidden" name="MAX_FILE_SIZE" value="9000000" />
+                <!--<input type="file" name="avatar" id="avatar" style="display: block;" accept="image/x-png,image/gif,image/jpeg" onchange="$(this).parent().submit();">-->
+                <input type="file" name="avatar" id="avatar" style="display: none;" accept="image/x-png,image/gif,image/jpeg" onchange="envioFormularioMultiPart2('cambioAvatar', 'resp', false);">
             </form>
 
             <div class="container" id="cuerpo-principal-perfil">
@@ -332,24 +334,35 @@ if (isset($_SESSION['usuario'])) {
                         <div class="col-12 col-md-4">
                             <!--                            <div class="content-imagen col-4" id="avatar_perfil" style="background: url(../../Imagenes/17.5.jpg);">
                                                         </div>-->
-                            <div class="ch-item ch-img-1" id="imgPerfil">
+                            <?php
+                            $avatar = $usuario->getAvatar();
+                            if ($avatar == "") {
+                                $avatar = "Imagenes/sin-avatar.png";
+                            }
+                            ?>
+                            <div class="ch-item ch-img-1" id="imgPerfil" style="background: url(<?php echo $avatar; ?>)">
                                 <div class="ch-info ">
 
 <!--                                    <img src="Imagenes/14.jpg" alt=""/>-->
-                                    <h3 class="text-center ">Cambiar imagen</h3><br>
-<!--                                        <p class="text-center">Quieres cambiar la imagen actual? </p>-->
-                                    <h4 class="text-center ">
-                                        <a href="#1" onclick="$('#avatar').click();" class="btn btn-lg btn-primary ">
+                                    <h3 class="text-center " onclick="$('#avatar').click();" style="cursor: pointer;" >Cambiar imagen
+                                        <br>
+                                        <a href="#1"  class="btn  btn-primary mt-2">
                                             <i href="#1" class="fa fa-camera "> </i>
                                         </a>
-                                    </h4>
+                                    </h3>
+<!--                                        <p class="text-center">Quieres cambiar la imagen actual? </p>-->
+                                    <!--                                    <h4 class="text-center ">
+                                                                            <a href="#1" onclick="$('#avatar').click();" class="btn btn-lg btn-primary ">
+                                                                                <i href="#1" class="fa fa-camera "> </i>
+                                                                            </a>
+                                                                        </h4>-->
                                 </div>
                             </div>
 
                         </div>
                         <div class="col-12 col-sm-8  row">
 
-                            <div class="col-12 btn-group info-perfil-3 ">
+                            <div class="col-7 btn-group info-perfil-3 ">
                                 <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getNombre(); ?>" name="txtNombre" id="txtNombre">
                                 <!--                            <a href="#1" class="btn-hover-editar" onclick="editarCampo(this)">editar</a>
                                                             <a href="#1" class="btn-hover-editar" onclick="guardarCampo(this)">guardar</a>-->
@@ -357,39 +370,58 @@ if (isset($_SESSION['usuario'])) {
                                     <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtNombre', this)"><i class="fa fa-pen"></i> </button>
                                 </div>
                             </div> 
-                            <div class="col-12 btn-group info-perfil-3 ">
+                            <div class="col-5 btn-group info-perfil-3 ">
                                 <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getIdentificacion(); ?>" name="txtIdentificacion" id="txtIdentificacion">
                                 <div class="input-group-append">
                                     <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtIdentificacion', this)"><i class="fa fa-pen"></i> </button>
                                 </div>
                             </div> 
-                            <div class="col-12 col-sm-6 btn-group info-perfil-3 mt-2">
-                                <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getTipo_usuario(); ?>" name="txtTipoUser" id="txtTipoUser">
-                            </div>
-                            <div class="col-12 col-sm-6 btn-group info-perfil-3 mt-2">
+                            <div class="col-6 col-sm-6 btn-group info-perfil-3 mt-2">
                                 <input type="text" class="input-editable form-control" disabled="true" value="Codigo: <?php echo $usuario->getCodigo(); ?>" name="txtCodigo" id="txtCodigo">
                             </div> 
+                            <div class="col-6 col-sm-6 btn-group info-perfil-3 mt-2">
+                                <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getTipo_usuario(); ?>" name="txtTipoUser" id="txtTipoUser">
+                            </div>
+
+                            <div class="col-12"><h4>Informacion de contacto</h4></div>
+                            <div class="col-md-6 col-12 btn-group info-perfil-3 ">
+                                <span class="input-group-text" id="basic-addon1">Direccion: </span>
+                                <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getDireccion(); ?> " 
+                                       name="txtDireccion" id="txtDireccion">
+                                <div class="input-group-append">
+                                    <button title="Editar"  class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtDireccion', this)"><i class="fa fa-pen"></i> </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12 btn-group info-perfil-3 ">                        
+                                <span class="input-group-text" id="basic-addon1">Email: </span>
+                                <input type="text" class="input-editable form-control " disabled="true" value="<?php echo $usuario->getCorreo(); ?>" 
+                                       name="txtEmail" id="txtEmail">
+                                <div class="input-group-append">
+                                    <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtEmail', this)"><i class="fa fa-pen"></i> </button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-12"><h4>Informacion de contacto</h4></div>
-                        <div class="col-md-6 col-12 btn-group info-perfil-3 ">
-                            <span class="input-group-text" id="basic-addon1">Direccion: </span>
-                            <input type="text" class="input-editable form-control" disabled="true" value="<?php echo $usuario->getDireccion(); ?> " 
-                                   name="txtDireccion" id="txtDireccion">
-                            <div class="input-group-append">
-                                <button title="Editar"  class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtDireccion', this)"><i class="fa fa-pen"></i> </button>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 btn-group info-perfil-3 ">                        
-                            <span class="input-group-text" id="basic-addon1">Email: </span>
-                            <input type="text" class="input-editable form-control " disabled="true" value="<?php echo $usuario->getCorreo(); ?>" 
-                                   name="txtEmail" id="txtEmail">
-                            <div class="input-group-append">
-                                <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtEmail', this)"><i class="fa fa-pen"></i> </button>
-                            </div>
-                        </div>
-                    </div>
+                    <!--                    <div class="row ">
+                                            <div class="col-12"><h4>Informacion de contacto</h4></div>
+                                            <div class="col-md-6 col-12 btn-group info-perfil-3 ">
+                                                <span class="input-group-text" id="basic-addon1">Direccion: </span>
+                                                <input type="text" class="input-editable form-control" disabled="true" value="< ?php echo $usuario->getDireccion(); ?> " 
+                                                       name="txtDireccion" id="txtDireccion">
+                                                <div class="input-group-append">
+                                                    <button title="Editar"  class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtDireccion', this)"><i class="fa fa-pen"></i> </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12 btn-group info-perfil-3 ">                        
+                                                <span class="input-group-text" id="basic-addon1">Email: </span>
+                                                <input type="text" class="input-editable form-control " disabled="true" value="< ?php echo $usuario->getCorreo(); ?>" 
+                                                       name="txtEmail" id="txtEmail">
+                                                <div class="input-group-append">
+                                                    <button title="Editar" class="btn btn-outline-secondary btn-sm btn-hover-editar" type="button" onclick="editarCampo('txtEmail', this)"><i class="fa fa-pen"></i> </button>
+                                                </div>
+                                            </div>
+                                        </div>-->
                     <div class="row-flow mt-3">
                         <input type="submit" class="btn btn-sm btn-primary" value="Guardar" name="oper" id="oper2">
                     </div>
@@ -398,10 +430,11 @@ if (isset($_SESSION['usuario'])) {
 
                 <div class="container-fluid">
                     <div class="row-flow"><h4>Informacion academica</h4></div>
+                    <?php
+                    $infoAcademica = Usuario::buscarInfoAcademicaByIdUser($usuario->getId());
+                    ?>
                     <blockquote >
-                        <h5 >Sin registros academicos</h5>
-                        <p class="text-muted">No se han registrado datos academicos, si desea puede registrar los diferentes estudios realizados en su vida academica. </p><input type="button" class="btn btn-sm btn-primary" value="registrar">
-                        <form id="forminformacionAcademica" class="mt-sm-10" action="../controlador/informacionPersonal.php" onsubmit="envioFormularioMultiPart2('forminformacionAcademica', 'respuesta', true); return false;" method="post">
+                        <form id="forminformacionAcademica" class="mt-sm-10" action="../controlador/informacionPersonal.php" onsubmit="envioFormularioMultiPart2('forminformacionAcademica', 'cont_estudioAcademico', true); return false;" method="post">
                             <input type="hidden" name="oper" value="registro info academica">
                             <h5 >Nueva informacion academica</h5>
                             <div class="row">
@@ -423,32 +456,48 @@ if (isset($_SESSION['usuario'])) {
                         </form>
                     </blockquote>
 
-                    <div class="row" id="cont_estudioAcademico">
+                    <div class="row  mb-5 mt-3" id="cont_estudioAcademico">
+                        <?php
+//                        $infoAcademica = Usuario::buscarInfoAcademicaByIdUser($usuario->getId());
+//                        print_r($infoAcademica);
+                        if (count($infoAcademica) <= 0) {
+                            ?>
+                            <blockquote style="width: 70%;margin: auto; border-color: orange; color: orange" >
+                                <h5 >Sin registros academicos</h5>
+                                <p class="text-muted">No se han registrado datos academicos, si desea puede registrar los diferentes estudios realizados en su vida academica. </p>
+                            </blockquote >
+                            <?php
+                        }
+                        foreach ($infoAcademica as $info) {
+                            ?>
+                            <div class="row col-12 col-sm-10  offset-xs-0 offset-sm-1 mt-3 border-top">
+                                <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8"><?php echo $info["titulo"]; ?></span>
+                                <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8"><?php echo $info["institucion"]; ?></span>
+                                <span class="col-4 text-right text-muted">año:</span><span class="col-8"><?php echo $info["anno"]; ?></span>
+                            </div>    
+                            <?php
+                        }
+                        ?>
 
-                        <div class="row col-12 col-sm-10  offset-xs-0 offset-sm-1 mt-3 border-top">
-                            <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8">Ingeniero de sitemas</span>
-                            <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8">UNIVERSIDAD INDUSTRIAL DE SANTANDER</span>
-                            <span class="col-4 text-right text-muted">año:</span><span class="col-8">2012</span>
-                        </div>
-
-                        <div class="row col-12 col-sm-10 offset-sm-1 mt-3 border-top">
-                            <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8">Ingeniero de sitemas</span>
-                            <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8">UNIVERSIDAD INDUSTRIAL DE SANTANDER</span>
-                            <span class="col-4 text-right text-muted">año:</span><span class="col-8">2012</span>
-                        </div>
-
-                        <div class="row col-12 col-sm-10 offset-sm-1  mt-3 border-top">
-                            <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8">Ingeniero de sitemas</span>
-                            <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8">UNIVERSIDAD INDUSTRIAL DE SANTANDER</span>
-                            <span class="col-4 text-right text-muted">año:</span><span class="col-8">2012</span>
-                        </div>
+                        <!--
+                                                <div class="row col-12 col-sm-10 offset-sm-1 mt-3 border-top">
+                                                    <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8">Ingeniero de sitemas</span>
+                                                    <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8">UNIVERSIDAD INDUSTRIAL DE SANTANDER</span>
+                                                    <span class="col-4 text-right text-muted">año:</span><span class="col-8">2012</span>
+                                                </div>
+                        
+                                                <div class="row col-12 col-sm-10 offset-sm-1  mt-3 border-top">
+                                                    <span class="col-4 text-right text-muted">Titulo:</span><span class="col-8">Ingeniero de sitemas</span>
+                                                    <span class="col-4 text-right text-muted">Institucion:</span><span class="col-8">UNIVERSIDAD INDUSTRIAL DE SANTANDER</span>
+                                                    <span class="col-4 text-right text-muted">año:</span><span class="col-8">2012</span>
+                                                </div>-->
                     </div>
                 </div>
 
             </div>
-            
+
             <script>
-                
+
                 function editarCampo(idInput, btn) {
                     //             alert( $(boton).parent().children("input").val());
                     $("#" + idInput).removeAttr("disabled");

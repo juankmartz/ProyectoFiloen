@@ -392,6 +392,7 @@ button{
     left: 10%;
     border-top: 1px solid rgb(0, 110, 192);
     border-bottom: 1px solid rgb(0, 110, 192);
+    font-size: 25px;
 }
 
 .redi li{

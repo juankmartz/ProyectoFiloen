@@ -3,6 +3,7 @@
 //include '../controlador/conBD.php';
 include '../modelo/Mensajeria.php';
 include '../modelo/Usuario.php';
+include '../modelo/salaChat.php';
 
 session_start();
 $p = $_GET;
@@ -12,9 +13,11 @@ if (isset($s['usuario'])) {
     $user = unserialize($s['usuario']);
 //    echo "<h3> el usuario es " . $user->getNombre() . "</h3>";
 }
-$conn = conBD::conectar();
+//$conn = conBD::conectar();
 $idsalachat = $p["idSalaChat"];
+$_SESSION["idGrupo"] = $idsalachat;
 ?>
+<link rel="stylesheet" href="css/grupo.css">
 <style>
     .cont-Memsaje-comunal{
         font-size: 14px;
@@ -55,25 +58,78 @@ $datosSala = mysqli_fetch_array($datosSala, MYSQLI_ASSOC);
 <div class="container-fluid p-3">
     <div class="row">
         <div class="col-8">
-            <h3><?php echo $datosSala["titulo"]; ?></h3>
-            <p> <?php echo $datosSala["descripcion"]; ?></p>
-            <h6>Administrador: <b><?php echo $datosSala["administrador"]; ?></b> <span class="float-right"><?php echo $datosSala["participante"]; ?> participantes</span></h6>
-            <div class="participantes-chat">
-                <h3>participantes grupo</h3>
+            <h3 class="titulo-grupo"><?php echo $datosSala["titulo"]; ?></h3>
+            <p class="descripcion-grupo"> <?php echo $datosSala["descripcion"]; ?></p>
+            <h6 class="admin-grupo">Administrador: <b><?php echo $datosSala["administrador"]; ?></b> 
+                <span class="float-right num-participantes"  data-toggle="collapse" data-target="#participantes"><?php echo $datosSala["participante"]; ?> participantes</span></h6>
+
+            <div class="participantes-chat collapse" id="participantes">
                 <?php
                 while ($up = mysqli_fetch_array($participantes, MYSQLI_ASSOC)) {
-//                $nuevoUser = new Usuario();
-//                $nuevoUser->nuevoUsuario($up["idusuario"], $up["nombre"], $up["codigo"], $up["correo"], 
-//                        $up["ciudad"], $up["direccion"], $up["identificacion"], $up["tipo_usuario"],
-//                        $up["usuario"], $up["contrasenna"]);
-                    $listParticipantes[$up["idusuario"]] = $up["nombre"];
+                    $listParticipantes[$up["idusuario"]]["nombre"] = $up["nombre"];
+                    $listParticipantes[$up["idusuario"]]["avatar"] = $up["avatar"];
                     ?>
                     <span class="participante-sala"><?php echo $up["nombre"]; ?></span>
                     <?php
                 }
                 ?>
             </div>
+            <form class="form-nueva-publicacion" method="post" action="../controlador/grupo.php" onsubmit="envioFormulario(this, 'cuerpo-publicacion', false);return false;">
+                <input type="hidden" name="oper" value="publicar en el grupo">
+                <textarea name="publicacion" id="publicacion" required="" placeholder="Crea una nueva publicacion..." ></textarea>
+                <input type="submit" value="Publicar" class="btn btn-sm btn-primary">
+            </form>
+            <div id="cuerpo-publicacion">
+                <?php
+                $publicaciones = salaChat::buscarPublicacionesGrupo($idsalachat);
+                while ($fila = mysqli_fetch_assoc($publicaciones)) {
+                    ?>
+                   
+                    <div class="publicacion">
+                        <p>
+                            <?php echo $fila["texto"]; ?>
+                            <br><small><?php echo $fila["fecha"]; ?></small>
+                        </p>
+                         <?php 
+                                $comentarios = salaChat::buscarComentarioPublicacion($fila["idpublicacion"]);
+                                $numcoment = mysqli_num_rows($comentarios) ;
+                                if($numcoment > 0){
+                                ?>
+                        <a href="#1" class="text-muted" data-toggle="collapse" data-target="#coment_public<?php echo $fila["idpublicacion"]; ?>" ><?php echo $numcoment; ?> comentarios</a>
+                                <?php } ?>
+                        <a href="#1" class="btn btn-sm fa fa-comment-alt" data-toggle="collapse" data-target="#coment_public<?php echo $fila["idpublicacion"]; ?>" > Comentar</a>
+                        <div id="coment_public<?php echo $fila["idpublicacion"]; ?>" class="collapse">
+                            <div class="nuevo-comment">
+                                <form id="formComentario<?php echo $fila["idpublicacion"]; ?>" action="../controlador/grupo.php" method="post" onsubmit="envioFormulario(this, 'comment-<?php echo $fila["idpublicacion"]; ?>', false);return false;">
+                                    <input type="hidden" name="oper" value="comentar publicacion">
+                                    <input type="hidden" name="idpublic" value="<?php echo $fila["idpublicacion"]; ?>">
+                                    <textarea class="nuevo-comment" name="comentario" required="" placeholder="Escribe tu comentario..."></textarea >
+                                    <input  type="submit" onclick="$(this).parent().find('textarea').text('');" value="Comentar" class="btn btn-sm btn-dark">
+                                </form>
+                            </div>
+                            <div class="comment-publicacion-cont" id="comment-<?php echo $fila["idpublicacion"]; ?>">
+                                <?php 
+//                                $comentarios = salaChat::buscarComentarioPublicacion($fila["idpublicacion"]);
+                                while ($commnet = mysqli_fetch_assoc($comentarios)){
+                                    $nombUser = Usuario::buscarNombre($commnet['idusuario']);
+                                    ?>
+                                <div class="cuerpo-coment">
+                                    <span class="nomb-coment"><?php echo $nombUser; ?></span>
+                                    <p class="text-coment"><?php echo $commnet['comentario'];?><br> 
+                                        <small class="fecha-coment"><?php echo $commnet['fecha'];?></small></p>
+                                </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
 
+
+                    <?php
+                }
+                ?>
+            </div>
         </div>
         <div class="col-4 " style="font-size: 15px;" >
             <h4>Mensajes</h4>
@@ -104,10 +160,10 @@ $datosSala = mysqli_fetch_array($datosSala, MYSQLI_ASSOC);
                         } else {
                             ?>
                             <div class="mensaje-izq">
-                                <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                                <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="<?php echo $listParticipantes[$mensaj["iduser_envia"]]["avatar"]; ?>"> </div>
                                 <div class="text-mensaje">
-                                    <span class="nombreChat"><?php echo $listParticipantes[$mensaj["iduser_envia"]]; ?> dice:</span>
-                                    <p class="mensaje"><?php echo $mensaj["mensaje"] ?></p>
+                                    
+                                    <p class="mensaje"><b class="mr-2"><?php echo $listParticipantes[$mensaj["iduser_envia"]]["nombre"]; ?> dice : </b> <?php echo $mensaj["mensaje"] ?></p>
                                     <span class="f-h-mensaje"><?php echo $mensaj["fecha"]; ?></span>
                                 </div>
                             </div>
@@ -141,7 +197,7 @@ $datosSala = mysqli_fetch_array($datosSala, MYSQLI_ASSOC);
 
     setInterval(function () {
         //                                    alert("buscando");
-        
+
         //                                    console.log(data);
         $.ajax({
             url: "../controlador/chats.php",

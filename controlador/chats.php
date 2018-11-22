@@ -9,8 +9,6 @@ include '../modelo/Mensajeria.php';
  * and open the template in the editor.
  */
 
-
-
 session_start();
 $p = $_POST;
 $g = $_GET;
@@ -325,13 +323,15 @@ if (isset($p['oper'])) {
                                         $userEnvio->buscarUsuarioByiD($fila["iduser_envia"]);
                                         ?>
                                         <div class="mensaje-izq">
-                                            <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="../../vista/Imagenes/22.png"> </div>
+                                            <div class="nomb-cuerpo-chat"> <img class="img-user-chat" src="<?php echo $userEnvio->getAvatar(); ?>"> </div>
                                             <div class="text-mensaje">
-                                                <span class="nombreChat"><?php echo $userEnvio->getNombre(); ?> dice:</span>
-                                                <p class="mensaje"><?php echo $fila["mensaje"] ?></p>
+                                                
+                                                <p class="mensaje">
+                                                    <b class="mr-2"><?php echo $userEnvio->getNombre(); ?> dice : </b><?php echo $fila["mensaje"] ?></p>
                                                 <span class="f-h-mensaje"><?php echo $fila["fecha"]; ?></span>
                                             </div>
                                         </div>
+            
                                         <?php
                                     } else {
                                         ?>
