@@ -19,8 +19,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Página Principal</title>
 
-        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-        <link rel="stylesheet" href="css/inicioEst.css" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/a.png">
+        <link rel="stylesheet" href="css/inicioEstd.css" type="text/css">
         <link rel="stylesheet" href="css/estilos.css" type="text/css">
         <link rel="stylesheet" href="css/fontello.css">
 
@@ -84,32 +84,15 @@ if(isset($_SESSION["user"])){
     </head>
     <body onload="cargarPagina('noticias.php', 'contenedorPrincipal', true);">
         
-        <div class="boton">
-            <nav class="navegacion2">
-                <ul class="menu2">
-                    <li><a href="inicioEst.php"> <img src="imagenes/inicio2.png" alt="" title="Inicio" width="30px" height="30px"></a></li>
-                    <li><a href=""> <img src="imagenes/perfilb.png" alt="" title="Mi perfil" width="40px" height="30px"></a></li>
-                    <li><a href=""> <img src="imagenes/notificaciones.png" alt="" title="Notificaciones" width="30px" height="30px"></a></li>
-                     <li><a href=""> <img src="imagenes/mensajes.png" alt="" title="Chat" width="30px" height="30px"></a></li>
-                    <li><a href=""> <img src="imagenes/Opcionesb.png" alt="Opciones" title="Opciones" width="30px" height="30px"></a>
-                <ul class="submenu2">
-                    <li><a href=""> <span><img src="imagenes/anuncio.png" width="20px" height="20px"></span> Crear un Anuncio</a></li>
-                    <li><a href="tareas.php"> <span><img src="imagenes/tareas.png" width="20px" height="20px"></span> Tareas</a></li>
-                    <li><a href=""> <span><img src="imagenes/privacidad2.png" width="20px" height="20px"></span> Privacidad</a></li>
-                    <li><a href=""> <span><img src="imagenes/config.png" width="20px" height="20px"></span> Configuración</a></li>
-                    <li><a href=""> <span><img src="imagenes/problema2.png" width="20px" height="20px"></span> Reportar un Problema</a></li>
-                </ul>
-                    </li>
-                    <li><a href="index.php"> <img src="imagenes/salirb.png" class="salir" alt="Cerrar Sesión" title="Cerrar Sesión" width="30px" height="30px"></a></li>
-                </ul>
-            </nav>
-        </div>
+       <?php
+       require 'blogs/barsup2.php';
+       ?>
         <div class="flexslider">
             <ul class="slides">
                 <li>
                     <img src="imagenes/18.6.PNG" alt="Portal filoEn">
                     <section class="flex-caption">
-                        <h1> Bienvenido a FiloEn </h1>
+                        <h1> Bienvenido a El Patio Filosófico </h1>
                         <p>Un Sitio Web para la enseñanza y aprendizaje de la Filosofía...</p>
                     </section>
                 </li>
@@ -133,7 +116,7 @@ if(isset($_SESSION["user"])){
                 <li style="display: none">
                     <img src="imagenes/46.png" alt="">
                     <section class="flex-caption">
-                        <h1> Espacio para comunidad UIS</h1>
+                        <h1> Sitio virtual para comunidad universitaria </h1>
                         <p>Regístrate y tendrás acceso fácil a información de la Filosofía...</p>
                     </section>
                 </li>
@@ -175,7 +158,7 @@ if(isset($_SESSION["user"])){
                             <li> <a href="acercaFiloEn_Comp.php">Acerca de FiloEn</a></li>
                         </ul> 
                     </li>
-                    <li> <a href="#"><span><img src="Imagenes/not.png" alt="" width="20px"></span> Noticias</a></li>
+                    <li> <a href="noticias.php"><span><img src="Imagenes/not.png" alt="" width="20px"></span> Noticias</a></li>
                     
                     <li> <a href=""><span><img src="Imagenes/eve.png" alt="" width="20px"></span> Eventos</a></li>
 
@@ -193,7 +176,7 @@ if(isset($_SESSION["user"])){
         </div>
 
         <div class="encabezado">
-            <img src="imagenes/logo.jpeg" alt="el patio filosófcio">
+            <img src="imagenes/logo.png" alt="el patio filosófcio">
         </div>
       
         <div class="content-fluid" id="contenedorPrincipal">
@@ -203,19 +186,6 @@ if(isset($_SESSION["user"])){
         <div id="loader"></div>
 
   
-        <footer>
-            <div class="pie">
-                <p>
-                    <a href="inicioEst.php">Inicio</a> | 
-                    <a href="contactenos_Comp.php">Contáctenos</a> |
-                    <a href="#">Registro</a> |
-                    <a href="#">Login</a> |                                                
-                </p>
-                <p>
-                    Copyright 2018. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
-                </p>
-
-            </div>
-        </footer>
-    </body>
-</html>
+     <?php
+    require 'blogs/footer.php';
+     ?>

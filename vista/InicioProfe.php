@@ -7,7 +7,7 @@
     <title>Página Principal</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-    <link rel="stylesheet" href="css/inicioEst.css" type="text/css">
+    <link rel="stylesheet" href="css/inicioEstd.css" type="text/css">
     <link rel="stylesheet" href="css/fontello.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>

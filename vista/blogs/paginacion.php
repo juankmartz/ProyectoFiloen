@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog FiloEn</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-    <link rel="stylesheet" href="css/blogss.css">
+    <link rel="stylesheet" href="css/blogg.css">
     <link rel="stylesheet" href="css/estiloss.css">
 
 

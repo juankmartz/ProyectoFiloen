@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nueva entrada</title>
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-    <link rel="stylesheet" href="css/estiloblogss.css">
+    <link rel="stylesheet" href="css/estiloblog.css">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/estiloss.css">
 

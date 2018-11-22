@@ -4,16 +4,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Nueva entrada</title>
-        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo2.png">
-        <link rel="stylesheet" href="css/estiloblogss.css">
-        <link rel="stylesheet" href="css/fontello.css">
-        <link rel="stylesheet" href="css/estiloss.css">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nueva entrada</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logor.jpg">
+    <link rel="stylesheet" href="css/estiloblog.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/estiloss.css">
 
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
@@ -25,6 +25,11 @@
 
     <body>
 
+    <div class="row">
+        <img src="imagenes/logo.png"  class="uno" >
+    
+        <h1>BLOG EL PATIO FILOSÓFICO</h1>
+    </div>
         <div class="row">
             <img src="imagenes/logo2.png" alt="Filosofia y enseñanza de la filosofia" class="uno" >
             <div>
@@ -35,6 +40,7 @@
             <img src="imagenes/uis.png" class="dos">
         </div>
 
+
         <header>
             <div class="fondo1">
                 <h1>NUEVA ENTRADA</h1>
@@ -43,9 +49,9 @@
 
         <div class="container">
 
-            <p>Bienvenido al formulario de entradas para el Blog de FiloEn. Este formulario es exclusivo para subir artículos al blog y no permite entradas dirigidas a otras partes del portal web. </p>
 
 
+	<p>Bienvenido al formulario de entradas para el Blog. Este formulario es exclusivo para subir artículos al blog y no permite entradas dirigidas a otras partes del portal web. </p>
 
             <form action="transacciones.php" method="POST" enctype="multipart/form-data" name="form1">
                 <table >
@@ -71,32 +77,7 @@
                 </table>
             </form>
 
-
-        </div>
-        <div class="footer1">
-            <div class="row">
-                <img src="imagenes/ig.png">
-                <img src="imagenes/fb.png">
-                <img src="imagenes/tw.png">
-                <img src="imagenes/gg.png">
-                <img src="imagenes/in.png">
-            </div>
-        </div>
-
-        <footer>
-            <div class="pie">
-                <p>
-                    <a href="index.php">Inicio</a> | 
-                    <a href="contactenos.php">Contáctenos</a> |
-                    <a href="registro.php">Registro</a> |
-                    <a href="ingreso.php">Login</a> |                                                
-                </p>
-                <p>
-                    Copyright 2018. <a href="http://www.uis.edu.co/" rel="develop">Universidad Industrial de Santander</a>   <a href="http://www.filosofiayensenanza.org/inicio/" rel="develop">Grupo FiloEn</a>
-                </p>
-
-            </div>
-        </footer>
-
-    </body>
-</html>
+</div>
+<?php
+ require 'footer.php';
+?>
